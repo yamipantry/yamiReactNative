@@ -6,6 +6,7 @@ import {
   Keyboard,
   TouchableOpacity,
   Text,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {
   RkButton,
@@ -18,6 +19,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import { scaleModerate, scaleVertical } from '../utils/scale';
 
 export class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: '',
+      password: '',
+    };
+  }
+
   static navigationOptions = {
     header: null,
   };
@@ -36,24 +45,46 @@ export class Login extends React.Component {
     );
   };
 
-  // onLoginButtonPressed = () => {
-  //   this.props.navigation.navigate('Tasks');
-  // };
+  onLoginButtonPressed = () => {
+    this.props.handleSubmit(this.state);
+    //this.props.navigation.navigate('Tasks');
+  };
 
   onSignUpButtonPressed = () => {
     this.props.navigation.navigate('SignUp');
   };
 
   render = () => (
-    <RkAvoidKeyboard
+    <KeyboardAvoidingView
       onStartShouldSetResponder={() => true}
       onResponderRelease={() => Keyboard.dismiss()}
       style={styles.screen}
     >
       {this.renderImage()}
       <View style={styles.container}>
-        <RkTextInput rkType="rounded" placeholder="Username" />
-        <RkTextInput rkType="rounded" placeholder="Password" secureTextEntry />
+        <RkTextInput
+          rkType="rounded"
+          placeholder="Username"
+          name="userName"
+          onChangeText={text => {
+            this.setState({
+              userName: text,
+            });
+          }}
+          value={this.state.userName}
+        />
+        <RkTextInput
+          rkType="rounded"
+          placeholder="Password"
+          secureTextEntry
+          name="password"
+          onChangeText={text => {
+            this.setState({
+              password: text,
+            });
+          }}
+          value={this.state.password}
+        />
         <LinearGradient
           colors={['#8a2387', '#e94057', '#f27121']}
           start={{ x: 0.0, y: 0.5 }}
@@ -89,7 +120,7 @@ export class Login extends React.Component {
           </View>
         </View>
       </View>
-    </RkAvoidKeyboard>
+    </KeyboardAvoidingView>
   );
 }
 
