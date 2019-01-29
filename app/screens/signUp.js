@@ -32,7 +32,7 @@ export class SignUp extends React.Component {
   );
 
   onSignUpButtonPressed = () => {
-    console.log(this.props);
+    
     this.props.handleSubmit(this.state);
     this.props.navigation.navigate('Recipes');
   };
