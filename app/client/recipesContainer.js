@@ -22,7 +22,7 @@ class Recipe extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.load()
-    }, 400)
+    }, 300)
   }
 
   render() {
@@ -46,10 +46,9 @@ const mapStateToProps = state => {
     pantry: state.user.pantryItems
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-  recipesThunk: () => dispatch(recipesThunk())
+const mapDispatchToProps = {
+  recipesThunk: recipesThunk
   }
-}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe)

@@ -10,9 +10,7 @@ export const getRecipes = recipes => ({
 
 export const recipesThunk = () => async dispatch => {
   try {
-    console.log('heyyyy')
     const recipes = await axios.get(`${webserver}/api/recipe`);
-    console.log('data', recipes.data)
     dispatch(getRecipes(recipes.data));
   } catch (err) {
     console.error(err);
