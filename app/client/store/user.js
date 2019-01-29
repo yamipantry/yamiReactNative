@@ -29,14 +29,14 @@ export const me = () => async dispatch => {
   }
 };
 
-export const auth = (userName, password) => async dispatch => {
+export const auth = (email, password) => async dispatch => {
   let res;
   try {
-    console.log('this is before axios', userName, password);
-    res = await axios.post(`http://10.1.41.32:8080/auth/login`, {
-      userName,
+    res = await axios.post(`http://75.128.12.8:8080/auth/login`, {
+      email,
       password,
     });
+    console.log('this is after axios', res.data);
   } catch (authError) {
     return dispatch(getUser({ error: authError }));
   }
