@@ -37,7 +37,6 @@ export const auth = (email, password) => async dispatch => {
       email,
       password,
     });
-    console.log('this is after axios', res.data);
   } catch (authError) {
     return dispatch(getUser({ error: authError }));
   }
@@ -45,6 +44,34 @@ export const auth = (email, password) => async dispatch => {
     dispatch(getUser(res.data));
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
+  }
+};
+
+export const authSignUp = (
+  userName,
+  email,
+  password,
+  password2
+) => async dispatch => {
+  let res;
+  if (password === password2) {
+    // look into toaster notification
+    try {
+      res = await axios.post(`${webserver}/auth/signup`, {
+        userName,
+        email,
+        password,
+      });
+    } catch (authError) {
+      return dispatch(getUser({ error: authError }));
+    }
+    try {
+      dispatch(getUser(res.data));
+    } catch (dispatchOrHistoryErr) {
+      console.error(dispatchOrHistoryErr);
+    }
+  } else {
+    console.error('sorry passwords did not match');
   }
 };
 

@@ -1,5 +1,5 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { SignUp } from './screens/signUp';
+import SignUp from './client/signupContainer';
 import Login from './client/loginContainer';
 import Recipes from './client/recipesContainer';
 // import { Recipe } from './screens/recipe';
