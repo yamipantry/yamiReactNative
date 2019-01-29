@@ -35,7 +35,7 @@ class Recipe extends React.Component {
       )
     }
     return (
-        <RecipePresentational recipes={recipes}/>
+        <RecipePresentational recipes={recipes} navigation={this.props.navigation}/>
     )
   }
 }
@@ -46,8 +46,10 @@ const mapStateToProps = state => {
     pantry: state.user.pantryItems
   }
 }
-const mapDispatchToProps = {
-  recipesThunk: recipesThunk
+const mapDispatchToProps = dispatch => {
+  return {
+  recipesThunk: () => dispatch(recipesThunk())
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe)

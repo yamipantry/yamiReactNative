@@ -38,14 +38,10 @@ import {
   RkStyleSheet,
 } from 'react-native-ui-kitten';
 
-
-
 export class RecipePresentational extends React.Component {
   static navigationOptions = {
     title: 'Recipes'.toUpperCase(),
   };
-
-
 
   extractItemKey = (item) => `${item.id}`;
 
@@ -53,7 +49,7 @@ export class RecipePresentational extends React.Component {
     <TouchableOpacity
       delayPressIn={70}
       activeOpacity={0.8}
-      onPress={() => this.props.navigation.navigate('Recipe', { id: item.id })}>
+      onPress={() => this.props.navigation.navigate('SingleRecipe', { id: item.id })}>
       <RkCard rkType='horizontal' style={styles.card}>
         <Image rkCardImg source={{uri: `${webserver}${item.imageUrl}`}} />
         <View rkCardContent>
@@ -67,7 +63,7 @@ export class RecipePresentational extends React.Component {
 
   render() {
     const {recipes} = this.props || []
-    console.log(recipes)
+    console.log('hello', recipes)
     return(
     <View>
       <FlatList
