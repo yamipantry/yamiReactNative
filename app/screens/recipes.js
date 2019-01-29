@@ -25,6 +25,7 @@
 
 
 import React from 'react';
+import { webserver } from '../../helperfunction'
 import {
   FlatList,
   Image,
@@ -36,22 +37,15 @@ import {
   RkCard,
   RkStyleSheet,
 } from 'react-native-ui-kitten';
-// import { SocialBar } from '../../components';
-// import { data } from '../../data';
-// import NavigationType from '../../config/navigation/propTypes';
+
 
 
 export class RecipePresentational extends React.Component {
-  // static propTypes = {
-  //   navigation: NavigationType.isRequired,
-  // };
   static navigationOptions = {
     title: 'Recipes'.toUpperCase(),
   };
 
-  // state = {
-  //   data: data.getArticles(),
-  // };
+
 
   extractItemKey = (item) => `${item.id}`;
 
@@ -61,23 +55,19 @@ export class RecipePresentational extends React.Component {
       activeOpacity={0.8}
       onPress={() => this.props.navigation.navigate('Recipe', { id: item.id })}>
       <RkCard rkType='horizontal' style={styles.card}>
-        {/* <Image source={require('blowfish.jpeg')} /> */}
+        <Image rkCardImg source={{uri: `${webserver}${item.imageUrl}`}} />
         <View rkCardContent>
-          {/* <RkText numberOfLines={1} rkType='header6'>{item.header}</RkText> */}
           <RkText rkType='secondary6 hintColor'>
             {`${item.name}`}
           </RkText>
-          {/* <RkText style={styles.post} numberOfLines={2} rkType='secondary1'>{item.text}</RkText> */}
         </View>
-        {/* <View rkCardFooter>
-          <SocialBar rkType='space' showLabel />
-        </View > */}
       </RkCard>
     </TouchableOpacity>
   );
 
   render() {
     const {recipes} = this.props || []
+    console.log(recipes)
     return(
     <View>
       <FlatList
