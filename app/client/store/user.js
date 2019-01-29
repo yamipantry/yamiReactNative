@@ -22,7 +22,7 @@ const getUser = user => ({ type: GET_USER, user });
  */
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get('http://localhost:8080/auth/me');
+    const res = await axios.get('http://10.1.41.32:8080/auth/me');
     dispatch(getUser(res.data || defaultUser));
   } catch (err) {
     console.error(err);
