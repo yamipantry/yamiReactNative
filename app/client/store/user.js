@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { webserver } from '../../../helperfunction';
 
 /**
  * ACTION TYPES
@@ -22,7 +23,7 @@ const getUser = user => ({ type: GET_USER, user });
  */
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get('http://localhost:8080/auth/me');
+    const res = await axios.get(`${webserver}/auth/me`);
     dispatch(getUser(res.data || defaultUser));
   } catch (err) {
     console.error(err);
@@ -32,7 +33,7 @@ export const me = () => async dispatch => {
 export const auth = (email, password) => async dispatch => {
   let res;
   try {
-    res = await axios.post(`http://75.128.12.8:8080/auth/login`, {
+    res = await axios.post(`${webserver}/auth/login`, {
       email,
       password,
     });
