@@ -1,28 +1,29 @@
-import axios from 'axios'
+import axios from 'axios';
+import { webserver } from '../../../helperfunction';
 
-const GET_RECIPES = 'GET_RECIPES'
+const GET_RECIPES = 'GET_RECIPES';
 
 export const getRecipes = recipes => ({
   type: GET_RECIPES,
-  recipes
-})
+  recipes,
+});
 
 export const recipesThunk = () => async dispatch => {
   try {
-    const recipes = await axios.get('http://75.128.12.8:8080/api/recipe')
-    dispatch(getRecipes(recipes.data))
+    const recipes = await axios.get(`${webserver}/api/recipe`);
+    dispatch(getRecipes(recipes.data));
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
-}
+};
 
 const recipes = (state = [], action) => {
   switch (action.type) {
     case GET_RECIPES:
-      return action.recipes
+      return action.recipes;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default recipes
+export default recipes;
