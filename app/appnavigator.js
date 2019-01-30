@@ -3,7 +3,7 @@ import { SignUp } from './screens/signUp';
 import Login from './client/loginContainer';
 import Recipes from './client/recipesContainer';
 import { Settings } from './screens/settings';
-import { Profile } from './screens/profile';
+import Profile from './client/profileContainer';
 // import { Recipe } from './screens/recipe';
 
 const AppNavigator = createStackNavigator({

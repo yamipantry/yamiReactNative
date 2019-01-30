@@ -22,6 +22,25 @@ export class Profile extends React.Component {
 
   state = {};
 
+  componentDidMount() {
+    this.setState({
+      id: this.props.user.id,
+      userName: this.props.user.userName,
+      email: this.props.user.email,
+      firstName: this.props.user.firstName,
+      lastName: this.props.user.lastName,
+      streetName: this.props.user.streetName,
+      city: this.props.user.city,
+      state: this.props.user.state,
+      zip: this.props.user.zip,
+      profileImage: this.props.user.profileImage,
+    });
+  }
+
+  onEditButtonPressed = () => {
+    this.props.handleSubmit(this.state);
+  };
+
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -33,14 +52,86 @@ export class Profile extends React.Component {
           >
             <View style={styles.content}>
               <View style={styles.container}>
-                <RkTextInput rkType="rounded" placeholder="Username" />
-                <RkTextInput rkType="rounded" placeholder="Email" />
-                <RkTextInput rkType="rounded" placeholder="First Name" />
-                <RkTextInput rkType="rounded" placeholder="Last Name" />
-                <RkTextInput rkType="rounded" placeholder="Street Address" />
-                <RkTextInput rkType="rounded" placeholder="City" />
-                <RkTextInput rkType="rounded" placeholder="State" />
-                <RkTextInput rkType="rounded" placeholder="Zip" />
+                <RkTextInput
+                  onChangeText={text => {
+                    this.setState({
+                      userName: text,
+                    });
+                  }}
+                  rkType="rounded"
+                  value={this.state.userName}
+                  placeholder="Username"
+                />
+                <RkTextInput
+                  rkType="rounded"
+                  onChangeText={text => {
+                    this.setState({
+                      email: text,
+                    });
+                  }}
+                  value={this.state.email}
+                  placeholder="Email"
+                />
+                <RkTextInput
+                  rkType="rounded"
+                  onChangeText={text => {
+                    this.setState({
+                      firstName: text,
+                    });
+                  }}
+                  value={this.state.firstName}
+                  placeholder="First Name"
+                />
+                <RkTextInput
+                  rkType="rounded"
+                  onChangeText={text => {
+                    this.setState({
+                      lastName: text,
+                    });
+                  }}
+                  value={this.state.lastName}
+                  placeholder="Last Name"
+                />
+                <RkTextInput
+                  rkType="rounded"
+                  onChangeText={text => {
+                    this.setState({
+                      streetName: text,
+                    });
+                  }}
+                  value={this.state.streetName}
+                  placeholder="Street Address"
+                />
+                <RkTextInput
+                  rkType="rounded"
+                  onChangeText={text => {
+                    this.setState({
+                      city: text,
+                    });
+                  }}
+                  value={this.state.city}
+                  placeholder="City"
+                />
+                <RkTextInput
+                  rkType="rounded"
+                  onChangeText={text => {
+                    this.setState({
+                      state: text,
+                    });
+                  }}
+                  value={this.state.state}
+                  placeholder="State"
+                />
+                <RkTextInput
+                  rkType="rounded"
+                  onChangeText={text => {
+                    this.setState({
+                      zip: text,
+                    });
+                  }}
+                  value={this.state.zip}
+                  placeholder="Zip"
+                />
                 <LinearGradient
                   colors={['#8a2387', '#e94057', '#f27121']}
                   start={{ x: 0.0, y: 0.5 }}
@@ -54,7 +145,7 @@ export class Profile extends React.Component {
                 >
                   <TouchableOpacity
                     style={styles.buttonContainer}
-                    onPress={this.onSignUpButtonPressed}
+                    onPress={this.onEditButtonPressed}
                   >
                     <View style={styles.textRow}>
                       <Text style={styles.buttonText}>EDIT</Text>

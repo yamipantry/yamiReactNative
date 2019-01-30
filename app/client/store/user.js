@@ -5,6 +5,7 @@ import { webserver } from '../../../helperfunction';
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER';
+const UPDATE_USER = 'UPDATE_USER';
 //const REMOVE_USER = 'REMOVE_USER';
 
 /**
@@ -16,6 +17,7 @@ const defaultUser = {};
  * ACTION CREATORS
  */
 const getUser = user => ({ type: GET_USER, user });
+const updateUser = user => ({ type: UPDATE_USER, user });
 //const removeUser = () => ({ type: REMOVE_USER });
 
 /**
@@ -30,14 +32,23 @@ export const me = () => async dispatch => {
   }
 };
 
-export const auth = (email, password) => async dispatch => {
+export const update = (id, object) => async dispatch => {
+  console.log(object);
+  try {
+    const res = await axios.put(`${webserver}/api/users/${id}`, object);
+    dispatch(updateUser(res.data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const auth = (userName, password) => async dispatch => {
   let res;
   try {
     res = await axios.post(`${webserver}/auth/login`, {
-      email,
+      userName,
       password,
     });
-    console.log('this is after axios', res.data);
   } catch (authError) {
     return dispatch(getUser({ error: authError }));
   }
@@ -64,6 +75,8 @@ export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
       return action.user;
+    case UPDATE_USER:
+      return action;
     // case REMOVE_USER:
     //   return defaultUser;
     default:
