@@ -11,6 +11,15 @@ import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 
 export class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: '',
+      email: '',
+      password: '',
+      password2: '',
+    };
+  }
   static navigationOptions = {
     header: null,
   };
@@ -22,9 +31,11 @@ export class SignUp extends React.Component {
     />
   );
 
-  // onSignUpButtonPressed = () => {
-  //   this.props.navigation.navigate('Tasks');
-  // };
+  onSignUpButtonPressed = () => {
+    
+    this.props.handleSubmit(this.state);
+    this.props.navigation.navigate('Recipes');
+  };
 
   onSignInButtonPressed = () => {
     this.props.navigation.navigate('Login');
@@ -45,16 +56,50 @@ export class SignUp extends React.Component {
         </View>
         <View style={styles.content}>
           <View>
-            <RkTextInput rkType="rounded" placeholder="Username" />
-            <RkTextInput rkType="rounded" placeholder="Email" />
+            <RkTextInput
+              rkType="rounded"
+              placeholder="Username"
+              name="userName"
+              onChangeText={text => {
+                this.setState({
+                  userName: text,
+                });
+              }}
+              value={this.state.userName}
+            />
+            <RkTextInput
+              rkType="rounded"
+              placeholder="Email"
+              name="email"
+              onChangeText={text => {
+                this.setState({
+                  email: text,
+                });
+              }}
+              value={this.state.email}
+            />
             <RkTextInput
               rkType="rounded"
               placeholder="Password"
+              name="password"
+              onChangeText={text => {
+                this.setState({
+                  password: text,
+                });
+              }}
+              value={this.state.password}
               secureTextEntry
             />
             <RkTextInput
               rkType="rounded"
               placeholder="Confirm Password"
+              name="password2"
+              onChangeText={text => {
+                this.setState({
+                  password2: text,
+                });
+              }}
+              value={this.state.password2}
               secureTextEntry
             />
             <LinearGradient
