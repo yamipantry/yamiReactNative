@@ -23,6 +23,7 @@ export class Profile extends React.Component {
   state = {};
 
   componentDidMount() {
+    // OB/MS: could be initial state
     this.setState({
       id: this.props.user.id,
       userName: this.props.user.userName,
@@ -54,6 +55,7 @@ export class Profile extends React.Component {
               <View style={styles.container}>
                 <RkTextInput
                   onChangeText={text => {
+                    // OB/MS: consider a higher order change handler generator function
                     this.setState({
                       userName: text,
                     });
@@ -146,7 +148,7 @@ export class Profile extends React.Component {
                   <TouchableOpacity
                     style={styles.buttonContainer}
                     onPress={() => {
-                      this.onEditButtonPressed
+                      this.onEditButtonPressed // OB/MS: might need ()
                       this.props.navigation.navigate('Recipes')
                     }}
                   >

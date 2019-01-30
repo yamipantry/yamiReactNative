@@ -10,6 +10,8 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 
+// OB/MS: consider making an "account" component for both login / signup shared view stuff
+
 export class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +34,7 @@ export class SignUp extends React.Component {
   );
 
   onSignUpButtonPressed = () => {
-    
+
     this.props.handleSubmit(this.state);
     this.props.navigation.navigate('Recipes');
   };

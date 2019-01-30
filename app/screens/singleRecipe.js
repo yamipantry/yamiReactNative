@@ -23,6 +23,7 @@ const SingleRecipe = props => {
       </TouchableOpacity>
 
       <RkText style={styles.text}>{recipe.description}</RkText>
+      {/* OB/MS: may want to use padding */}
       <Text> </Text>
       <RkText style={styles.subheading}>Detaiiled Instructions</RkText>
       <FlatList
@@ -52,7 +53,7 @@ const SingleRecipe = props => {
         }}
       />
       <Rating showRating onFinishRating={props.star} />
-      <TouchableOpacity 
+      <TouchableOpacity
         onPress={() => {
           props.ranking()
           props.navigation.navigate("Recipes")}

@@ -28,6 +28,7 @@ export class RecipePresentational extends React.Component {
         <Image rkCardImg source={{uri: `${webserver}${item.imageUrl}`}} />
         <View rkCardContent>
           <RkText rkType='secondary6 hintColor' style={{textAlign: 'center', fontSize: 30}}>
+            {/* OB/MS: unnecessary string interpolation */}
             {`${item.name}`}
           </RkText>
         </View>

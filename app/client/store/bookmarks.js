@@ -14,6 +14,7 @@ export const postRanking = obj => async dispatch => {
     const rank = obj.rank;
     const userId = obj.userId;
     const newObj = { recipeId, rank };
+    // OB/MS: would recommend flattening the routes, so instead of `${webserver}/api/user/${userId}/bookmarks`, have `${webserver}/api/bookmarks`
     await axios.post(`${webserver}/api/user/${userId}/bookmarks`, newObj);
     dispatch(addBookmarkToRecipe({userId, rank, recipeId}))
   } catch (err) {
