@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import SingleRecipe from "../screens/singleRecipe";
 import { getRecipe } from "../client/store";
 import { View, Text } from "react-native";
+import { postRanking } from './store'
 
 class SingleRecipeContainer extends React.Component {
   constructor() {
@@ -30,8 +31,7 @@ class SingleRecipeContainer extends React.Component {
       userId,
       rank
     };
-    // await this.props.postRanking(obj)
-    console.log('obj', obj)
+    await this.props.postRanking(obj)
   }
 
   async load() {
@@ -68,8 +68,8 @@ class SingleRecipeContainer extends React.Component {
 }
 
 const mapDispatchToProps = {
-  getRecipe: getRecipe
-  // postRanking: postRanking
+  getRecipe: getRecipe,
+  postRanking: postRanking
 };
 
 const mapStateToProps = state => {

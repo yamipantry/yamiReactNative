@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { RkStyleSheet, RkText, RkButton } from "react-native-ui-kitten";
 import { webserver } from "../../helperfunction";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { Rating } from "react-native-ratings";
 
 const SingleRecipe = props => {
@@ -11,6 +11,8 @@ const SingleRecipe = props => {
   const instructions = recipe.instructions;
   const ingredients = recipe.ingredientsIncluded;
   return (
+    <ScrollView
+    scrollEnabled={true}>
     <View style={styles.container}>
       <Text style={styles.heading}>{recipe.name}</Text>
       <TouchableOpacity onPress={() => props.navigation.navigate("Recipes")}>
@@ -59,6 +61,7 @@ const SingleRecipe = props => {
         <Text>Add</Text>
       </TouchableOpacity>
     </View>
+    </ScrollView>
   );
 };
 

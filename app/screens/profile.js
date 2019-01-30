@@ -145,7 +145,10 @@ export class Profile extends React.Component {
                 >
                   <TouchableOpacity
                     style={styles.buttonContainer}
-                    onPress={this.onEditButtonPressed}
+                    onPress={() => {
+                      this.onEditButtonPressed
+                      this.props.navigation.navigate('Recipes')
+                    }}
                   >
                     <View style={styles.textRow}>
                       <Text style={styles.buttonText}>EDIT</Text>
