@@ -5,7 +5,6 @@ import { update } from '../client/store/user';
 
 class ProfileContainer extends React.Component {
   render() {
-    console.log(this.props, 'profile cont');
     const { handleSubmit, user } = this.props;
 
     return (
