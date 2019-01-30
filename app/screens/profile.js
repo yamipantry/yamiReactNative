@@ -168,9 +168,7 @@ const styles = RkStyleSheet.create(theme => ({
   section: {
     marginVertical: 25,
   },
-  heading: {
-    paddingBottom: 12.5,
-  },
+
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',

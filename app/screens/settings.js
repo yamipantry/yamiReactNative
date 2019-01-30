@@ -1,21 +1,6 @@
 import React from 'react';
-import {
-  ScrollView,
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Keyboard,
-  Text,
-} from 'react-native';
-import {
-  RkText,
-  RkStyleSheet,
-  RkTheme,
-  RkAvoidKeyboard,
-  RkTextInput,
-  RkButton,
-} from 'react-native-ui-kitten';
-import LinearGradient from 'react-native-linear-gradient';
+import { ScrollView, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { RkText, RkStyleSheet } from 'react-native-ui-kitten';
 import { scaleVertical } from '../utils/scale';
 
 export class Settings extends React.Component {
@@ -28,10 +13,6 @@ export class Settings extends React.Component {
   onEditPressed = () => {
     this.props.navigation.navigate('Profile');
   };
-
-  // onPushNotificationsSettingChanged = value => {
-  //   this.setState({ sendPush: value });
-  // };
 
   render() {
     return (
@@ -100,18 +81,6 @@ const styles = RkStyleSheet.create(theme => ({
   rowButton: {
     flex: 1,
     paddingVertical: 24,
-  },
-  switch: {
-    marginVertical: 14,
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: theme.colors.screen.base,
-    paddingTop: 18,
-    marginLeft: 1,
-    marginRight: 1,
-    fontWeight: 'bold',
-    fontSize: 19,
   },
   container: {
     paddingHorizontal: 17,
