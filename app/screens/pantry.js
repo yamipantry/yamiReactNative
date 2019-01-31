@@ -1,25 +1,18 @@
-import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  Button
-} from "react-native";
-import { RkText } from "react-native-ui-kitten";
-import { webserver } from "../../helperfunction";
-import styles from "../assets/styles";
+import React from 'react';
+import { View, FlatList, TouchableOpacity, Image, Button } from 'react-native';
+import { RkText } from 'react-native-ui-kitten';
+import { webserver } from '../../helperfunction';
+import styles from '../assets/styles';
 
 const Pantry = props => {
   const { pantryItems, profileImage } = props.user;
-  const { editMode } = props
-//   const editMode = this.state.editMode;
-//   console.log(editMode);
+  const { editMode } = props;
+  //   const editMode = this.state.editMode;
+  //   console.log(editMode);
   return (
     <View>
       <TouchableOpacity
-        onPress={() => this.props.navigation.navigate("Profile")}
+        onPress={() => props.navigation.navigate('ProfileScreen')}
       >
         <Image
           source={{ uri: `${webserver}${profileImage}` }}
@@ -32,18 +25,21 @@ const Pantry = props => {
           return (
             <View>
               <RkText>{item}</RkText>
-                {!editMode &&
-                <TouchableOpacity onPress={() => this.props.delete(item)}>
+              {!editMode && (
+                <TouchableOpacity onPress={() => props.delete(item)}>
                   <RkText>X</RkText>
                 </TouchableOpacity>
-                }
+              )}
             </View>
           );
         }}
       />
+      <Button title="Edit Pantry" onPress={() => props.edit} />
       <Button
-        title="Edit Pantry"
-        onPress={() => props.edit}
+        title="Generate Receipe"
+        onPress={() => {
+          props.navigation.navigate('Recipes');
+        }}
       />
     </View>
   );
