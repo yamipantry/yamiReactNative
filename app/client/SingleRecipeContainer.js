@@ -42,6 +42,7 @@ class SingleRecipeContainer extends React.Component {
     this.setState({ loading: false });
   }
   componentDidMount() {
+    // OB/MS: document and name the timeout amount
     setTimeout(() => {
       this.load();
     }, 100);

@@ -124,6 +124,7 @@ export class Login extends React.Component {
   );
 }
 
+// OB/MS: recommend shared styles
 const styles = RkStyleSheet.create(theme => ({
   screen: {
     flex: 1,

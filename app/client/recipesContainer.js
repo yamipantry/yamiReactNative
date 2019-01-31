@@ -41,6 +41,7 @@ class Recipe extends React.Component {
 }
 
 const mapStateToProps = state => {
+  // OB/MS: eventually you'll want to paginate this
   return {
     recipes: state.recipes.result,
     pantry: state.user.pantryItems

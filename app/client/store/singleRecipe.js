@@ -13,6 +13,7 @@ export const getRecipe = id => async dispatch => {//thunk
     const { data } = await axios.get(`${webserver}/api/recipe/${id}`);
     dispatch(getSingleRecipe(data));
   } catch (err) {
+    // OB/MS: consider report error to user
     console.error(err);
   }
 };
