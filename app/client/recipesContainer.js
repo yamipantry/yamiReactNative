@@ -27,6 +27,7 @@ class Recipe extends React.Component {
 
   render() {
     const {recipes} = this.props || [] // 3,1,4
+    console.log('recipes container', this.props)
     if (this.state.loading) {
       return (
         <View>
@@ -35,7 +36,7 @@ class Recipe extends React.Component {
       )
     }
     return (
-        <RecipePresentational recipes={recipes} navigation={this.props.navigation}/>
+        <RecipePresentational recipes={recipes} navigation={this.props.navigation} pantry={this.props.pantry}/>
     )
   }
 }

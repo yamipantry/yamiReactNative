@@ -48,6 +48,7 @@ class SingleRecipeContainer extends React.Component {
   }
 
   render() {
+    console.log('single recipe', this.props)
     if (this.state.loading) {
       return (
         <View>
@@ -58,7 +59,7 @@ class SingleRecipeContainer extends React.Component {
     return (
       <SingleRecipe
         recipe={this.props.singleRecipe}
-        pantry={this.props.user.user.pantryItems}
+        pantry={this.props.user.pantryItems}
         navigation={this.props.navigation}
         star={this.ratingCompleted}
         ranking={this.addToRanking}
