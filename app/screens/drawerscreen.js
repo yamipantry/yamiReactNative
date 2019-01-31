@@ -10,6 +10,15 @@ class DrawerScreen extends Component {
             <View>
               <Text
                 onPress={() => {
+                  this.props.navigation.navigate('Home');
+                }}
+              >
+                Pantry
+              </Text>
+            </View>
+            <View>
+              <Text
+                onPress={() => {
                   this.props.navigation.navigate('SettingsScreen');
                 }}
               >
@@ -22,7 +31,7 @@ class DrawerScreen extends Component {
                   this.props.navigation.navigate('ProfileScreen');
                 }}
               >
-                About
+                Profile
               </Text>
             </View>
           </View>

@@ -8,7 +8,7 @@ const DrawerNavigation = createStackNavigator(
     DrawerStackScreen: {
       screen: DrawerStack,
       navigationOptions: ({ navigation }) => ({
-        headerStyle: { backgroundColor: '#4C3E54' },
+        headerStyle: { backgroundColor: '#FFFFFF' },
         title: 'Welcome',
         headerTintColor: 'white',
         headerLeft: (
