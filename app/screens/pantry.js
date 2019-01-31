@@ -35,6 +35,12 @@ const Pantry = props => {
         }}
       />
       <Button title="Edit Pantry" onPress={() => props.edit} />
+      <Button
+        title="Generate Receipe"
+        onPress={() => {
+          props.navigation.navigate('Recipes');
+        }}
+      />
     </View>
   );
 };
