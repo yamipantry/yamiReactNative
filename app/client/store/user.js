@@ -32,9 +32,7 @@ export const me = () => async dispatch => {
   }
 };
 
-
 export const update = (id, object) => async dispatch => {
-  console.log(object);
   try {
     const res = await axios.put(`${webserver}/api/users/${id}`, object);
     dispatch(updateUser(res.data));
@@ -42,7 +40,6 @@ export const update = (id, object) => async dispatch => {
     console.error(err);
   }
 };
-
 
 export const auth = (userName, password) => async dispatch => {
   let res;

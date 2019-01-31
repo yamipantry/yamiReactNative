@@ -1,17 +1,13 @@
 import React from 'react';
+import styles from '../assets/styles';
 import {
   ScrollView,
   View,
   TouchableOpacity,
-  StyleSheet,
   Keyboard,
   Text,
 } from 'react-native';
-import {
-  RkStyleSheet,
-  RkAvoidKeyboard,
-  RkTextInput,
-} from 'react-native-ui-kitten';
+import { RkAvoidKeyboard, RkTextInput } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 
@@ -39,6 +35,7 @@ export class Profile extends React.Component {
 
   onEditButtonPressed = () => {
     this.props.handleSubmit(this.state);
+    this.props.navigation.navigate('Recipes');
   };
 
   render() {
@@ -145,10 +142,7 @@ export class Profile extends React.Component {
                 >
                   <TouchableOpacity
                     style={styles.buttonContainer}
-                    onPress={() => {
-                      this.onEditButtonPressed
-                      this.props.navigation.navigate('Recipes')
-                    }}
+                    onPress={this.onEditButtonPressed}
                   >
                     <View style={styles.textRow}>
                       <Text style={styles.buttonText}>EDIT</Text>
@@ -163,42 +157,3 @@ export class Profile extends React.Component {
     );
   }
 }
-
-const styles = RkStyleSheet.create(theme => ({
-  header: {
-    paddingVertical: 25,
-  },
-  section: {
-    marginVertical: 25,
-  },
-
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 17.5,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: theme.colors.border.base,
-    alignItems: 'center',
-  },
-  rowButton: {
-    flex: 1,
-    paddingVertical: 24,
-  },
-  switch: {
-    marginVertical: 14,
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: theme.colors.screen.base,
-    paddingTop: 18,
-    marginLeft: 1,
-    marginRight: 1,
-    fontWeight: 'bold',
-    fontSize: 19,
-  },
-  container: {
-    paddingHorizontal: 17,
-    paddingBottom: scaleVertical(22),
-    flex: -1,
-  },
-}));
