@@ -1,6 +1,7 @@
 import React from 'react';
+import styles from '../assets/styles';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { RkStyleSheet, RkText, RkButton } from 'react-native-ui-kitten';
+import { RkText } from 'react-native-ui-kitten';
 import { webserver } from '../../helperfunction';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { Rating } from 'react-native-ratings';
@@ -12,11 +13,11 @@ const SingleRecipe = props => {
   const ingredients = recipe.ingredientsIncluded;
   return (
     <ScrollView scrollEnabled={true}>
-      <View style={styles.container}>
-        <Text style={styles.heading}>{recipe.name}</Text>
+      <View style={styles.containerSingleRecipe}>
+        <Text style={styles.headerSingleRecipe}>{recipe.name}</Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('Recipes')}>
           <Image
-            style={styles.image}
+            style={styles.imageSingleRecipe}
             source={{ uri: `${webserver}${recipe.imageUrl}` }}
           />
         </TouchableOpacity>
@@ -63,35 +64,5 @@ const SingleRecipe = props => {
     </ScrollView>
   );
 };
-
-const styles = RkStyleSheet.create(theme => ({
-  container: {
-    flex: 1,
-  },
-  card: {
-    marginVertical: 8,
-  },
-  post: {
-    marginTop: 13,
-  },
-  heading: {
-    fontSize: 40,
-  },
-  image: {
-    width: 270,
-    height: 220,
-    justifyContent: 'center',
-  },
-  subheading: {
-    fontSize: 25,
-  },
-  text: {
-    fontSize: 20,
-  },
-  text1: {
-    fontSize: 20,
-    color: 'red',
-  },
-}));
 
 export default SingleRecipe;

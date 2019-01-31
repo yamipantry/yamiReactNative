@@ -6,6 +6,9 @@ export default RkStyleSheet.create(theme => ({
   header: {
     paddingVertical: 25,
   },
+  headerSingleRecipe: {
+    fontSize: 40,
+  },
   settingheader: {
     paddingBottom: 12.5,
   },
@@ -38,6 +41,9 @@ export default RkStyleSheet.create(theme => ({
     paddingBottom: scaleVertical(22),
     flex: -1,
   },
+  containerSingleRecipe: {
+    flex: 1,
+  },
   recipescontainer: {
     backgroundColor: theme.colors.screen.scroll,
     paddingVertical: 8,
@@ -58,6 +64,11 @@ export default RkStyleSheet.create(theme => ({
     marginBottom: 10,
     height: scaleVertical(210),
     resizeMode: 'contain',
+  },
+  imageSingleRecipe: {
+    width: 270,
+    height: 220,
+    justifyContent: 'center',
   },
   contcenter: {
     alignItems: 'center',
@@ -88,5 +99,15 @@ export default RkStyleSheet.create(theme => ({
   },
   content: {
     justifyContent: 'space-between',
+  },
+  subheading: {
+    fontSize: 25,
+  },
+  text: {
+    fontSize: 20,
+  },
+  text1: {
+    fontSize: 20,
+    color: 'red',
   },
 }));
