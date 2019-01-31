@@ -46,7 +46,7 @@ export class Login extends React.Component {
   };
 
   onSignUpButtonPressed = () => {
-    this.props.navigation.navigate('SignUpScreen');
+    this.props.navigation.push('signUpScreen');
   };
 
   render = () => {

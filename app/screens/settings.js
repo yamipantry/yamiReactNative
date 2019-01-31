@@ -11,7 +11,7 @@ export class Settings extends React.Component {
   state = {};
 
   onEditPressed = () => {
-    this.props.navigation.navigate('Profile');
+    this.props.navigation.navigate('ProfileScreen');
   };
 
   render() {
