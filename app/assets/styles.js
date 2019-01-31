@@ -1,6 +1,6 @@
 import { RkStyleSheet } from 'react-native-ui-kitten';
 import { scaleVertical } from '../utils/scale';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default RkStyleSheet.create(theme => ({
   header: {
@@ -109,5 +109,25 @@ export default RkStyleSheet.create(theme => ({
   text1: {
     fontSize: 20,
     color: 'red',
+  },
+  containerDrawerScreen: {
+    height: 80,
+    paddingHorizontal: 16,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.border.base,
+  },
+  contentDrawerScreen: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  root: {
+    paddingTop: Platform.OS === 'ios' ? 20 : 0,
+    backgroundColor: theme.colors.screen.base,
+  },
+  textDrawer: {
+    fontSize: 15,
+    paddingLeft: 15,
+    fontWeight: 'bolder',
   },
 }));
