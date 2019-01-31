@@ -42,7 +42,7 @@ export class Login extends React.Component {
 
   onLoginButtonPressed = () => {
     this.props.handleSubmit(this.state);
-    this.props.navigation.navigate('Settings');
+    this.props.navigation.navigate('Pantry');
   };
 
   onSignUpButtonPressed = () => {
