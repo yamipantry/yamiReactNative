@@ -42,79 +42,81 @@ export class Login extends React.Component {
 
   onLoginButtonPressed = () => {
     this.props.handleSubmit(this.state);
-    this.props.navigation.navigate('Settings');
+    this.props.navigation.navigate('SettingsScreen');
   };
 
   onSignUpButtonPressed = () => {
-    this.props.navigation.navigate('SignUp');
+    this.props.navigation.navigate('SignUpScreen');
   };
 
-  render = () => (
-    <KeyboardAvoidingView
-      onStartShouldSetResponder={() => true}
-      onResponderRelease={() => Keyboard.dismiss()}
-      style={styles.screen}
-    >
-      {this.renderImage()}
-      <View style={[styles.container, styles.contcenter]}>
-        <RkTextInput
-          rkType="rounded"
-          placeholder="Username"
-          name="userName"
-          onChangeText={text => {
-            this.setState({
-              userName: text,
-            });
-          }}
-          value={this.state.userName}
-        />
-        <RkTextInput
-          rkType="rounded"
-          placeholder="Password"
-          secureTextEntry
-          name="password"
-          onChangeText={text => {
-            this.setState({
-              password: text,
-            });
-          }}
-          value={this.state.password}
-        />
-        <LinearGradient
-          colors={['#8a2387', '#e94057', '#f27121']}
-          start={{ x: 0.0, y: 0.5 }}
-          end={{ x: 1, y: 0.5 }}
-          style={{
-            alignSelf: 'stretch',
-            height: scaleVertical(45),
-            marginVertical: 20,
-            borderRadius: 28,
-          }}
-        >
-          <TouchableOpacity
-            style={styles.buttonContainer}
-            onPress={this.onLoginButtonPressed}
+  render = () => {
+    return (
+      <KeyboardAvoidingView
+        onStartShouldSetResponder={() => true}
+        onResponderRelease={() => Keyboard.dismiss()}
+        style={styles.screen}
+      >
+        {this.renderImage()}
+        <View style={[styles.container, styles.contcenter]}>
+          <RkTextInput
+            rkType="rounded"
+            placeholder="Username"
+            name="userName"
+            onChangeText={text => {
+              this.setState({
+                userName: text,
+              });
+            }}
+            value={this.state.userName}
+          />
+          <RkTextInput
+            rkType="rounded"
+            placeholder="Password"
+            secureTextEntry
+            name="password"
+            onChangeText={text => {
+              this.setState({
+                password: text,
+              });
+            }}
+            value={this.state.password}
+          />
+          <LinearGradient
+            colors={['#8a2387', '#e94057', '#f27121']}
+            start={{ x: 0.0, y: 0.5 }}
+            end={{ x: 1, y: 0.5 }}
+            style={{
+              alignSelf: 'stretch',
+              height: scaleVertical(45),
+              marginVertical: 20,
+              borderRadius: 28,
+            }}
           >
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={this.onLoginButtonPressed}
+            >
+              <View style={styles.textRow}>
+                <Text style={styles.buttonText}>LOGIN</Text>
+              </View>
+            </TouchableOpacity>
+          </LinearGradient>
+          <View style={styles.footer}>
             <View style={styles.textRow}>
-              <Text style={styles.buttonText}>LOGIN</Text>
+              <RkText rkType="primary3">Don’t have an account? </RkText>
+              <RkButton rkType="clear">
+                <RkText
+                  rkType="header6"
+                  style={{ fontWeight: 'bold' }}
+                  onPress={this.onSignUpButtonPressed}
+                >
+                  Sign up now
+                </RkText>
+              </RkButton>
             </View>
-          </TouchableOpacity>
-        </LinearGradient>
-        <View style={styles.footer}>
-          <View style={styles.textRow}>
-            <RkText rkType="primary3">Don’t have an account? </RkText>
-            <RkButton rkType="clear">
-              <RkText
-                rkType="header6"
-                style={{ fontWeight: 'bold' }}
-                onPress={this.onSignUpButtonPressed}
-              >
-                Sign up now
-              </RkText>
-            </RkButton>
           </View>
         </View>
-      </View>
-    </KeyboardAvoidingView>
-  );
+      </KeyboardAvoidingView>
+    );
+  };
 }
