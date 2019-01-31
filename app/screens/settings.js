@@ -1,7 +1,7 @@
 import React from 'react';
-import { ScrollView, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { RkText, RkStyleSheet } from 'react-native-ui-kitten';
-import { scaleVertical } from '../utils/scale';
+import styles from '../assets/styles';
+import { ScrollView, View, TouchableOpacity } from 'react-native';
+import { RkText } from 'react-native-ui-kitten';
 
 export class Settings extends React.Component {
   static navigationOptions = {
@@ -31,7 +31,7 @@ export class Settings extends React.Component {
         </View>
 
         <View style={styles.section}>
-          <View style={[styles.row, styles.heading]}>
+          <View style={[styles.row, styles.settingheader]}>
             <RkText rkType="primary header6">SUPPORT</RkText>
           </View>
           <View style={styles.row}>
@@ -59,32 +59,3 @@ export class Settings extends React.Component {
     );
   }
 }
-
-const styles = RkStyleSheet.create(theme => ({
-  header: {
-    paddingVertical: 25,
-  },
-  section: {
-    marginVertical: 25,
-  },
-  heading: {
-    paddingBottom: 12.5,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 17.5,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: theme.colors.border.base,
-    alignItems: 'center',
-  },
-  rowButton: {
-    flex: 1,
-    paddingVertical: 24,
-  },
-  container: {
-    paddingHorizontal: 17,
-    paddingBottom: scaleVertical(22),
-    flex: -1,
-  },
-}));

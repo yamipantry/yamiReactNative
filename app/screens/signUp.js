@@ -1,10 +1,10 @@
 import React from 'react';
+import styles from '../assets/styles';
 import { View, Image, Keyboard, TouchableOpacity, Text } from 'react-native';
 import {
   RkButton,
   RkText,
   RkTextInput,
-  RkStyleSheet,
   RkAvoidKeyboard,
 } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
@@ -32,7 +32,6 @@ export class SignUp extends React.Component {
   );
 
   onSignUpButtonPressed = () => {
-    
     this.props.handleSubmit(this.state);
     this.props.navigation.navigate('Recipes');
   };
@@ -44,16 +43,11 @@ export class SignUp extends React.Component {
   render = () => {
     return (
       <RkAvoidKeyboard
-        style={styles.screen}
+        style={[styles.screen, styles.screenSignUp]}
         onStartShouldSetResponder={() => true}
         onResponderRelease={() => Keyboard.dismiss()}
       >
-        <View style={{ alignItems: 'center' }}>
-          {this.renderImage()}
-          <RkText rkType="h1" style={{ fontWeight: 'bold', fontSize: 30 }}>
-            Registration
-          </RkText>
-        </View>
+        <View style={{ alignItems: 'center' }}>{this.renderImage()}</View>
         <View style={styles.content}>
           <View>
             <RkTextInput
@@ -142,47 +136,3 @@ export class SignUp extends React.Component {
     );
   };
 }
-
-const styles = RkStyleSheet.create(theme => ({
-  screen: {
-    padding: 16,
-    flex: 1,
-    justifyContent: 'space-around',
-    backgroundColor: theme.colors.screen.base,
-  },
-  image: {
-    marginBottom: 10,
-    height: scaleVertical(210),
-    resizeMode: 'contain',
-  },
-  content: {
-    justifyContent: 'space-between',
-  },
-  save: {
-    marginVertical: 20,
-  },
-
-  footer: {
-    flex: 0,
-    justifyContent: 'flex-end',
-  },
-  textRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    marginBottom: scaleVertical(14),
-    marginHorizontal: 24,
-    justifyContent: 'space-around',
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: theme.colors.screen.base,
-    paddingTop: 18,
-    marginLeft: 1,
-    marginRight: 1,
-    fontWeight: 'bold',
-    fontSize: 19,
-  },
-}));

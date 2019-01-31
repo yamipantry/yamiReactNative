@@ -1,16 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
-import SingleRecipe from "../screens/singleRecipe";
-import { getRecipe } from "../client/store";
-import { View, Text } from "react-native";
-import { postRanking } from './store'
+import React from 'react';
+import { connect } from 'react-redux';
+import SingleRecipe from '../screens/singleRecipe';
+import { getRecipe } from '../client/store';
+import { View, Text } from 'react-native';
+import { postRanking } from './store';
 
 class SingleRecipeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
       loading: true,
-      rank: 0
+      rank: 0,
     };
     this.ratingCompleted = this.ratingCompleted.bind(this);
     this.addToRanking = this.addToRanking.bind(this);
@@ -18,7 +18,7 @@ class SingleRecipeContainer extends React.Component {
 
   async ratingCompleted(rating) {
     await this.setState({
-      rank: rating
+      rank: rating,
     });
   }
 
@@ -29,9 +29,9 @@ class SingleRecipeContainer extends React.Component {
     const obj = {
       recipeId,
       userId,
-      rank
+      rank,
     };
-    await this.props.postRanking(obj)
+    await this.props.postRanking(obj);
   }
 
   async load() {
@@ -58,7 +58,7 @@ class SingleRecipeContainer extends React.Component {
     return (
       <SingleRecipe
         recipe={this.props.singleRecipe}
-        pantry={this.props.pantry}
+        pantry={this.props.user.user.pantryItems}
         navigation={this.props.navigation}
         star={this.ratingCompleted}
         ranking={this.addToRanking}
@@ -69,14 +69,13 @@ class SingleRecipeContainer extends React.Component {
 
 const mapDispatchToProps = {
   getRecipe: getRecipe,
-  postRanking: postRanking
+  postRanking: postRanking,
 };
 
 const mapStateToProps = state => {
   return {
     singleRecipe: state.singleRecipe,
-    pantry: state.user.pantryItems,
-    user: state.user
+    user: state.user,
   };
 };
 
