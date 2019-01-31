@@ -1,40 +1,81 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { TouchableHighlight, View, ScrollView } from 'react-native';
+import { RkText } from 'react-native-ui-kitten';
+import styles from '../assets/styles';
 
 class DrawerScreen extends Component {
   render() {
     return (
-      <View>
-        <ScrollView>
-          <View>
-            <View>
-              <Text
-                onPress={() => {
-                  this.props.navigation.navigate('Home');
-                }}
-              >
-                Pantry
-              </Text>
+      <View style={styles.root}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
+                    this.props.navigation.navigate('Home');
+                  }}
+                >
+                  Pantry
+                </RkText>
+              </View>
             </View>
-            <View>
-              <Text
-                onPress={() => {
-                  this.props.navigation.navigate('SettingsScreen');
-                }}
-              >
-                Settings
-              </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
+                    this.props.navigation.navigate('SettingsScreen');
+                  }}
+                >
+                  Settings
+                </RkText>
+              </View>
             </View>
-            <View>
-              <Text
-                onPress={() => {
-                  this.props.navigation.navigate('ProfileScreen');
-                }}
-              >
-                Profile
-              </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
+                    this.props.navigation.navigate('FriendsScreen');
+                  }}
+                >
+                  Friends
+                </RkText>
+              </View>
             </View>
-          </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
+                    this.props.navigation.navigate('BookmarksScreen');
+                  }}
+                >
+                  Bookmarks
+                </RkText>
+              </View>
+            </View>
+          </TouchableHighlight>
         </ScrollView>
       </View>
     );
