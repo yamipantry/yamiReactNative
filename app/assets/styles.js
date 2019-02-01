@@ -66,6 +66,7 @@ export default RkStyleSheet.create(theme => ({
   imageSingleRecipe: {
     width: 270,
     height: 220,
+    alignSelf: 'center',
     justifyContent: 'center',
   },
   contcenter: {
@@ -100,18 +101,20 @@ export default RkStyleSheet.create(theme => ({
   },
 
   headerSingleRecipe: {
-    fontSize: 25,
+    fontSize: 35,
     color: 'black',
-    fontWeight: '300',
+    fontWeight: 'bold',
+    marginLeft: 40
   },
   subheading: {
-    fontSize: 20,
+    fontSize: 30,
+    fontWeight: 'bold'
   },
   text: {
-    fontSize: 14,
+    fontSize: 25,
   },
   text1: {
-    fontSize: 14,
+    fontSize: 25,
     color: 'red',
   },
   containerDrawerScreen: {
