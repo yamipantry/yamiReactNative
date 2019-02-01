@@ -6,7 +6,7 @@ import { webserver } from '../../../helperfunction';
  */
 const GET_USER = 'GET_USER';
 const UPDATE_USER = 'UPDATE_USER';
-//const REMOVE_USER = 'REMOVE_USER';
+const REMOVE_USER = 'REMOVE_USER';
 
 /**
  * INITIAL STATE
@@ -18,7 +18,7 @@ const defaultUser = {};
  */
 const getUser = user => ({ type: GET_USER, user });
 const updateUser = user => ({ type: UPDATE_USER, user });
-//const removeUser = () => ({ type: REMOVE_USER });
+const removeUser = () => ({ type: REMOVE_USER });
 
 /**
  * THUNK CREATORS
@@ -86,14 +86,14 @@ export const authSignUp = (
   }
 };
 
-// export const logout = () => async dispatch => {
-//   try {
-//     await axios.post('http://localhost:8080/auth/logout');
-//     dispatch(removeUser());
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
+export const logout = () => async dispatch => {
+  try {
+    await axios.post(`${webserver}/auth/logout`);
+    dispatch(removeUser());
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 /**
  * REDUCER
@@ -104,8 +104,8 @@ export default function(state = defaultUser, action) {
       return action.user;
     case UPDATE_USER:
       return action.user;
-    // case REMOVE_USER:
-    //   return defaultUser;
+    case REMOVE_USER:
+      return defaultUser;
     default:
       return state;
   }

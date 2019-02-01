@@ -3,6 +3,8 @@ import styles from '../assets/styles';
 import { webserver } from '../../helperfunction';
 import { FlatList, Image, View, TouchableOpacity } from 'react-native';
 import { RkText, RkCard } from 'react-native-ui-kitten';
+import store from '../client/store'
+import {getRecipe} from '../client/store'
 
 export class RecipePresentational extends React.Component {
   static navigationOptions = {
@@ -15,8 +17,12 @@ export class RecipePresentational extends React.Component {
     <TouchableOpacity
       delayPressIn={70}
       activeOpacity={0.8}
-      onPress={() =>
-        this.props.navigation.navigate('SingleRecipe', { id: item.id })
+      onPress={() => {
+        store.dispatch(getRecipe(item.id))
+        setTimeout(() => {
+          this.props.navigation.navigate('SingleRecipe')
+        }, 15)
+      }
       }
     >
       <RkCard rkType="horizontal" style={styles.recipescard}>
