@@ -40,7 +40,6 @@ export class Profile extends React.Component {
 
   render() {
     //user doesnt pull in pantryItems
-    console.log('profiel state', this.props)
     return (
       <ScrollView style={styles.container}>
         <View style={styles.section}>

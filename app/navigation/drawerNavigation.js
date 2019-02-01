@@ -13,7 +13,7 @@ const DrawerNavigation = createStackNavigator(
         headerTintColor: 'white',
         headerLeft: (
           <Text
-            style={{ fontWeight: 'bolder', fontSize: 15, paddingLeft: 10 }}
+            style={{ fontWeight: '300', fontSize: 15, paddingLeft: 10 }}
             onPress={() => {
               navigation.dispatch(DrawerActions.toggleDrawer());
             }}
