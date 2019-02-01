@@ -63,11 +63,11 @@ export default RkStyleSheet.create(theme => ({
     height: scaleVertical(210),
     resizeMode: 'contain',
   },
-  // imageSingleRecipe: {
-  //   width: 270,
-  //   height: 220,
-  //   justifyContent: 'center',
-  // },
+  imageSingleRecipe: {
+    width: 270,
+    height: 220,
+    justifyContent: 'center',
+  },
   contcenter: {
     alignItems: 'center',
   },

@@ -4,6 +4,8 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import { RkText } from 'react-native-ui-kitten';
 import axios from 'axios';
 import { webserver } from '../../helperfunction'
+import store from '../client/store';
+import {logout} from '../client/store'
 
 export class Settings extends React.Component {
   static navigationOptions = {
@@ -17,7 +19,7 @@ export class Settings extends React.Component {
   };
 
   logout = async () => {
-    await axios.post(`${webserver}/auth/logout`)
+    await store.dispatch(logout())
   }
 
   render() {
@@ -57,7 +59,11 @@ export class Settings extends React.Component {
           </View>
           <View style={styles.row}>
             <TouchableOpacity style={styles.rowButton}
-            onPress={this.logout}>
+            onPress={() => {
+            this.logout()
+            this.props.navigation.navigate('loginScreen')
+            }
+            }>
               <RkText rkType="header6">Logout</RkText>
             </TouchableOpacity>
           </View>
