@@ -1,14 +1,12 @@
 import { RkStyleSheet } from 'react-native-ui-kitten';
 import { scaleVertical } from '../utils/scale';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default RkStyleSheet.create(theme => ({
   header: {
     paddingVertical: 25,
   },
-  headerSingleRecipe: {
-    fontSize: 40,
-  },
+
   settingheader: {
     paddingBottom: 12.5,
   },
@@ -65,11 +63,11 @@ export default RkStyleSheet.create(theme => ({
     height: scaleVertical(210),
     resizeMode: 'contain',
   },
-  imageSingleRecipe: {
-    width: 270,
-    height: 220,
-    justifyContent: 'center',
-  },
+  // imageSingleRecipe: {
+  //   width: 270,
+  //   height: 220,
+  //   justifyContent: 'center',
+  // },
   contcenter: {
     alignItems: 'center',
   },
@@ -100,14 +98,40 @@ export default RkStyleSheet.create(theme => ({
   content: {
     justifyContent: 'space-between',
   },
-  subheading: {
+
+  headerSingleRecipe: {
     fontSize: 25,
+    color: 'black',
+    fontWeight: '300',
+  },
+  subheading: {
+    fontSize: 20,
   },
   text: {
-    fontSize: 20,
+    fontSize: 14,
   },
   text1: {
-    fontSize: 20,
+    fontSize: 14,
     color: 'red',
+  },
+  containerDrawerScreen: {
+    height: 80,
+    paddingHorizontal: 16,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderColor: theme.colors.border.base,
+  },
+  contentDrawerScreen: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  root: {
+    paddingTop: Platform.OS === 'ios' ? 20 : 0,
+    backgroundColor: theme.colors.screen.base,
+  },
+  textDrawer: {
+    fontSize: 15,
+    paddingLeft: 15,
+    fontWeight: '300',
   },
 }));

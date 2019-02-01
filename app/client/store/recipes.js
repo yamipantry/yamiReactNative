@@ -10,6 +10,7 @@ export const getRecipes = recipes => ({
 
 export const recipesThunk = () => async dispatch => {
   try {
+    console.log('recipes thunk')
     const recipes = await axios.get(`${webserver}/api/recipe`);
     dispatch(getRecipes(recipes.data));
   } catch (err) {
@@ -20,6 +21,7 @@ export const recipesThunk = () => async dispatch => {
 const recipes = (state = [], action) => {
   switch (action.type) {
     case GET_RECIPES:
+    console.log('im in here recipes reducer')
       return action.recipes;
     default:
       return state;
