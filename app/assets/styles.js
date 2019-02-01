@@ -104,11 +104,11 @@ export default RkStyleSheet.create(theme => ({
     fontSize: 35,
     color: 'black',
     fontWeight: 'bold',
-    marginLeft: 40
+    marginLeft: 40,
   },
   subheading: {
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   text: {
     fontSize: 25,
@@ -136,5 +136,24 @@ export default RkStyleSheet.create(theme => ({
     fontSize: 15,
     paddingLeft: 15,
     fontWeight: '300',
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 40 / 2,
+  },
+  containerFriends: {
+    flexDirection: 'row',
+    padding: 16,
+    alignItems: 'center',
+  },
+  CircleContainer: {
+    marginRight: 10,
+    paddingTop: Platform.OS === 'ios' ? 20 : 0,
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: theme.colors.border.base,
   },
 }));
