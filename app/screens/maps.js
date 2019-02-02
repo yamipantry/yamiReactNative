@@ -3,7 +3,6 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { View, StyleSheet } from 'react-native';
 
 const MapComponent = props => {
-  console.log(props);
   return (
     <View style={style.mapContainer}>
       <MapView

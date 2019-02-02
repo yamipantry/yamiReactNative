@@ -25,6 +25,7 @@ class Recipe extends React.Component {
   }
 
   render() {
+    console.log('user pantry', this.props.pantry)
     const { recipes } = this.props || []; // 3,1,4
     if (this.state.loading) {
       return (

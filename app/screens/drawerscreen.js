@@ -17,7 +17,7 @@ class DrawerScreen extends Component {
                 <RkText
                   style={styles.textDrawer}
                   onPress={() => {
-                    this.props.navigation.navigate('Home');
+                    this.props.navigation.navigate('Home', {editMode: false});
                   }}
                 >
                   Pantry

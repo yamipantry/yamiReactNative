@@ -17,7 +17,7 @@ const DrawerStack = createDrawerNavigator(
   {
     initialRouteName: 'Home',
     contentComponent: DrawerScreen,
-    drawerWidth: 300,
+    drawerWidth: 200,
   }
 );
 

@@ -1,5 +1,11 @@
 import React from "react";
-import { FlatList, View, TouchableOpacity, Text } from "react-native";
+import {
+  FlatList,
+  View,
+  TouchableOpacity,
+  Text,
+  ImageBackground
+} from "react-native";
 import { RkText, RkTextInput } from "react-native-ui-kitten";
 import LinearGradient from "react-native-linear-gradient";
 import { scaleVertical } from "../utils/scale";
@@ -9,7 +15,11 @@ const PantryEdit = props => {
   const { editMode, pantryItems, handleChange, addItem, deleted } = props;
   const mapped = () => {
     props.suggestions.map(elem => {
-      return <Text id='key' key={elem.name}>{elem.name}</Text>;
+      return (
+        <Text id="key" key={elem.name}>
+          {elem.name}
+        </Text>
+      );
     });
   };
   return (
@@ -55,17 +65,43 @@ const PantryEdit = props => {
       )}
       <FlatList
         data={pantryItems}
+        style={{alignSelf: 'center'}}
         renderItem={({ item }) => {
+          
           return (
             <View>
-              <RkText
-                rkType="secondary2 hintColor"
-                style={{ fontSize: 25, textAlign: "center" }}
-              >
-                {item}
-              </RkText>
+                <ImageBackground
+                  source={{
+                    uri:
+                      "https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg"
+                  }}
+                  style={{ width: 250, height: 40 }}
+                  imageStyle={{ opacity: 0.7, borderRadius: 25 }}
+                >
+                  <View
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      justifyContent: "center",
+                      alignItems: "center"
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 25,
+                        alignSelf: "center",
+                        color: "white"
+                      }}
+                    >
+                      {item}
+                    </Text>
+                  </View>
+                </ImageBackground>
               {editMode && (
-                <TouchableOpacity onPress={() => deleted({ item: item })}>
+                <TouchableOpacity onPress={() => deleted(item)}>
                   <RkText
                     rkType="secondary2 hintColor"
                     style={{
@@ -75,7 +111,7 @@ const PantryEdit = props => {
                       fontWeight: "bold"
                     }}
                   >
-                    X
+                    DELETE
                   </RkText>
                 </TouchableOpacity>
               )}

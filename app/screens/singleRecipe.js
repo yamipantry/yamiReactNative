@@ -11,6 +11,7 @@ const SingleRecipe = props => {
   const { recipe } = props;
   const instructions = recipe.instructions;
   const ingredients = recipe.ingredientsIncluded;
+console.log('pantry', pantry)
   return (
     <ScrollView style={styles.root}>
       <RkCard rkType="article">
