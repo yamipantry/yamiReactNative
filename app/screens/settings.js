@@ -19,6 +19,7 @@ export class Settings extends React.Component {
   };
 
   logout = async () => {
+    console.log(this.props)
     await store.dispatch(logout())
   }
 

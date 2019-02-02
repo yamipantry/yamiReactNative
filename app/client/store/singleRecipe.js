@@ -2,6 +2,7 @@ import axios from "axios";
 import { webserver } from "../../../helperfunction";
 
 const SINGLE_RECIPE = "SINGLE_RECIPE"; //action
+import {REMOVE_USER} from './user'
 
 export const getSingleRecipe = recipe => ({ //action creator
   type: SINGLE_RECIPE,
@@ -21,6 +22,8 @@ const singleRecipe = (state = {}, action) => {//reducer
   switch (action.type) {
     case SINGLE_RECIPE:
       return action.recipe;
+      case REMOVE_USER:
+      return {}
     default:
       return state;
   }

@@ -68,6 +68,7 @@ export default RkStyleSheet.create(theme => ({
     height: 220,
     alignSelf: 'center',
     justifyContent: 'center',
+    margin:30
   },
   contcenter: {
     alignItems: 'center',

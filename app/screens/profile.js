@@ -12,9 +12,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 
 export class Profile extends React.Component {
-  static navigationOptions = {
-    title: 'Profile'.toUpperCase(),
-  };
 
   state = {};
 
