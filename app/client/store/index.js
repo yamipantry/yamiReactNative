@@ -4,9 +4,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import user from './user';
 import recipes from './recipes';
 import singleRecipe from './singleRecipe'
-import addedBookmark from './bookmarks'
+import bookmarks from './bookmarks'
 
-const reducer = combineReducers({ user, recipes, singleRecipe, addedBookmark });
+const reducer = combineReducers({ user, recipes, singleRecipe, bookmarks });
 
 const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware));
 const store = createStore(reducer, middleware);

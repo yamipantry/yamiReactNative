@@ -3,7 +3,6 @@ import { Text, TouchableHighlight, View, Alert } from "react-native";
 import Modal from 'react-native-modal'
 import axios from "axios";
 import { webserver } from '../../../helperfunction'
-import { NavigationActions } from 'react-navigation'
 
 export default class BookmarkModal extends Component {
   state = {
@@ -16,7 +15,7 @@ export default class BookmarkModal extends Component {
   sendToBookmarks = async recipeId => {
     try {
       const id = recipeId
-      const {data} = await axios.post(`${webserver}/api/bookmarks`, {recipeId: id});
+      await axios.post(`${webserver}/api/bookmarks`, {recipeId: id});
     } catch (err) {
       console.error(err);
     }

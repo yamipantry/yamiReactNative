@@ -30,10 +30,11 @@ const PantryEdit = props => {
             render={() => mapped()}
             rkType="rounded"
             textAlign={"center"}
-            value={props.input}
+            value={this.mapped()}
             type="text"
             name="input"
             onChangeText={handleChange}
+            required
           />
 
           <LinearGradient

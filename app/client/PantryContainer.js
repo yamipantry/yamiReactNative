@@ -7,11 +7,9 @@ import PantryEdit from "../screens/pantryEdit";
 import axios from "axios";
 import { connect } from "react-redux";
 import store from "./store";
-import { recipesThunk, pantryUpdate } from "./store";
+import { pantryUpdate } from "./store";
 import LinearGradient from "react-native-linear-gradient";
 import { scaleVertical, randomString } from "../utils/scale";
-import { NavigationActions } from 'react-navigation'
-import Recipes from './recipesContainer'
 
 class Pantry extends React.Component {
   constructor(props) {
@@ -19,19 +17,24 @@ class Pantry extends React.Component {
     this.state = {
       suggestions: [],
       input: "",
-      pantry: []
+      loading: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.addItem = this.addItem.bind(this);
     this.deleting = this.deleting.bind(this);
   }
 
+  load = async () => {
+    if(!this.state.loading){
+      this.setState({loading: true})
+    }
+    this.setState({loading: false})
+  }
 
-
-  async componentDidMount() {
-    await this.setState({
-      pantry: this.props.user.pantryItems,
-    });
+  componentDidMount() {
+    setTimeout(() => {
+      this.load()
+    }, 10)
   }
 
   async handleChange(evt) {
@@ -50,7 +53,6 @@ class Pantry extends React.Component {
   }
 
   async addItem() {
-    // const method = "add";
     const obj = { item: this.state.input, method: 'add' };
     await store.dispatch(pantryUpdate(obj))
     this.setState({
@@ -65,9 +67,13 @@ class Pantry extends React.Component {
   }
 
   render() {
-    console.log(this.props.navigation)
     const { pantryItems, profileImage, userName } = this.props.user;
     let editing = this.props.navigation.getParam('editMode', false)
+    if(this.state.loading){
+      return (
+        <View><Text>Loading</Text></View>
+      )
+    }
     return (
       <ScrollView>
         <Text style={{fontSize: 20, alignSelf: 'center'}}>Welcome, {userName}</Text>
@@ -106,10 +112,6 @@ class Pantry extends React.Component {
           <TouchableOpacity
             style={{ width: 200 }}
             onPress={() => {
-              // store.dispatch(recipesThunk());
-              editing = false
-            //   this.props.navigation.reset([NavigationActions.navigate({ routeName: 'Recipes' })], 0);
-            // 
             this.props.navigation.navigate('Recipes')}}
           >
             <Text

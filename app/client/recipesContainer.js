@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import { recipesThunk } from "../client/store";
 import RecipePresentational from "../screens/recipes";
+import NoRecipes from '../client/modals/NoRecipes'
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Recipe extends React.Component {
   async componentDidMount() {
     setTimeout(() => { 
       this.load();
-    }, 200);
+    }, 50);
   }
 
   render() {
@@ -34,6 +35,13 @@ class Recipe extends React.Component {
           <Text>Loading</Text>
         </View>
       );
+    }
+    if(recipes.length === 0){
+      return (
+        <NoRecipes 
+        navigation={this.props.navigation}
+        />
+      )
     }
     return (
       <RecipePresentational

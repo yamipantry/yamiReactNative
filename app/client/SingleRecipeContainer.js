@@ -24,13 +24,10 @@ class SingleRecipeContainer extends React.Component {
 
   async addToRanking() {
     const recipeId = this.props.navigation.state.params.id;
-    const userId = this.props.user.id;
     const rank = this.state.rank;
     const obj = {
       recipeId,
-      userId,
       rank,
-      modal: true
     };
     await this.props.postRanking(obj);
   }

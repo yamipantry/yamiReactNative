@@ -11,6 +11,7 @@ const SingleRecipe = props => {
   const { recipe } = props;
   const instructions = recipe.instructions;
   const ingredients = recipe.ingredientsIncluded;
+  const bookmarkPage = props.navigation.getParam("bookmarks", false);
   return (
     <ScrollView style={styles.root}>
       <RkCard rkType="article">
@@ -23,24 +24,28 @@ const SingleRecipe = props => {
                 {recipe.description}
               </RkText>
             </View>
-            <View>
-              <RkButton
-                onPress={() => {
-                  props.navigation.navigate('BookmarksModal', {recipeId: props.recipe.id})
-                }}
-                rkType="small"
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  top: 4,
-                  height: 20,
-                  width: 85,
-                  backgroundColor: "lightblue"
-                }}
-              >
-                Bookmark
-              </RkButton>
-            </View>
+            {!bookmarkPage && (
+              <View>
+                <RkButton
+                  onPress={() => {
+                    props.navigation.navigate("BookmarksModal", {
+                      recipeId: props.recipe.id
+                    });
+                  }}
+                  rkType="small"
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    top: 4,
+                    height: 20,
+                    width: 85,
+                    backgroundColor: "lightblue"
+                  }}
+                >
+                  Bookmark
+                </RkButton>
+              </View>
+            )}
           </View>
           <View rkCardContent>
             <RkText style={styles.subheading}>Ingredients</RkText>
@@ -72,16 +77,27 @@ const SingleRecipe = props => {
                 <RkText style={styles.text}>&bull;&nbsp;&nbsp;{item}</RkText>
               )}
             />
-
-            <Rating showRating onFinishRating={props.star} />
-            <TouchableOpacity
-              onPress={() => {
-                props.ranking();
-                props.navigation.navigate("Recipes");
-              }}
-            >
-              <Text>Add</Text>
-            </TouchableOpacity>
+            {bookmarkPage && (
+              <View>
+                <Rating showRating onFinishRating={props.star} imageSize={20} />
+                <TouchableOpacity
+                  style={{
+                    alignSelf: "center",
+                    backgroundColor: "lightblue",
+                    width:150,
+                    borderRadius: 25,
+                    height: 20,
+                    marginTop: 15
+                  }}
+                  onPress={() => {
+                    props.ranking();
+                    props.navigation.navigate("Recipes");
+                  }}
+                >
+                  <Text style={{textAlign: 'center', textAlignVertical: 'center'}}>Rate Your Creation</Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
         </View>
       </RkCard>
