@@ -76,6 +76,23 @@ class DrawerScreen extends Component {
               </View>
             </View>
           </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
+                    this.props.navigation.navigate('YamiDinnerFormScreen');
+                  }}
+                >
+                  Create Yami-Dinner
+                </RkText>
+              </View>
+            </View>
+          </TouchableHighlight>
         </ScrollView>
       </View>
     );
