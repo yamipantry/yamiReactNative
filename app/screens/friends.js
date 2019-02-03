@@ -5,10 +5,6 @@ import { RkText } from 'react-native-ui-kitten';
 import { webserver } from '../../helperfunction';
 
 export class Friends extends React.Component {
-  static navigationOptions = {
-    title: 'Friends',
-  };
-
   // state = {};
 
   // componentDidMount() {
@@ -35,7 +31,7 @@ export class Friends extends React.Component {
     const { profileImage } = this.props.user;
     console.log(this.props);
     return (
-      <View>
+      <View style={styles.root}>
         <TouchableOpacity onPress={() => this.onItemPressed()}>
           <View style={styles.containerFriends}>
             <View style={styles.CircleContainer}>
@@ -44,7 +40,6 @@ export class Friends extends React.Component {
                 style={styles.avatar}
               />
             </View>
-
             <RkText>Ashley Smith</RkText>
           </View>
         </TouchableOpacity>
