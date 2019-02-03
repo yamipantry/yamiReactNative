@@ -18,10 +18,7 @@ export class RecipePresentational extends React.Component {
       delayPressIn={70}
       activeOpacity={0.8}
       onPress={() => {
-        store.dispatch(getRecipe(item.id))
-        setTimeout(() => {
-          this.props.navigation.navigate('SingleRecipe')
-        }, 15)
+          this.props.navigation.navigate('SingleRecipe', {id: item.id})
       }
       }
     >

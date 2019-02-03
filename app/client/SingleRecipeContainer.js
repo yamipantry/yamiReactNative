@@ -29,20 +29,25 @@ class SingleRecipeContainer extends React.Component {
     const obj = {
       recipeId,
       userId,
-      rank
+      rank,
+      modal: true
     };
     await this.props.postRanking(obj);
   }
 
-  load() {
+  async load() {
     if (!this.state.loading) {
       this.setState({ loading: true });
     }
+    await this.props.getRecipe(this.props.navigation.state.params.id)
     this.setState({ loading: false });
   }
 
   componentDidMount() {
-      this.load();
+    setTimeout(() => {
+       this.load();
+    }, 50)
+     
   }
 
   render() {
@@ -60,6 +65,8 @@ class SingleRecipeContainer extends React.Component {
         navigation={this.props.navigation}
         star={this.ratingCompleted}
         ranking={this.addToRanking}
+        modal={this.state.modal}
+        showModal={this.showModal}
       />
     );
   }

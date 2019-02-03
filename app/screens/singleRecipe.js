@@ -1,17 +1,16 @@
-import React from 'react';
-import styles from '../assets/styles';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { RkText, RkCard, RkButton } from 'react-native-ui-kitten';
-import { webserver } from '../../helperfunction';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { Rating } from 'react-native-ratings';
+import React from "react";
+import styles from "../assets/styles";
+import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { RkText, RkCard, RkButton } from "react-native-ui-kitten";
+import { webserver } from "../../helperfunction";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { Rating } from "react-native-ratings";
 
 const SingleRecipe = props => {
   const { pantry } = props;
   const { recipe } = props;
   const instructions = recipe.instructions;
   const ingredients = recipe.ingredientsIncluded;
-console.log('pantry', pantry)
   return (
     <ScrollView style={styles.root}>
       <RkCard rkType="article">
@@ -24,21 +23,24 @@ console.log('pantry', pantry)
                 {recipe.description}
               </RkText>
             </View>
-            <TouchableOpacity>
+            <View>
               <RkButton
+                onPress={() => {
+                  props.navigation.navigate('BookmarksModal', {recipeId: props.recipe.id})
+                }}
                 rkType="small"
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   right: 0,
                   top: 4,
                   height: 20,
                   width: 85,
-                  backgroundColor: 'lightblue',
+                  backgroundColor: "lightblue"
                 }}
               >
                 Bookmark
               </RkButton>
-            </TouchableOpacity>
+            </View>
           </View>
           <View rkCardContent>
             <RkText style={styles.subheading}>Ingredients</RkText>
@@ -56,7 +58,7 @@ console.log('pantry', pantry)
                 } else {
                   return (
                     <RkText style={styles.text1}>
-                      &bull;&nbsp;&nbsp;{item.amount} {item.ingredientName}{' '}
+                      &bull;&nbsp;&nbsp;{item.amount} {item.ingredientName}{" "}
                       (needed)
                     </RkText>
                   );
@@ -75,7 +77,7 @@ console.log('pantry', pantry)
             <TouchableOpacity
               onPress={() => {
                 props.ranking();
-                props.navigation.navigate('Recipes');
+                props.navigation.navigate("Recipes");
               }}
             >
               <Text>Add</Text>

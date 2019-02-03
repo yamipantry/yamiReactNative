@@ -8,7 +8,7 @@ class Recipe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
 
@@ -16,16 +16,17 @@ class Recipe extends React.Component {
     if (!this.state.loading) {
       this.setState({ loading: true });
     }
+    await this.props.recipesThunk()
     this.setState({ loading: false });
   }
-  componentDidMount() {
-    setTimeout(() => {
+
+  async componentDidMount() {
+    setTimeout(() => { 
       this.load();
-    }, 100);
+    }, 200);
   }
 
   render() {
-    console.log('user pantry', this.props.pantry)
     const { recipes } = this.props || []; // 3,1,4
     if (this.state.loading) {
       return (
@@ -39,6 +40,7 @@ class Recipe extends React.Component {
         recipes={recipes}
         navigation={this.props.navigation}
         pantry={this.props.pantry}
+        loading={this.state.loading}
       />
     );
   }

@@ -65,41 +65,40 @@ const PantryEdit = props => {
       )}
       <FlatList
         data={pantryItems}
-        style={{alignSelf: 'center'}}
+        style={{ alignSelf: "center" }}
         renderItem={({ item }) => {
-          
           return (
             <View>
-                <ImageBackground
-                  source={{
-                    uri:
-                      "https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg"
+              <ImageBackground
+                source={{
+                  uri:
+                    "https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg"
+                }}
+                style={{ width: 250, height: 40, margin: 5 }}
+                imageStyle={{ opacity: 0.9, borderRadius: 25 }}
+              >
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: "center",
+                    alignItems: "center"
                   }}
-                  style={{ width: 250, height: 40 }}
-                  imageStyle={{ opacity: 0.7, borderRadius: 25 }}
                 >
-                  <View
+                  <Text
                     style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      justifyContent: "center",
-                      alignItems: "center"
+                      fontSize: 25,
+                      alignSelf: "center",
+                      color: "white"
                     }}
                   >
-                    <Text
-                      style={{
-                        fontSize: 25,
-                        alignSelf: "center",
-                        color: "white"
-                      }}
-                    >
-                      {item}
-                    </Text>
-                  </View>
-                </ImageBackground>
+                    {item}
+                  </Text>
+                </View>
+              </ImageBackground>
               {editMode && (
                 <TouchableOpacity onPress={() => deleted(item)}>
                   <RkText

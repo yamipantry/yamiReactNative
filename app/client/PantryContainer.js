@@ -10,6 +10,8 @@ import store from "./store";
 import { recipesThunk, pantryUpdate } from "./store";
 import LinearGradient from "react-native-linear-gradient";
 import { scaleVertical, randomString } from "../utils/scale";
+import { NavigationActions } from 'react-navigation'
+import Recipes from './recipesContainer'
 
 class Pantry extends React.Component {
   constructor(props) {
@@ -23,6 +25,8 @@ class Pantry extends React.Component {
     this.addItem = this.addItem.bind(this);
     this.deleting = this.deleting.bind(this);
   }
+
+
 
   async componentDidMount() {
     await this.setState({
@@ -61,6 +65,7 @@ class Pantry extends React.Component {
   }
 
   render() {
+    console.log(this.props.navigation)
     const { pantryItems, profileImage, userName } = this.props.user;
     let editing = this.props.navigation.getParam('editMode', false)
     return (
@@ -101,10 +106,11 @@ class Pantry extends React.Component {
           <TouchableOpacity
             style={{ width: 200 }}
             onPress={() => {
-              store.dispatch(recipesThunk());
+              // store.dispatch(recipesThunk());
               editing = false
-              this.props.navigation.navigate("Recipes");
-            }}
+            //   this.props.navigation.reset([NavigationActions.navigate({ routeName: 'Recipes' })], 0);
+            // 
+            this.props.navigation.navigate('Recipes')}}
           >
             <Text
               style={{
