@@ -151,6 +151,11 @@ export default RkStyleSheet.create(theme => ({
     marginRight: 10,
     paddingTop: Platform.OS === 'ios' ? 20 : 0,
   },
+  menuText: {
+    fontWeight: '300',
+    fontSize: 15,
+    paddingLeft: 10,
+  },
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,

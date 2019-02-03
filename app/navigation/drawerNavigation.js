@@ -1,28 +1,28 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { createStackNavigator, DrawerActions } from 'react-navigation';
+import { Image } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 import DrawerStack from './drawerStack';
+import { webserver } from '../../helperfunction';
+
+export class LogoTitle extends React.Component {
+  render() {
+    return (
+      <Image
+        source={{ uri: `${webserver}/logo.jpeg` }}
+        style={{ width: 50, height: 50 }}
+      />
+    );
+  }
+}
 
 const DrawerNavigation = createStackNavigator(
   {
     DrawerStackScreen: {
       screen: DrawerStack,
-      navigationOptions: ({ navigation }) => ({
-        headerLeft: (
-          <Text
-            style={{ fontWeight: '300', fontSize: 15, paddingLeft: 10 }}
-            onPress={() => {
-              navigation.dispatch(DrawerActions.toggleDrawer());
-            }}
-          >
-            Menu
-          </Text>
-        ),
-      }),
     },
   },
   {
-    headerMode: 'screen',
+    headerMode: 'none',
   }
 );
 
