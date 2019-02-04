@@ -51,7 +51,7 @@ class DrawerScreen extends Component {
                 <RkText
                   style={styles.textDrawer}
                   onPress={() => {
-                    this.props.navigation.navigate('FriendsScreen');
+                    this.props.navigation.navigate('Friends');
                   }}
                 >
                   Friends

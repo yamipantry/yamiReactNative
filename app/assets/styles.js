@@ -142,6 +142,30 @@ export default RkStyleSheet.create(theme => ({
   textDrawer: {
     fontSize: 15,
     paddingLeft: 15,
-    fontWeight: "300"
-  }
+    fontWeight: '300',
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 40 / 2,
+  },
+  containerFriends: {
+    flexDirection: 'row',
+    padding: 16,
+    alignItems: 'center',
+  },
+  CircleContainer: {
+    marginRight: 10,
+    paddingTop: Platform.OS === 'ios' ? 20 : 0,
+  },
+  menuText: {
+    fontWeight: '300',
+    fontSize: 15,
+    paddingLeft: 10,
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: theme.colors.border.base,
+  },
 }));

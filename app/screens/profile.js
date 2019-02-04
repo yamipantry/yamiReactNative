@@ -13,22 +13,18 @@ import { scaleVertical } from '../utils/scale';
 
 export class Profile extends React.Component {
 
-  state = {};
-
-  componentDidMount() {
-    this.setState({
-      id: this.props.user.id,
-      userName: this.props.user.userName,
-      email: this.props.user.email,
-      firstName: this.props.user.firstName,
-      lastName: this.props.user.lastName,
-      streetName: this.props.user.streetName,
-      city: this.props.user.city,
-      state: this.props.user.state,
-      zip: this.props.user.zip,
-      profileImage: this.props.user.profileImage,
-    });
-  }
+  state = {
+    id: this.props.user.id,
+    userName: this.props.user.userName,
+    email: this.props.user.email,
+    firstName: this.props.user.firstName,
+    lastName: this.props.user.lastName,
+    streetName: this.props.user.streetName,
+    city: this.props.user.city,
+    state: this.props.user.state,
+    zip: this.props.user.zip,
+    profileImage: this.props.user.profileImage,
+  };
 
   onEditButtonPressed = () => {
     this.props.handleSubmit(this.state);
