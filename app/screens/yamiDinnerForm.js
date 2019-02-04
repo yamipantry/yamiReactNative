@@ -11,28 +11,29 @@ import { RkAvoidKeyboard, RkTextInput } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 
-export class Profile extends React.Component {
+export default class YamiDinnerForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: this.props.user.id,
+      yamiRecipe: '',
+      description: '',
+      streetName: '',
+      city: '',
+      zip: '',
+      state: 'CA',
+    };
+    this.onCreateYammiDinnerButtonPressed = this.onCreateYammiDinnerButtonPressed.bind(
+      this
+    );
+  }
 
-  state = {
-    id: this.props.user.id,
-    userName: this.props.user.userName,
-    email: this.props.user.email,
-    firstName: this.props.user.firstName,
-    lastName: this.props.user.lastName,
-    streetName: this.props.user.streetName,
-    city: this.props.user.city,
-    state: this.props.user.state,
-    zip: this.props.user.zip,
-    profileImage: this.props.user.profileImage,
-  };
-
-  onEditButtonPressed = () => {
+  onCreateYammiDinnerButtonPressed() {
     this.props.handleSubmit(this.state);
-    this.props.navigation.navigate('Recipes');
-  };
+    this.props.navigation.navigate('Home');
+  }
 
   render() {
-    //user doesnt pull in pantryItems
     return (
       <ScrollView style={styles.container}>
         <View style={styles.section}>
@@ -46,42 +47,22 @@ export class Profile extends React.Component {
                 <RkTextInput
                   onChangeText={text => {
                     this.setState({
-                      userName: text,
+                      yamiRecipe: text,
                     });
                   }}
                   rkType="rounded"
-                  value={this.state.userName}
-                  placeholder="Username"
+                  value={this.state.yamiRecipe}
+                  placeholder="Yami Recipe"
                 />
                 <RkTextInput
-                  rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      email: text,
+                      description: text,
                     });
                   }}
-                  value={this.state.email}
-                  placeholder="Email"
-                />
-                <RkTextInput
                   rkType="rounded"
-                  onChangeText={text => {
-                    this.setState({
-                      firstName: text,
-                    });
-                  }}
-                  value={this.state.firstName}
-                  placeholder="First Name"
-                />
-                <RkTextInput
-                  rkType="rounded"
-                  onChangeText={text => {
-                    this.setState({
-                      lastName: text,
-                    });
-                  }}
-                  value={this.state.lastName}
-                  placeholder="Last Name"
+                  value={this.state.description}
+                  placeholder="Description"
                 />
                 <RkTextInput
                   rkType="rounded"
@@ -136,10 +117,12 @@ export class Profile extends React.Component {
                 >
                   <TouchableOpacity
                     style={styles.buttonContainer}
-                    onPress={this.onEditButtonPressed}
+                    onPress={this.onCreateYammiDinnerButtonPressed}
                   >
                     <View style={styles.textRow}>
-                      <Text style={styles.buttonText}>EDIT</Text>
+                      <Text style={styles.buttonText}>
+                        Create Yami Dinner !
+                      </Text>
                     </View>
                   </TouchableOpacity>
                 </LinearGradient>

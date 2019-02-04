@@ -18,7 +18,6 @@ export class Settings extends React.Component {
   logout = async () => {
     await store.dispatch(logout());
   };
-
   render() {
     return (
       <ScrollView style={styles.container}>

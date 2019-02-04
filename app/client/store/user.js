@@ -6,7 +6,8 @@ import { webserver } from '../../../helperfunction';
  */
 const GET_USER = 'GET_USER';
 const UPDATE_USER = 'UPDATE_USER';
-const REMOVE_USER = 'REMOVE_USER';
+export const REMOVE_USER = 'REMOVE_USER';
+const UPDATE_PANTRY = 'UPDATE_PANTRY'
 
 /**
  * INITIAL STATE
@@ -19,10 +20,21 @@ const defaultUser = {};
 const getUser = user => ({ type: GET_USER, user });
 const updateUser = user => ({ type: UPDATE_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
+const pantryUp = (user) => ({ type: UPDATE_PANTRY, user })
 
 /**
  * THUNK CREATORS
  */
+export const pantryUpdate = (pantry) => async dispatch => {
+  try {
+    const method = pantry.method
+    const {data} = await axios.put(`${webserver}/api/pantry/${method}`, pantry)
+    dispatch(pantryUp(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const me = () => async dispatch => {
   try {
     const res = await axios.get(`${webserver}/auth/me`);
@@ -104,6 +116,8 @@ export default function(state = defaultUser, action) {
       return action.user;
     case UPDATE_USER:
       return action.user;
+    case UPDATE_PANTRY:
+      return action.user
     case REMOVE_USER:
       return defaultUser;
     default:

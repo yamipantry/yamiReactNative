@@ -17,7 +17,7 @@ class DrawerScreen extends Component {
                 <RkText
                   style={styles.textDrawer}
                   onPress={() => {
-                    this.props.navigation.navigate('Home');
+                    this.props.navigation.navigate('Home', {editMode: false});
                   }}
                 >
                   Pantry
@@ -68,10 +68,44 @@ class DrawerScreen extends Component {
                 <RkText
                   style={styles.textDrawer}
                   onPress={() => {
-                    this.props.navigation.navigate('BookmarksScreen');
+                    this.props.navigation.navigate('Bookmarks');
                   }}
                 >
                   Bookmarks
+                </RkText>
+              </View>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
+                    this.props.navigation.navigate('YamiDinnerFormScreen');
+                  }}
+                >
+                  Host Yami Dinner
+                </RkText>
+              </View>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
+                    this.props.navigation.navigate('YamiMaps');
+                  }}
+                >
+                  Yami Maps
                 </RkText>
               </View>
             </View>

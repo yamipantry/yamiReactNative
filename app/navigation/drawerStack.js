@@ -1,26 +1,15 @@
 import { createDrawerNavigator } from 'react-navigation';
 import DrawerScreen from '../screens/drawerscreen';
-import FriendsPantry from '../screens/friendsPantry';
-import {
-  FriendsStack,
-  PantryStack,
-  ProfileStack,
-  RecipesStack,
-  SingleRecipeStack,
-  SettingsStack,
-} from './singlestack';
+
+import Pantry from '../client/PantryContainer';
+import ModalStack from './ModalStack';
+
 
 const DrawerStack = createDrawerNavigator(
   {
-    Home: { screen: PantryStack },
-    SettingsScreen: { screen: SettingsStack },
-    ProfileScreen: { screen: ProfileStack },
-    Recipes: { screen: RecipesStack },
-    SingleRecipe: { screen: SingleRecipeStack },
-    Friends: { screen: FriendsStack },
-    FriendsPantry: {
-      screen: FriendsPantry,
-    },
+    Home: { screen: Pantry },
+    ScreenStack: {screen: ModalStack}
+
   },
   {
     contentComponent: DrawerScreen,
