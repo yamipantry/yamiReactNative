@@ -17,18 +17,20 @@ export class YamiDinnerForm extends React.Component {
     this.state = {
       id: this.props.user.id,
       yamiRecipe: '',
+      description: '',
       streetName: '',
       city: '',
       zip: '',
-      state: '',
+      state: 'CA',
     };
+    this.onCreateYammiDinnerButtonPressed = this.onCreateYammiDinnerButtonPressed.bind(
+      this
+    );
   }
 
   onCreateYammiDinnerButtonPressed() {
-    //this.props.handleSubmit(this.state)
-    //this.props.navigation.navigate('Home');
-    // currently console loging undefined but maybe still work
-    console.log(this.state);
+    this.props.handleSubmit(this.state);
+    this.props.navigation.navigate('Home');
   }
 
   render() {
@@ -51,6 +53,16 @@ export class YamiDinnerForm extends React.Component {
                   rkType="rounded"
                   value={this.state.yamiRecipe}
                   placeholder="Yami Recipe"
+                />
+                <RkTextInput
+                  onChangeText={text => {
+                    this.setState({
+                      description: text,
+                    });
+                  }}
+                  rkType="rounded"
+                  value={this.state.description}
+                  placeholder="Description"
                 />
                 <RkTextInput
                   rkType="rounded"

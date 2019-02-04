@@ -4,7 +4,12 @@ import { webserver } from '../../../helperfunction';
 const GET_YAMIDINNER = 'GET_YAMIDINNER';
 const UPDATE_YAMIDINNER = 'UPDATE_YAMIDINNER';
 
-const default_dinner = [];
+const getYamiDinner = allDinners => {
+  return {
+    type: GET_YAMIDINNER,
+    allDinners,
+  };
+};
 
 const updateYamiDinner = yamiDinner => {
   return {
@@ -13,21 +18,32 @@ const updateYamiDinner = yamiDinner => {
   };
 };
 
-export const createYamiDinner = (id, object) => async dispatch => {
+export const yamiDinners = () => async dispatch => {
   try {
-    const res = await axios.put(`${webserver}/api/users/${id}`, object);
+    const res = await axios.get(`${webserver}/api/yamiDinners`);
+    dispatch(getYamiDinner(res.data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const createYamiDinner = object => async dispatch => {
+  try {
+    console.log(object);
+    const res = await axios.post(`${webserver}/api/yamiDinners`, object);
     dispatch(updateYamiDinner(res.data));
   } catch (err) {
     console.error(err);
   }
 };
 
-export default function(state = default_dinner, action) {
+const defaultDinner = [];
+export default function(state = defaultDinner, action) {
   switch (action.type) {
     case UPDATE_YAMIDINNER:
       return action.yamiDinner;
     case GET_YAMIDINNER:
-      return action.yamiDinner;
+      return action.allDinners;
     default:
       return state;
   }

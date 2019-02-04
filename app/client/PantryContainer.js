@@ -1,15 +1,15 @@
-import React from "react";
-import { View, Text, TouchableOpacity, Image, Button } from "react-native";
-import { RkText, RkButton } from "react-native-ui-kitten";
-import { webserver } from "../../helperfunction";
-import styles from "../assets/styles";
-import PantryEdit from "../screens/pantryEdit";
-import axios from "axios";
-import { connect } from "react-redux";
-import store from "./store";
-import { recipesThunk } from "./store";
-import LinearGradient from "react-native-linear-gradient";
-import { scaleVertical } from "../utils/scale";
+import React from 'react';
+import { View, Text, TouchableOpacity, Image, Button } from 'react-native';
+import { RkText, RkButton } from 'react-native-ui-kitten';
+import { webserver } from '../../helperfunction';
+import styles from '../assets/styles';
+import PantryEdit from '../screens/pantryEdit';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import store from './store';
+import { recipesThunk } from './store';
+import LinearGradient from 'react-native-linear-gradient';
+import { scaleVertical } from '../utils/scale';
 
 class Pantry extends React.Component {
   constructor(props) {
@@ -17,8 +17,8 @@ class Pantry extends React.Component {
     this.state = {
       editMode: false,
       suggestions: [],
-      input: "",
-      pantry: []
+      input: '',
+      pantry: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.addItem = this.addItem.bind(this);
@@ -27,41 +27,39 @@ class Pantry extends React.Component {
 
   async componentDidMount() {
     await this.setState({
-      pantry: this.props.user.pantryItems
+      pantry: this.props.user.pantryItems,
     });
   }
 
   async handleChange(evt) {
     await this.setState({
-      input: evt
-    });    
+      input: evt,
+    });
 
     const { data } = await axios.get(
       `${webserver}/api/ingredients?name=${this.state.input}`
-    );   
-    
-    await this.setState({
-      suggestions: data
-    });
-    console.log('suggestions', this.state.suggestions)
+    );
 
+    await this.setState({
+      suggestions: data,
+    });
   }
 
   async addItem() {
-    const method = "add";
+    const method = 'add';
     const obj = { item: this.state.input };
     const { data } = await axios.put(`${webserver}/api/pantry/${method}`, obj);
     this.setState({
       pantry: data.pantryItems,
-      input: ""
+      input: '',
     });
   }
 
   async deleting(name) {
-    const method = "deleted";
+    const method = 'deleted';
     const { data } = await axios.put(`${webserver}/api/pantry/${method}`, name);
     this.setState({
-      pantry: data.pantryItems
+      pantry: data.pantryItems,
     });
   }
 
@@ -76,14 +74,14 @@ class Pantry extends React.Component {
         />
         {!editMode && (
           <LinearGradient
-            colors={["#8a2387", "#e94057", "#f27121"]}
+            colors={['#8a2387', '#e94057', '#f27121']}
             start={{ x: 0.0, y: 0.5 }}
             end={{ x: 1, y: 0.5 }}
             style={{
-              alignSelf: "center",
+              alignSelf: 'center',
               height: scaleVertical(45),
               marginVertical: 12,
-              borderRadius: 35
+              borderRadius: 35,
             }}
           >
             <TouchableOpacity
@@ -94,9 +92,9 @@ class Pantry extends React.Component {
                 style={{
                   marginTop: 8,
                   fontSize: 25,
-                  alignSelf: "center",
-                  color: "white",
-                  fontWeight: "bold"
+                  alignSelf: 'center',
+                  color: 'white',
+                  fontWeight: 'bold',
                 }}
               >
                 Edit Pantry
@@ -106,14 +104,14 @@ class Pantry extends React.Component {
         )}
         {editMode && (
           <LinearGradient
-            colors={["#8a2387", "#e94057", "#f27121"]}
+            colors={['#8a2387', '#e94057', '#f27121']}
             start={{ x: 0.0, y: 0.5 }}
             end={{ x: 1, y: 0.5 }}
             style={{
-              alignSelf: "center",
+              alignSelf: 'center',
               height: scaleVertical(45),
               marginVertical: 12,
-              borderRadius: 35
+              borderRadius: 35,
             }}
           >
             <TouchableOpacity
@@ -124,9 +122,9 @@ class Pantry extends React.Component {
                 style={{
                   marginTop: 8,
                   fontSize: 25,
-                  alignSelf: "center",
-                  color: "white",
-                  fontWeight: "bold"
+                  alignSelf: 'center',
+                  color: 'white',
+                  fontWeight: 'bold',
                 }}
               >
                 Done
@@ -152,20 +150,20 @@ class Pantry extends React.Component {
           />
         )}
         <LinearGradient
-          colors={["#8a2387", "#e94057", "#f27121"]}
+          colors={['#8a2387', '#e94057', '#f27121']}
           start={{ x: 0.0, y: 0.5 }}
           end={{ x: 1, y: 0.5 }}
           style={{
-            alignSelf: "center",
+            alignSelf: 'center',
             height: scaleVertical(45),
             marginVertical: 12,
-            borderRadius: 35
+            borderRadius: 35,
           }}
         >
           <TouchableOpacity
             style={{ width: 200 }}
             onPress={() => {
-              this.props.navigation.navigate("Recipes");
+              this.props.navigation.navigate('Recipes');
               this.setState({ editMode: false });
               store.dispatch(recipesThunk());
             }}
@@ -174,9 +172,9 @@ class Pantry extends React.Component {
               style={{
                 marginTop: 8,
                 fontSize: 25,
-                alignSelf: "center",
-                color: "white",
-                fontWeight: "bold"
+                alignSelf: 'center',
+                color: 'white',
+                fontWeight: 'bold',
               }}
             >
               Generate
@@ -190,7 +188,7 @@ class Pantry extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
   };
 };
 

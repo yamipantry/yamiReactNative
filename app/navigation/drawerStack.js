@@ -6,6 +6,7 @@ import Pantry from '../client/PantryContainer';
 import Recipes from '../client/recipesContainer';
 import SingleRecipe from '../client/SingleRecipeContainer';
 import YamiDinnerForm from '../client/yamiDinnerFormContainer';
+import YamiMaps from '../screens/yamiMaps';
 
 const DrawerStack = createDrawerNavigator(
   {
@@ -15,6 +16,7 @@ const DrawerStack = createDrawerNavigator(
     Recipes: { screen: Recipes },
     SingleRecipe: { screen: SingleRecipe },
     YamiDinnerFormScreen: { screen: YamiDinnerForm },
+    YamiMaps: { screen: YamiMaps },
   },
   {
     initialRouteName: 'Home',

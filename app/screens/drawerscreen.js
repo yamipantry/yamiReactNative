@@ -88,7 +88,24 @@ class DrawerScreen extends Component {
                     this.props.navigation.navigate('YamiDinnerFormScreen');
                   }}
                 >
-                  Create Yami-Dinner
+                  Host Yami Dinner
+                </RkText>
+              </View>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
+                    this.props.navigation.navigate('YamiMaps');
+                  }}
+                >
+                  Yami Maps
                 </RkText>
               </View>
             </View>

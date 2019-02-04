@@ -6,6 +6,7 @@ import { createYamiDinner } from '../client/store/yamiDinners';
 class YamiDinnerFormContainer extends React.Component {
   render() {
     const { handleSubmit, user } = this.props;
+    console.log(this.props);
     return (
       <YamiDinnerForm
         handleSubmit={handleSubmit}
@@ -25,14 +26,15 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
-      const id = evt.id;
       const object = {
+        name: evt.yamiRecipe,
+        description: evt.description,
         streetName: evt.streetName,
         city: evt.city,
         state: evt.state,
         zip: evt.zip,
       };
-      dispatch(createYamiDinner(id, object));
+      dispatch(createYamiDinner(object));
     },
   };
 };

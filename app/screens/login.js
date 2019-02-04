@@ -45,16 +45,12 @@ export class Login extends React.Component {
     this.props.navigation.navigate('Home');
     this.setState({
       userName: '',
-      password: ''
-    })
+      password: '',
+    });
   };
 
   onSignUpButtonPressed = () => {
     this.props.navigation.push('signUpScreen');
-  };
-
-  onMapButtonPressed = () => {
-    this.props.navigation.navigate('Maps');
   };
 
   render = () => {
@@ -119,15 +115,6 @@ export class Login extends React.Component {
                   onPress={this.onSignUpButtonPressed}
                 >
                   Sign up now
-                </RkText>
-              </RkButton>
-              <RkButton rkType="clear">
-                <RkText
-                  rkType="header6"
-                  style={{ fontWeight: 'bold' }}
-                  onPress={this.onMapButtonPressed}
-                >
-                  maps
                 </RkText>
               </RkButton>
             </View>
