@@ -10,4 +10,12 @@ const scale = size => (width / guidelineBaseWidth) * size;
 const scaleVertical = size => (height / guidelineBaseHeight) * size;
 const scaleModerate = (size, factor = 0.5) => size + ((scale(size) - size) * factor);
 
-export { scale, scaleVertical, scaleModerate };
+
+const randomString = () => {
+  const string = ['Live today like there\'s no tomorrow', 'Always be', 'Stranger things have happened', 'What\'s on Netflix today?', 'Live, laugh, love'] 
+  const idx = Math.floor(Math.random() * Math.floor(5))
+  return string[idx]
+  
+}
+
+export { scale, scaleVertical, scaleModerate, randomString };

@@ -3,17 +3,11 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import user from './user';
 import recipes from './recipes';
-import singleRecipe from './singleRecipe';
-import addedBookmark from './bookmarks';
-import yamiDinner from './yamiDinners';
+import singleRecipe from './singleRecipe'
+import bookmarks from './bookmarks'
+import yamiDinners from './yamiDinners'
 
-const reducer = combineReducers({
-  user,
-  recipes,
-  singleRecipe,
-  addedBookmark,
-  yamiDinner,
-});
+const reducer = combineReducers({ user, recipes, singleRecipe, bookmarks, yamiDinners });
 
 const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware));
 const store = createStore(reducer, middleware);
