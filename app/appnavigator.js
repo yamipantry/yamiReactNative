@@ -4,12 +4,6 @@ import PrimaryNav from './navigation/primaryNav';
 const AppNavigator = createStackNavigator(
   {
     PrimaryNav: { screen: PrimaryNav },
-<<<<<<< HEAD
-    Recipes: { screen: Recipes },
-    SingleRecipe: { screen: SingleRecipe },
-=======
-    Maps: { screen: MapComponent },
->>>>>>> origin
   },
   {
     headerMode: 'none',

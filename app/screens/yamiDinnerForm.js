@@ -11,7 +11,7 @@ import { RkAvoidKeyboard, RkTextInput } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 
-export class YamiDinnerForm extends React.Component {
+export default class YamiDinnerForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

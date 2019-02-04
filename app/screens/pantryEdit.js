@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { FlatList, View, TouchableOpacity, Text } from 'react-native';
-import { RkText, RkTextInput } from 'react-native-ui-kitten';
-import LinearGradient from 'react-native-linear-gradient';
-import { scaleVertical } from '../utils/scale';
-import styles from '../assets/styles';
-
-const PantryEdit = props => {
-  const { editMode, pantryItems, handleChange, addItem, deleted } = props;
-  const mapped = () => {
-    props.suggestions.map(elem => {
-      return (
-        <Text id="key" key={elem.name}>
-          {elem.name}
-        </Text>
-      );
-    });
-  };
-=======
 import React from "react";
 import {
   FlatList,
@@ -41,22 +21,11 @@ const PantryEdit = props => {
     deleted,
     suggestions
   } = props;
-
->>>>>>> origin
+console.log(Date.now())
   return (
     <View>
       {editMode && (
         <View>
-<<<<<<< HEAD
-          <RkTextInput
-            render={() => mapped()}
-            rkType="rounded"
-            textAlign={'center'}
-            value={props.input}
-            type="text"
-            name="input"
-            onChangeText={handleChange}
-=======
           <AutoComplete
             data={suggestions}
             defaultValue={props.input}
@@ -98,7 +67,6 @@ const PantryEdit = props => {
                 <Text>{item.name}</Text>
               </TouchableOpacity>;
             }}
->>>>>>> origin
           />
 
           <LinearGradient
@@ -134,11 +102,6 @@ const PantryEdit = props => {
         renderItem={({ item }) => {
           return (
             <View>
-<<<<<<< HEAD
-              <RkText
-                rkType="secondary2 hintColor"
-                style={{ fontSize: 25, textAlign: 'center' }}
-=======
               <ImageBackground
                 source={{
                   uri:
@@ -146,7 +109,6 @@ const PantryEdit = props => {
                 }}
                 style={{ width: 250, height: 40, margin: 5 }}
                 imageStyle={{ opacity: 0.9, borderRadius: 25 }}
->>>>>>> origin
               >
                 <View
                   style={{

@@ -1,5 +1,5 @@
 import React from 'react';
-import { YamiDinnerForm } from '../screens/yamiDinnerForm';
+import  YamiDinnerForm  from '../screens/yamiDinnerForm';
 import { connect } from 'react-redux';
 import { createYamiDinner } from '../client/store/yamiDinners';
 
