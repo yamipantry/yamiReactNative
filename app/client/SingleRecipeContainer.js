@@ -33,21 +33,22 @@ class SingleRecipeContainer extends React.Component {
   }
 
   async load() {
-    if (!this.state.loading) {
-      this.setState({ loading: true });
+    if (this.state.loading) {
+      this.setState({ loading: false });
     }
     await this.props.getRecipe(this.props.navigation.state.params.id)
-    this.setState({ loading: false });
   }
 
   componentDidMount() {
     setTimeout(() => {
        this.load();
-    }, 10)
+    }, 60)
      
   }
 
   render() {
+    const bleh = this.props.navigation.getParam('id', false)
+    console.log(bleh)
     if (this.state.loading) {
       return (
         <View>

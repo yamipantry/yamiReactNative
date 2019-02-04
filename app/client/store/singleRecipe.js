@@ -11,7 +11,9 @@ export const getSingleRecipe = recipe => ({ //action creator
 
 export const getRecipe = id => async dispatch => {//thunk
   try {
+    console.log('hello world')
     const { data } = await axios.get(`${webserver}/api/recipe/${id}`);
+    console.log('data', data)
     dispatch(getSingleRecipe(data));
   } catch (err) {
     console.error(err);
