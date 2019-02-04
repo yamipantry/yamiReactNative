@@ -95,7 +95,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    dinners: state.yamiDinner,
+    dinners: state.yamiDinners,
   };
 };
 
