@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { createStackNavigator, DrawerActions } from 'react-navigation';
+import { createStackNavigator, DrawerActions, createSwitchNavigator } from 'react-navigation';
 import { Settings } from '../screens/settings';
 import profileContainer from '../client/profileContainer';
 import Pantry from '../client/PantryContainer';
@@ -126,9 +126,6 @@ export const RecipesStack = createStackNavigator({
       ),
     }),
   },
-});
-
-export const SingleRecipeStack = createStackNavigator({
   SingleRecipe: {
     screen: SingleRecipe,
     navigationOptions: ({ navigation }) => ({
