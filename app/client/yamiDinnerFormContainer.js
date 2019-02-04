@@ -6,7 +6,6 @@ import { createYamiDinner } from '../client/store/yamiDinners';
 class YamiDinnerFormContainer extends React.Component {
   render() {
     const { handleSubmit, user } = this.props;
-    console.log(this.props);
     return (
       <YamiDinnerForm
         handleSubmit={handleSubmit}
