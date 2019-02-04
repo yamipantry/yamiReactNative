@@ -49,14 +49,14 @@ class Pantry extends React.Component {
     await this.setState({
       suggestions: data
     });
-    console.log("suggestions", this.state.suggestions);
   }
 
   async addItem() {
     const obj = { item: this.state.input, method: 'add' };
     await store.dispatch(pantryUpdate(obj))
     this.setState({
-      input: ""
+      input: "",
+      suggestions: []
     });
   }
 
@@ -75,7 +75,8 @@ class Pantry extends React.Component {
       )
     }
     return (
-      <ScrollView>
+      <ScrollView
+        keyboardShouldPersistTaps='always'>
         <Text style={{fontSize: 20, alignSelf: 'center'}}>Welcome, {userName}</Text>
         <Text style={{fontSize: 20, alignSelf: 'center'}}>{randomString()}</Text>
         <Image

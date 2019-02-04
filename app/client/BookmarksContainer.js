@@ -27,7 +27,6 @@ class BookmarksContainer extends React.Component {
   }
 
   render() {
-      console.log('bookmarks', this.props.navigation)
     if (this.state.loading) {
       return (
         <View>

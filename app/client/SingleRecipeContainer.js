@@ -24,7 +24,7 @@ class SingleRecipeContainer extends React.Component {
 
   async addToRanking() {
     const recipeId = this.props.navigation.state.params.id;
-    const rank = this.state.rank;
+    const rank = this.state.rank || 1;
     const obj = {
       recipeId,
       rank,
@@ -43,7 +43,7 @@ class SingleRecipeContainer extends React.Component {
   componentDidMount() {
     setTimeout(() => {
        this.load();
-    }, 50)
+    }, 10)
      
   }
 

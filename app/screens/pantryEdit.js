@@ -10,31 +10,63 @@ import { RkText, RkTextInput } from "react-native-ui-kitten";
 import LinearGradient from "react-native-linear-gradient";
 import { scaleVertical } from "../utils/scale";
 import styles from "../assets/styles";
+import AutoComplete from "react-native-autocomplete-input";
 
 const PantryEdit = props => {
-  const { editMode, pantryItems, handleChange, addItem, deleted } = props;
-  const mapped = () => {
-    props.suggestions.map(elem => {
-      return (
-        <Text id="key" key={elem.name}>
-          {elem.name}
-        </Text>
-      );
-    });
-  };
+  const {
+    editMode,
+    pantryItems,
+    handleChange,
+    addItem,
+    deleted,
+    suggestions
+  } = props;
+
   return (
     <View>
       {editMode && (
         <View>
-          <RkTextInput
-            render={() => mapped()}
-            rkType="rounded"
+          <AutoComplete
+            data={suggestions}
+            defaultValue={props.input}
             textAlign={"center"}
-            value={this.mapped()}
-            type="text"
-            name="input"
-            onChangeText={handleChange}
-            required
+            fontSize={20}
+            listContainerStyle={{
+              width: 250,
+              alignSelf: "center",
+              zIndex: 1,
+              justifyContents: "center",
+              fontSize: 30
+            }}
+            inputContainerStyle={{
+              width: 250,
+              alignSelf: "center",
+              borderWidth: 3,
+              borderColor: "black",
+              borderRadius: 10,
+              zIndex: 1
+            }}
+            listStyle={{ alignSelf: "center", fontSize: 30, margin: 5 }}
+            onChangeText={text => handleChange(text)}
+            renderItem={item => (
+              <TouchableOpacity
+                onPress={() => {
+                  handleChange(item.name);
+                }}
+              >
+                <Text style={{ fontSize: 20, textAlign: "center" }}>
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
+          <FlatList
+            data={suggestions}
+            renderItem={({ item }) => {
+              <TouchableOpacity onPress={() => (props.input = item.name)}>
+                <Text>{item.name}</Text>
+              </TouchableOpacity>;
+            }}
           />
 
           <LinearGradient

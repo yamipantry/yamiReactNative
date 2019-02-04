@@ -24,7 +24,7 @@ class Recipe extends React.Component {
   async componentDidMount() {
     setTimeout(() => { 
       this.load();
-    }, 50);
+    }, 10);
   }
 
   render() {

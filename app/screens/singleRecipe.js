@@ -91,7 +91,7 @@ const SingleRecipe = props => {
                   }}
                   onPress={() => {
                     props.ranking();
-                    props.navigation.navigate("Recipes");
+                    props.navigation.navigate("Bookmarks");
                   }}
                 >
                   <Text style={{textAlign: 'center', textAlignVertical: 'center'}}>Rate Your Creation</Text>

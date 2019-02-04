@@ -12,7 +12,7 @@ export default class Bookmarks extends React.Component {
     renderItem = ({ item }) => (
         <TouchableOpacity
           key={item.recipe.id}
-          delayPressIn={70}
+          delayPressIn={20}
           activeOpacity={0.8}
           onPress={() => {
               this.props.navigation.navigate('SingleRecipe', {id: item.recipe.id, bookmarks: true})
