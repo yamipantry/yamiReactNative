@@ -8,6 +8,7 @@ import Recipes from '../client/recipesContainer';
 import SingleRecipe from '../client/SingleRecipeContainer';
 import friendsContainer from '../client/friendsContainer';
 import { RkText, RkButton } from 'react-native-ui-kitten';
+//import friendsPantry from '../screens/friendsPantry';
 import styles from '../assets/styles';
 
 export const PantryStack = createStackNavigator({
@@ -186,3 +187,32 @@ export const FriendsStack = createStackNavigator({
     }),
   },
 });
+
+// export const FriendsPantryStack = createStackNavigator({
+//   FriendsPantry: {
+//     screen: friendsPantry,
+//     navigationOptions: ({ navigation }) => ({
+//       headerMode: 'screen',
+//       headerTitle: 'Hi',
+//       headerTitleStyle: {
+//         alignSelf: 'center',
+//         textAlign: 'center',
+//         flexGrow: 1,
+//       },
+//       headerRight: <View style={{ padding: 6 }} />,
+
+//       headerLeft: (
+//         <View>
+//           <RkText
+//             style={styles.menuText}
+//             onPress={() => {
+//               navigation.dispatch(DrawerActions.toggleDrawer());
+//             }}
+//           >
+//             Menu
+//           </RkText>
+//         </View>
+//       ),
+//     }),
+//   },
+// });

@@ -18,7 +18,10 @@ const initialstate = {};
  */
 const getFriends = friends => ({ type: GET_FRIENDS, friends });
 const updateFriends = friends => ({ type: UPDATE_FRIENDS, friends });
-const removeFriends = () => ({ type: REMOVE_FRIENDS });
+const removeFriends = friendIdToDelete => ({
+  type: REMOVE_FRIENDS,
+  friendIdToDelete,
+});
 
 /**
  * THUNK CREATORS
@@ -28,7 +31,7 @@ const removeFriends = () => ({ type: REMOVE_FRIENDS });
 export const friendsList = () => async dispatch => {
   try {
     const res = await axios.get(`${webserver}/api/friends`);
-    dispatch(getFriends(res.data || initialstate));
+    dispatch(getFriends(res.data));
   } catch (err) {
     console.error(err);
   }
@@ -45,8 +48,8 @@ export const addFriend = friend => async dispatch => {
 
 export const removeFriend = id => async dispatch => {
   try {
-    await axios.delete(`${webserver}/api/friends/${id}`);
-    dispatch(removeFriends());
+    await axios.delete(`${webserver}/api/friends/`, id);
+    dispatch(removeFriends(id));
   } catch (err) {
     console.error(err);
   }
@@ -63,7 +66,11 @@ export default function(state = initialstate, action) {
     case UPDATE_FRIENDS:
       return action.friends;
     case REMOVE_FRIENDS:
-      return initialstate;
+      const newFriendsList = Object.assign([], state.friends);
+      let filtered = newFriendsList.filter(
+        friend => friend.id != action.friendIdToDelete
+      );
+      return { friends: filtered };
     default:
       return state;
   }

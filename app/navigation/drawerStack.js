@@ -1,5 +1,6 @@
 import { createDrawerNavigator } from 'react-navigation';
 import DrawerScreen from '../screens/drawerscreen';
+import FriendsPantry from '../screens/friendsPantry';
 import {
   FriendsStack,
   PantryStack,
@@ -17,6 +18,9 @@ const DrawerStack = createDrawerNavigator(
     Recipes: { screen: RecipesStack },
     SingleRecipe: { screen: SingleRecipeStack },
     Friends: { screen: FriendsStack },
+    FriendsPantry: {
+      screen: FriendsPantry,
+    },
   },
   {
     contentComponent: DrawerScreen,
