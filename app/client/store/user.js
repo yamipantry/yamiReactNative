@@ -28,7 +28,6 @@ const pantryUp = (user) => ({ type: UPDATE_PANTRY, user })
 export const pantryUpdate = (pantry) => async dispatch => {
   try {
     const method = pantry.method
-    console.log('pantry', pantry)
     const {data} = await axios.put(`${webserver}/api/pantry/${method}`, pantry)
     dispatch(pantryUp(data))
   } catch (err) {

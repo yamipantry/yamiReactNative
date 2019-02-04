@@ -68,7 +68,7 @@ class DrawerScreen extends Component {
                 <RkText
                   style={styles.textDrawer}
                   onPress={() => {
-                    this.props.navigation.navigate('BookmarksScreen');
+                    this.props.navigation.navigate('Bookmarks');
                   }}
                 >
                   Bookmarks

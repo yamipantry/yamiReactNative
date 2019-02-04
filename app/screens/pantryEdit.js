@@ -10,30 +10,63 @@ import { RkText, RkTextInput } from "react-native-ui-kitten";
 import LinearGradient from "react-native-linear-gradient";
 import { scaleVertical } from "../utils/scale";
 import styles from "../assets/styles";
+import AutoComplete from "react-native-autocomplete-input";
 
 const PantryEdit = props => {
-  const { editMode, pantryItems, handleChange, addItem, deleted } = props;
-  const mapped = () => {
-    props.suggestions.map(elem => {
-      return (
-        <Text id="key" key={elem.name}>
-          {elem.name}
-        </Text>
-      );
-    });
-  };
+  const {
+    editMode,
+    pantryItems,
+    handleChange,
+    addItem,
+    deleted,
+    suggestions
+  } = props;
+
   return (
     <View>
       {editMode && (
         <View>
-          <RkTextInput
-            render={() => mapped()}
-            rkType="rounded"
+          <AutoComplete
+            data={suggestions}
+            defaultValue={props.input}
             textAlign={"center"}
-            value={props.input}
-            type="text"
-            name="input"
-            onChangeText={handleChange}
+            fontSize={20}
+            listContainerStyle={{
+              width: 250,
+              alignSelf: "center",
+              zIndex: 1,
+              justifyContents: "center",
+              fontSize: 30
+            }}
+            inputContainerStyle={{
+              width: 250,
+              alignSelf: "center",
+              borderWidth: 3,
+              borderColor: "black",
+              borderRadius: 10,
+              zIndex: 1
+            }}
+            listStyle={{ alignSelf: "center", fontSize: 30, margin: 5 }}
+            onChangeText={text => handleChange(text)}
+            renderItem={item => (
+              <TouchableOpacity
+                onPress={() => {
+                  handleChange(item.name);
+                }}
+              >
+                <Text style={{ fontSize: 20, textAlign: "center" }}>
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
+          <FlatList
+            data={suggestions}
+            renderItem={({ item }) => {
+              <TouchableOpacity onPress={() => (props.input = item.name)}>
+                <Text>{item.name}</Text>
+              </TouchableOpacity>;
+            }}
           />
 
           <LinearGradient
@@ -65,41 +98,40 @@ const PantryEdit = props => {
       )}
       <FlatList
         data={pantryItems}
-        style={{alignSelf: 'center'}}
+        style={{ alignSelf: "center" }}
         renderItem={({ item }) => {
-          
           return (
             <View>
-                <ImageBackground
-                  source={{
-                    uri:
-                      "https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg"
+              <ImageBackground
+                source={{
+                  uri:
+                    "https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg"
+                }}
+                style={{ width: 250, height: 40, margin: 5 }}
+                imageStyle={{ opacity: 0.9, borderRadius: 25 }}
+              >
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: "center",
+                    alignItems: "center"
                   }}
-                  style={{ width: 250, height: 40 }}
-                  imageStyle={{ opacity: 0.7, borderRadius: 25 }}
                 >
-                  <View
+                  <Text
                     style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      justifyContent: "center",
-                      alignItems: "center"
+                      fontSize: 25,
+                      alignSelf: "center",
+                      color: "white"
                     }}
                   >
-                    <Text
-                      style={{
-                        fontSize: 25,
-                        alignSelf: "center",
-                        color: "white"
-                      }}
-                    >
-                      {item}
-                    </Text>
-                  </View>
-                </ImageBackground>
+                    {item}
+                  </Text>
+                </View>
+              </ImageBackground>
               {editMode && (
                 <TouchableOpacity onPress={() => deleted(item)}>
                   <RkText

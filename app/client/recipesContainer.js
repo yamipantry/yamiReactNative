@@ -3,12 +3,13 @@ import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import { recipesThunk } from "../client/store";
 import RecipePresentational from "../screens/recipes";
+import NoRecipes from '../client/modals/NoRecipes'
 
 class Recipe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
 
@@ -16,16 +17,17 @@ class Recipe extends React.Component {
     if (!this.state.loading) {
       this.setState({ loading: true });
     }
+    await this.props.recipesThunk()
     this.setState({ loading: false });
   }
-  componentDidMount() {
-    setTimeout(() => {
+
+  async componentDidMount() {
+    setTimeout(() => { 
       this.load();
-    }, 100);
+    }, 10);
   }
 
   render() {
-    console.log('user pantry', this.props.pantry)
     const { recipes } = this.props || []; // 3,1,4
     if (this.state.loading) {
       return (
@@ -34,11 +36,19 @@ class Recipe extends React.Component {
         </View>
       );
     }
+    if(recipes.length === 0){
+      return (
+        <NoRecipes 
+        navigation={this.props.navigation}
+        />
+      )
+    }
     return (
       <RecipePresentational
         recipes={recipes}
         navigation={this.props.navigation}
         pantry={this.props.pantry}
+        loading={this.state.loading}
       />
     );
   }

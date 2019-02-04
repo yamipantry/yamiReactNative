@@ -104,8 +104,14 @@ export class Login extends React.Component {
               style={styles.buttonContainer}
               onPress={this.onLoginButtonPressed}
             >
-              <View style={styles.textRow}>
-                <Text style={styles.buttonText}>LOGIN</Text>
+              <View>
+                <Text style={{
+                marginTop: 8,
+                fontSize: 25,
+                alignSelf: "center",
+                color: "white",
+                fontWeight: "bold"
+              }}>LOGIN</Text>
               </View>
             </TouchableOpacity>
           </LinearGradient>

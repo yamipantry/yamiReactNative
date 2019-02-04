@@ -7,7 +7,7 @@ import PantryEdit from "../screens/pantryEdit";
 import axios from "axios";
 import { connect } from "react-redux";
 import store from "./store";
-import { recipesThunk, pantryUpdate } from "./store";
+import { pantryUpdate } from "./store";
 import LinearGradient from "react-native-linear-gradient";
 import { scaleVertical, randomString } from "../utils/scale";
 
@@ -17,17 +17,24 @@ class Pantry extends React.Component {
     this.state = {
       suggestions: [],
       input: "",
-      pantry: []
+      loading: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.addItem = this.addItem.bind(this);
     this.deleting = this.deleting.bind(this);
   }
 
-  async componentDidMount() {
-    await this.setState({
-      pantry: this.props.user.pantryItems,
-    });
+  load = async () => {
+    if(!this.state.loading){
+      this.setState({loading: true})
+    }
+    this.setState({loading: false})
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.load()
+    }, 10)
   }
 
   async handleChange(evt) {
@@ -42,15 +49,14 @@ class Pantry extends React.Component {
     await this.setState({
       suggestions: data
     });
-    console.log("suggestions", this.state.suggestions);
   }
 
   async addItem() {
-    // const method = "add";
     const obj = { item: this.state.input, method: 'add' };
     await store.dispatch(pantryUpdate(obj))
     this.setState({
-      input: ""
+      input: "",
+      suggestions: []
     });
   }
 
@@ -63,8 +69,14 @@ class Pantry extends React.Component {
   render() {
     const { pantryItems, profileImage, userName } = this.props.user;
     let editing = this.props.navigation.getParam('editMode', false)
+    if(this.state.loading){
+      return (
+        <View><Text>Loading</Text></View>
+      )
+    }
     return (
-      <ScrollView>
+      <ScrollView
+        keyboardShouldPersistTaps='always'>
         <Text style={{fontSize: 20, alignSelf: 'center'}}>Welcome, {userName}</Text>
         <Text style={{fontSize: 20, alignSelf: 'center'}}>{randomString()}</Text>
         <Image
@@ -101,10 +113,7 @@ class Pantry extends React.Component {
           <TouchableOpacity
             style={{ width: 200 }}
             onPress={() => {
-              store.dispatch(recipesThunk());
-              editing = false
-              this.props.navigation.navigate("Recipes");
-            }}
+            this.props.navigation.navigate('Recipes')}}
           >
             <Text
               style={{
