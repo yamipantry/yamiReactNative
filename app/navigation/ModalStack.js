@@ -7,6 +7,8 @@ import { Settings } from '../screens/settings';
 import profileContainer from '../client/profileContainer';
 import NoRecipes from '../client/modals/NoRecipes';
 import BookmarksContainer from '../client/BookmarksContainer';
+import yamiMaps from '../screens/yamiMaps'
+import yamiDinners from '../client/yamiDinnerFormContainer'
 
 
 const ModalStack = createSwitchNavigator( {
@@ -17,7 +19,9 @@ const ModalStack = createSwitchNavigator( {
     SingleRecipe: {screen: SingleRecipe},
     Home: { screen: Pantry},
     NoRecipes: { screen: NoRecipes},
-    Bookmarks: { screen: BookmarksContainer}
+    Bookmarks: { screen: BookmarksContainer},
+    YamiDinnerFormScreen: {screen: yamiDinners},
+    YamiMaps: {screen: yamiMaps}
 },{
     headerMode: 'none',
     initialRouteName: 'Home',
