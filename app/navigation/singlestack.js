@@ -1,12 +1,17 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { createStackNavigator, DrawerActions, createSwitchNavigator } from 'react-navigation';
+import {
+  createStackNavigator,
+  DrawerActions,
+  createSwitchNavigator,
+} from 'react-navigation';
 import { Settings } from '../screens/settings';
 import profileContainer from '../client/profileContainer';
 import Pantry from '../client/PantryContainer';
 import Recipes from '../client/recipesContainer';
 import SingleRecipe from '../client/SingleRecipeContainer';
 import friendsContainer from '../client/friendsContainer';
+import friendsPantrySc from '../screens/friendsPantry';
 import { RkText, RkButton } from 'react-native-ui-kitten';
 import YamiDinnersCont from '../client/yamiDinnerFormContainer';
 import YamiMaps from '../screens/yamiMaps';
@@ -170,6 +175,24 @@ export const FriendsStack = createStackNavigator({
         </View>
       ),
 
+      headerLeft: (
+        <View>
+          <RkText
+            style={styles.menuText}
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            Menu
+          </RkText>
+        </View>
+      ),
+    }),
+  },
+  FriendsPantry: {
+    screen: friendsPantrySc,
+    navigationOptions: ({ navigation }) => ({
+      headerMode: 'screen',
       headerLeft: (
         <View>
           <RkText
