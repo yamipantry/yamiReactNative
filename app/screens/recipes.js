@@ -10,9 +10,9 @@ export class RecipePresentational extends React.Component {
   };
 
 
-  renderItem = ({ item }) => (
+  renderItem = ({ item, idx }) => (
     <TouchableOpacity
-      key={item.id}
+      key={idx}
       delayPressIn={70}
       activeOpacity={0.8}
       onPress={() => {

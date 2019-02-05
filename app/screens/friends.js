@@ -19,10 +19,9 @@ export class Friends extends React.Component {
     });
   }
 
-  extractItemKey = item => `${item.id}`;
-
-  renderItem = ({ item }) => (
+  renderItem = ({ item, idx }) => (
     <TouchableOpacity
+      key={idx}
       onPress={() =>
         this.props.navigation.navigate('FriendsPantry', {
           id: item.id,
@@ -52,7 +51,6 @@ export class Friends extends React.Component {
       data={this.state.friends}
       renderItem={this.renderItem}
       ItemSeparatorComponent={this.renderSeparator}
-      keyExtractor={this.extractItemKey}
       enableEmptySections
     />
   );
