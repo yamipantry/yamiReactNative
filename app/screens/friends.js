@@ -45,6 +45,7 @@ export class Friends extends React.Component {
 
   renderSeparator = () => <View style={styles.separator} />;
 
+
   render = () => (
     <FlatList
       style={styles.root}
