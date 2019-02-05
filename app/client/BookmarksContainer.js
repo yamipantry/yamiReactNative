@@ -12,25 +12,15 @@ class BookmarksContainer extends React.Component {
     };
   }
 
-  load = async () => {
-    if (!this.state.loading) {
-      this.setState({ loading: true });
-    }
+  async componentDidMount() {
     await this.props.allBookmarks(this.props.id);
     this.setState({ loading: false });
-  };
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.load();
-    }, 10);
   }
 
   render() {
     if (this.state.loading) {
       return (
         <View>
-          <Text>Loading</Text>
         </View>
       );
     }

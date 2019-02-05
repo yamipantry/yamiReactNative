@@ -7,7 +7,7 @@ import PantryEdit from "../screens/pantryEdit";
 import axios from "axios";
 import { connect } from "react-redux";
 import store from "./store";
-import { pantryUpdate } from "./store";
+import { pantryUpdate, initialize } from "./store";
 import LinearGradient from "react-native-linear-gradient";
 import { scaleVertical, randomString } from "../utils/scale";
 
@@ -67,9 +67,7 @@ class Pantry extends React.Component {
   }
 
   render() {
-    console.log(Date.now())
     const { pantryItems, profileImage, userName } = this.props.user;
-    console.log(pantryItems)
     let editing = this.props.navigation.getParam('editMode', false)
     if(this.state.loading){
       return (

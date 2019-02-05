@@ -1,17 +1,16 @@
 import { createSwitchNavigator } from "react-navigation";
 import BookmarksModal from "../client/modals/modalExample";
 import NoRecipes from "../client/modals/NoRecipes";
-import BookmarksContainer from "../client/BookmarksContainer";
 import FriendsPantry from "../screens/friendsPantry";
 import {
   FriendsStack,
   PantryStack,
   ProfileStack,
-  // SingleRecipeStack,
   SettingsStack,
-  YamiDinnersStack,
+  // YamiDinnersStack,
   YamiMapStack,
-  RecipesStack
+  RecipesStack,
+  BookmarkStack
 } from "./singlestack";
 
 const ModalStack = createSwitchNavigator(
@@ -19,14 +18,13 @@ const ModalStack = createSwitchNavigator(
     SettingsScreen: { screen: SettingsStack },
     ProfileScreen: { screen: ProfileStack },
     BookmarksModal: { screen: BookmarksModal },
+    Bookmarks: { screen: BookmarkStack },
     Recipes: {screen: RecipesStack},
     Friends: { screen: FriendsStack },
     FriendsPantry: { screen: FriendsPantry },
-    // SingleRecipe: { screen: SingleRecipeStack},
     Home: { screen: PantryStack },
     NoRecipes: { screen: NoRecipes },
-    Bookmarks: { screen: BookmarksContainer },
-    YamiDinnerFormScreen: { screen: YamiDinnersStack },
+    // YamiDinnerFormScreen: { screen: YamiDinnersStack },
     YamiMaps: { screen: YamiMapStack }
   },
   {

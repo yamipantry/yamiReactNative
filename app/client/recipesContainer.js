@@ -13,18 +13,9 @@ class Recipe extends React.Component {
     };
   }
 
-  async load() {
-    if (!this.state.loading) {
-      this.setState({ loading: true });
-    }
+  async componentDidMount() {
     await this.props.recipesThunk()
     this.setState({ loading: false });
-  }
-
-  async componentDidMount() {
-    setTimeout(() => { 
-      this.load();
-    }, 10);
   }
 
   render() {
@@ -32,7 +23,6 @@ class Recipe extends React.Component {
     if (this.state.loading) {
       return (
         <View>
-          <Text>Loading</Text>
         </View>
       );
     }

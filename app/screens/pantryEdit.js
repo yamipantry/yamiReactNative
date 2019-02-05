@@ -34,9 +34,6 @@ console.log(Date.now())
             listContainerStyle={{
               width: 250,
               alignSelf: "center",
-              zIndex: 1,
-              justifyContents: "center",
-              fontSize: 30
             }}
             inputContainerStyle={{
               width: 250,
@@ -44,9 +41,8 @@ console.log(Date.now())
               borderWidth: 3,
               borderColor: "black",
               borderRadius: 10,
-              zIndex: 1
             }}
-            listStyle={{ alignSelf: "center", fontSize: 30, margin: 5 }}
+            listStyle={{ alignSelf: "center", margin: 5 }}
             onChangeText={text => handleChange(text)}
             renderItem={item => (
               <TouchableOpacity
