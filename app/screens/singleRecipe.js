@@ -24,6 +24,26 @@ const SingleRecipe = props => {
                 {recipe.description}
               </RkText>
             </View>
+            <View>
+                <RkButton
+                  onPress={() => {
+                    props.navigation.navigate("YamiDinners", {
+                      recipeName: props.recipe.name, description: props.recipe.description
+                    });
+                  }}
+                  rkType="small"
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    top: 4,
+                    height: 20,
+                    width: 85,
+                    backgroundColor: "lightblue"
+                  }}
+                >
+                  Add Dinner
+                </RkButton>
+              </View>
             {!bookmarkPage && (
               <View>
                 <RkButton
@@ -36,7 +56,7 @@ const SingleRecipe = props => {
                   style={{
                     position: "absolute",
                     right: 0,
-                    top: 4,
+                    top: 34,
                     height: 20,
                     width: 85,
                     backgroundColor: "lightblue"
