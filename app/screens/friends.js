@@ -19,6 +19,8 @@ export class Friends extends React.Component {
     });
   }
 
+  extractItemKey = item => `${item.id}`;
+
   renderItem = ({ item, idx }) => (
     <TouchableOpacity
       key={idx}
@@ -45,12 +47,12 @@ export class Friends extends React.Component {
 
   renderSeparator = () => <View style={styles.separator} />;
 
-
   render = () => (
     <FlatList
       style={styles.root}
       data={this.state.friends}
       renderItem={this.renderItem}
+      keyExtractor={this.extractItemKey}
       ItemSeparatorComponent={this.renderSeparator}
       enableEmptySections
     />

@@ -26,6 +26,8 @@ class FriendsPantry extends React.Component {
     };
   };
 
+  extractItemKey = item => `${item.id}`;
+
   renderItem = ({ item, idx }) => (
     <View style={{ alignItems: 'center', paddingTop: 10 }} key={idx}>
       <ImageBackground
@@ -68,6 +70,7 @@ class FriendsPantry extends React.Component {
         style={styles.root}
         data={pantry}
         renderItem={this.renderItem}
+        keyExtractor={this.extractItemKey}
         ItemSeparatorComponent={this.renderSeparator}
         enableEmptySections
       />

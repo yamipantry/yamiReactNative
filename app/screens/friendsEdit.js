@@ -47,8 +47,8 @@ export class FriendsEdit extends React.Component {
         style={styles.root}
         data={this.props.friends}
         renderItem={this.renderItem2}
-        ItemSeparatorComponent={this.renderSeparator}
         keyExtractor={this.extractItemKey}
+        ItemSeparatorComponent={this.renderSeparator}
         enableEmptySections
       />
     );
