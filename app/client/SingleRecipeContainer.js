@@ -12,17 +12,15 @@ class SingleRecipeContainer extends React.Component {
       loading: true,
       rank: 0
     };
-    this.ratingCompleted = this.ratingCompleted.bind(this);
-    this.addToRanking = this.addToRanking.bind(this);
   }
 
-  async ratingCompleted(rating) {
+  ratingCompleted = async (rating) => {
     await this.setState({
       rank: rating
     });
   }
 
-  async addToRanking() {
+  addToRanking = async () => {
     const recipeId = this.props.navigation.state.params.id;
     const rank = this.state.rank || 1;
     const obj = {

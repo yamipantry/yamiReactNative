@@ -29,7 +29,6 @@ export const yamiDinners = () => async dispatch => {
 
 export const createYamiDinner = object => async dispatch => {
   try {
-    console.log(object);
     const res = await axios.post(`${webserver}/api/yamiDinners`, object);
     dispatch(updateYamiDinner(res.data));
   } catch (err) {

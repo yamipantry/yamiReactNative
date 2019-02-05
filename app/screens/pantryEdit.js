@@ -21,7 +21,6 @@ const PantryEdit = props => {
     deleted,
     suggestions
   } = props;
-console.log(Date.now())
   return (
     <View>
       {editMode && (
@@ -58,11 +57,12 @@ console.log(Date.now())
           />
           <FlatList
             data={suggestions}
-            renderItem={({ item }) => {
-              <TouchableOpacity onPress={() => (props.input = item.name)}>
+            renderItem={({ item, idx }) => {
+              <TouchableOpacity key={idx} onPress={() => (props.input = item.name)}>
                 <Text>{item.name}</Text>
               </TouchableOpacity>;
             }}
+            keyExtractor={this.extract} 
           />
 
           <LinearGradient

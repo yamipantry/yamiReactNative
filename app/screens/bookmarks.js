@@ -9,9 +9,9 @@ export default class Bookmarks extends React.Component {
         super()
     }
 
-    renderItem = ({ item }) => (
+    renderItem = ({ item, idx }) => (
         <TouchableOpacity
-          key={item.recipe.id}
+          key={idx}
           delayPressIn={20}
           activeOpacity={0.8}
           onPress={() => {

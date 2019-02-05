@@ -72,17 +72,17 @@ const SingleRecipe = props => {
             <FlatList
               style={{ paddingBottom: 10 }}
               data={ingredients}
-              renderItem={({ item }) => {
+              renderItem={({ item, idx }) => {
                 if (pantry.includes(item.ingredientName)) {
                   return (
-                    <RkText style={styles.text}>
+                    <RkText style={styles.text} key={idx}>
                       &bull;&nbsp;&nbsp;
                       {item.amount} {item.ingredientName}
                     </RkText>
                   );
                 } else {
                   return (
-                    <RkText style={styles.text1}>
+                    <RkText style={styles.text1} key={idx}>
                       &bull;&nbsp;&nbsp;{item.amount} {item.ingredientName}{" "}
                       (needed)
                     </RkText>
