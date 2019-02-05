@@ -12,7 +12,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 
 export class Profile extends React.Component {
-
   state = {
     id: this.props.user.id,
     userName: this.props.user.userName,
