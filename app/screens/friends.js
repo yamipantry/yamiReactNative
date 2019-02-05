@@ -26,6 +26,7 @@ export class Friends extends React.Component {
       onPress={() =>
         this.props.navigation.navigate('FriendsPantry', {
           id: item.id,
+          userName: item.userName,
           pantry: item.pantryItems,
           profileImage: item.profileImage,
         })

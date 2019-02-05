@@ -1,21 +1,23 @@
-import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import React from 'react';
+import { TouchableOpacity, View } from 'react-native';
 import {
   createStackNavigator,
   DrawerActions,
-  createSwitchNavigator
-} from "react-navigation";
-import { Settings } from "../screens/settings";
-import profileContainer from "../client/profileContainer";
-import Pantry from "../client/PantryContainer";
-import Recipes from "../client/recipesContainer";
-import SingleRecipe from "../client/SingleRecipeContainer";
-import friendsContainer from "../client/friendsContainer";
-import { RkText, RkButton } from "react-native-ui-kitten";
-import YamiDinnersCont from "../client/yamiDinnerFormContainer";
-import YamiMaps from "../screens/yamiMaps";
-import styles from "../assets/styles";
+  createSwitchNavigator,
+} from 'react-navigation';
+import { Settings } from '../screens/settings';
+import profileContainer from '../client/profileContainer';
 import BookmarksContainer from "../client/BookmarksContainer";
+import Pantry from '../client/PantryContainer';
+import Recipes from '../client/recipesContainer';
+import SingleRecipe from '../client/SingleRecipeContainer';
+import friendsContainer from '../client/friendsContainer';
+import friendsPantrySc from '../screens/friendsPantry';
+import { RkText, RkButton } from 'react-native-ui-kitten';
+import YamiDinnersCont from '../client/yamiDinnerFormContainer';
+import YamiMaps from '../screens/yamiMaps';
+import styles from '../assets/styles';
+
 
 export const PantryStack = createStackNavigator({
   Home: {
@@ -204,30 +206,29 @@ export const RecipesStack = createStackNavigator({
             Menu
           </RkText>
         </View>
-      )
-    })
-  }
-});
+      ),
+    }),
+  },
+  //we deleted here so maybe misssing curly brace or paraenthesis
 
 export const FriendsStack = createStackNavigator({
   Friends: {
     screen: friendsContainer,
     navigationOptions: ({ navigation }) => ({
-      headerMode: "screen",
-      headerTitle: "Friends",
+      headerMode: 'screen',
+      headerTitle: 'Friends',
       headerTitleStyle: {
-        alignSelf: "center",
-        textAlign: "center",
-        flexGrow: 1
+        alignSelf: 'center',
+        textAlign: 'center',
+        flexGrow: 1,
       },
       headerRight: (
-        <View style={{paddingLeft: 25}}>
-          <RkButton rkType="outline small" style={{ width: 50 }}>
+        <View style={{ padding: 6 }}>
+          <RkButton rkType="outline small" style={{ width: 45 }}>
             Edit
           </RkButton>
         </View>
       ),
-
       headerLeft: (
         <View>
           <RkText
@@ -239,9 +240,27 @@ export const FriendsStack = createStackNavigator({
             Menu
           </RkText>
         </View>
-      )
-    })
-  }
+      ),
+    }),
+  },
+  FriendsPantry: {
+    screen: friendsPantrySc,
+    navigationOptions: ({ navigation }) => ({
+      headerMode: 'screen',
+      headerLeft: (
+        <View>
+          <RkText
+            style={styles.menuText}
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            Menu
+          </RkText>
+        </View>
+      ),
+    }),
+  },
 });
 
 // export const YamiDinnersStack = createStackNavigator({
