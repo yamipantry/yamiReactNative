@@ -19,10 +19,9 @@ export class Friends extends React.Component {
     });
   }
 
-  extractItemKey = item => `${item.id}`;
-
-  renderItem = ({ item }) => (
+  renderItem = ({ item, idx }) => (
     <TouchableOpacity
+      key={idx}
       onPress={() =>
         this.props.navigation.navigate('FriendsPantry', {
           id: item.id,
@@ -46,16 +45,14 @@ export class Friends extends React.Component {
 
   renderSeparator = () => <View style={styles.separator} />;
 
-  render = () => {
-    return (
-      <FlatList
-        style={styles.root}
-        data={this.state.friends}
-        renderItem={this.renderItem}
-        ItemSeparatorComponent={this.renderSeparator}
-        keyExtractor={this.extractItemKey}
-        enableEmptySections
-      />
-    );
-  };
+
+  render = () => (
+    <FlatList
+      style={styles.root}
+      data={this.state.friends}
+      renderItem={this.renderItem}
+      ItemSeparatorComponent={this.renderSeparator}
+      enableEmptySections
+    />
+  );
 }

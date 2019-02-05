@@ -23,18 +23,17 @@ export default class YamiDinnerForm extends React.Component {
       zip: "",
       state: "CA"
     };
-    this.onCreateYammiDinnerButtonPressed = this.onCreateYammiDinnerButtonPressed.bind(
-      this
-    );
+    // this.onCreateYammiDinnerButtonPressed = this.onCreateYammiDinnerButtonPressed.bind(
+    //   this
+    // )
   }
 
-  onCreateYammiDinnerButtonPressed() {
+  onCreateYammiDinnerButtonPressed = () => {
     this.props.handleSubmit(this.state);
     this.props.navigation.navigate("Home");
   }
 
   render() {
-    console.log("yami props", this.props);
     return (
       <ScrollView style={styles.container}>
         <View style={styles.section}>

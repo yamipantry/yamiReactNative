@@ -19,9 +19,8 @@ class Pantry extends React.Component {
       input: "",
       loading: true
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.addItem = this.addItem.bind(this);
-    this.deleting = this.deleting.bind(this);
+    // this.addItem = this.addItem.bind(this);
+    // this.deleting = this.deleting.bind(this);
   }
 
   load = async () => {
@@ -37,7 +36,7 @@ class Pantry extends React.Component {
     }, 10)
   }
 
-  async handleChange(evt) {
+  handleChange = async (evt) => {
     await this.setState({
       input: evt
     });
@@ -51,7 +50,7 @@ class Pantry extends React.Component {
     });
   }
 
-  async addItem() {
+ addItem = async () => {
     const obj = { item: this.state.input, method: 'add' };
     await store.dispatch(pantryUpdate(obj))
     this.setState({
@@ -60,7 +59,7 @@ class Pantry extends React.Component {
     });
   }
 
-  async deleting(name) {
+  deleting = async (name) => {
     const obj = { item: name, method: 'deleted' };
     await store.dispatch(pantryUpdate(obj))
 
