@@ -7,6 +7,7 @@ import {
 } from 'react-navigation';
 import { Settings } from '../screens/settings';
 import profileContainer from '../client/profileContainer';
+import BookmarksContainer from "../client/BookmarksContainer";
 import Pantry from '../client/PantryContainer';
 import Recipes from '../client/recipesContainer';
 import SingleRecipe from '../client/SingleRecipeContainer';
