@@ -46,14 +46,16 @@ export class Friends extends React.Component {
 
   renderSeparator = () => <View style={styles.separator} />;
 
-  render = () => (
-    <FlatList
-      style={styles.root}
-      data={this.state.friends}
-      renderItem={this.renderItem}
-      ItemSeparatorComponent={this.renderSeparator}
-      keyExtractor={this.extractItemKey}
-      enableEmptySections
-    />
-  );
+  render = () => {
+    return (
+      <FlatList
+        style={styles.root}
+        data={this.state.friends}
+        renderItem={this.renderItem}
+        ItemSeparatorComponent={this.renderSeparator}
+        keyExtractor={this.extractItemKey}
+        enableEmptySections
+      />
+    );
+  };
 }

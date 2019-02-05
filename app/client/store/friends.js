@@ -48,7 +48,7 @@ export const addFriend = friend => async dispatch => {
 
 export const removeFriend = id => async dispatch => {
   try {
-    await axios.delete(`${webserver}/api/friends/`, id);
+    await axios.delete(`${webserver}/api/friends/${id}`);
     dispatch(removeFriends(id));
   } catch (err) {
     console.error(err);

@@ -13,6 +13,7 @@ import Recipes from '../client/recipesContainer';
 import SingleRecipe from '../client/SingleRecipeContainer';
 import friendsContainer from '../client/friendsContainer';
 import friendsPantrySc from '../screens/friendsPantry';
+import friendsEditSc from '../client/friendsEditContainer';
 import { RkText, RkButton } from 'react-native-ui-kitten';
 import YamiDinnersCont from '../client/yamiDinnerFormContainer';
 import YamiMaps from '../screens/yamiMaps';
@@ -209,13 +210,11 @@ export const RecipesStack = createStackNavigator({
     }),
   },
 });
-//we deleted here so maybe misssing curly brace or paraenthesis
 
 export const FriendsStack = createStackNavigator({
   Friends: {
     screen: friendsContainer,
     navigationOptions: ({ navigation }) => ({
-      headerMode: 'screen',
       headerTitle: 'Friends',
       headerTitleStyle: {
         alignSelf: 'center',
@@ -224,7 +223,13 @@ export const FriendsStack = createStackNavigator({
       },
       headerRight: (
         <View style={{ padding: 6 }}>
-          <RkButton rkType="outline small" style={{ width: 45 }}>
+          <RkButton
+            rkType="outline small"
+            style={{ width: 45 }}
+            onPress={() => {
+              navigation.navigate('FriendsEdit');
+            }}
+          >
             Edit
           </RkButton>
         </View>
@@ -246,7 +251,23 @@ export const FriendsStack = createStackNavigator({
   FriendsPantry: {
     screen: friendsPantrySc,
     navigationOptions: ({ navigation }) => ({
-      headerMode: 'screen',
+      headerLeft: (
+        <View>
+          <RkText
+            style={styles.menuText}
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            Menu
+          </RkText>
+        </View>
+      ),
+    }),
+  },
+  FriendsEdit: {
+    screen: friendsEditSc,
+    navigationOptions: ({ navigation }) => ({
       headerLeft: (
         <View>
           <RkText
