@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 import {
   FlatList,
   View,
   TouchableOpacity,
   Text,
-  ImageBackground
-} from "react-native";
-import { RkText, RkTextInput } from "react-native-ui-kitten";
-import LinearGradient from "react-native-linear-gradient";
-import { scaleVertical } from "../utils/scale";
-import styles from "../assets/styles";
-import AutoComplete from "react-native-autocomplete-input";
+  ImageBackground,
+} from 'react-native';
+import { RkText, RkTextInput } from 'react-native-ui-kitten';
+import LinearGradient from 'react-native-linear-gradient';
+import { scaleVertical } from '../utils/scale';
+import styles from '../assets/styles';
+import AutoComplete from 'react-native-autocomplete-input';
 
 const PantryEdit = props => {
   const {
@@ -19,7 +19,7 @@ const PantryEdit = props => {
     handleChange,
     addItem,
     deleted,
-    suggestions
+    suggestions,
   } = props;
   return (
     <View>
@@ -28,20 +28,20 @@ const PantryEdit = props => {
           <AutoComplete
             data={suggestions}
             defaultValue={props.input}
-            textAlign={"center"}
+            textAlign={'center'}
             fontSize={20}
             listContainerStyle={{
               width: 250,
-              alignSelf: "center",
+              alignSelf: 'center',
             }}
             inputContainerStyle={{
               width: 250,
-              alignSelf: "center",
+              alignSelf: 'center',
               borderWidth: 3,
-              borderColor: "black",
+              borderColor: 'black',
               borderRadius: 10,
             }}
-            listStyle={{ alignSelf: "center", margin: 5 }}
+            listStyle={{ alignSelf: 'center', margin: 5 }}
             onChangeText={text => handleChange(text)}
             renderItem={item => (
               <TouchableOpacity
@@ -50,7 +50,7 @@ const PantryEdit = props => {
                   handleChange(item.name);
                 }}
               >
-                <Text style={{ fontSize: 20, textAlign: "center" }}>
+                <Text style={{ fontSize: 20, textAlign: 'center' }}>
                   {item.name}
                 </Text>
               </TouchableOpacity>
@@ -59,11 +59,16 @@ const PantryEdit = props => {
           <FlatList
             data={suggestions}
             renderItem={({ item, idx }) => {
-              <TouchableOpacity key={idx} onPress={() => (props.input = item.name)}>
-                <Text>{item.name}</Text>
-              </TouchableOpacity>;
+              return (
+                <TouchableOpacity
+                  key={idx}
+                  onPress={() => (props.input = item.name)}
+                >
+                  <Text>{item.name}</Text>
+                </TouchableOpacity>
+              );
             }}
-            keyExtractor={(item) => `${item.ingredientName}`} 
+            keyExtractor={item => `${item.ingredientName}`}
           />
 
           <LinearGradient
@@ -94,35 +99,36 @@ const PantryEdit = props => {
         </View>
       )}
       <FlatList
+        numColumns={3}
         data={pantryItems}
-        style={{ alignSelf: "center" }}
+        style={{ alignSelf: 'center' }}
         renderItem={({ item }) => {
           return (
             <View>
               <ImageBackground
                 source={{
                   uri:
-                    "https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg"
+                    'https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg',
                 }}
-                style={{ width: 250, height: 40, margin: 5 }}
+                style={{ width: 108, height: 108, margin: 5 }}
                 imageStyle={{ opacity: 0.9, borderRadius: 25 }}
               >
                 <View
                   style={{
-                    position: "absolute",
+                    position: 'absolute',
                     top: 0,
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    justifyContent: "center",
-                    alignItems: "center"
+                    justifyContent: 'center',
+                    alignItems: 'center',
                   }}
                 >
                   <Text
                     style={{
                       fontSize: 25,
-                      alignSelf: "center",
-                      color: "white"
+                      alignSelf: 'center',
+                      color: 'white',
                     }}
                   >
                     {item}

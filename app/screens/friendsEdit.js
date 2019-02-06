@@ -41,7 +41,7 @@ export class FriendsEdit extends React.Component {
             onPress={() => {
               const send = item.id;
               if (send) {
-                 this.props.handleRemove(send);
+                this.props.handleRemove(send);
               }
             }}
           >
@@ -81,6 +81,9 @@ export class FriendsEdit extends React.Component {
             const send = this.state.input;
             if (send) {
               this.props.handleSubmit(send);
+              this.setState({
+                input: '',
+              });
             }
           }}
         >
@@ -95,8 +98,39 @@ export class FriendsEdit extends React.Component {
   render = () => {
     if (this.props.friends.length === 0) {
       return (
-        <View>
-          <RkText> Add Some Friends </RkText>
+        <View style={styles.addContainer}>
+          <TextInput
+            style={{
+              borderRadius: 3,
+              textAlign: 'center',
+              color: 'black',
+              fontSize: 18,
+              paddingLeft: 14,
+            }}
+            placeholder="Email or Username"
+            name="input"
+            onChangeText={text => {
+              this.setState({
+                input: text,
+              });
+            }}
+            value={this.state.input}
+          />
+          <RkButton
+            rkType="outline small"
+            style={styles.editFriendButtons}
+            onPress={() => {
+              const send = this.state.input;
+              if (send) {
+                this.props.handleSubmit(send);
+                this.setState({
+                  input: '',
+                });
+              }
+            }}
+          >
+            +
+          </RkButton>
         </View>
       );
     }
