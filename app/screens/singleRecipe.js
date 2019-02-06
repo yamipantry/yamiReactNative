@@ -72,23 +72,24 @@ const SingleRecipe = props => {
             <FlatList
               style={{ paddingBottom: 10 }}
               data={ingredients}
-              renderItem={({ item, idx }) => {
+              renderItem={({ item }) => {
                 if (pantry.includes(item.ingredientName)) {
                   return (
-                    <RkText style={styles.text} key={idx}>
+                    <RkText style={styles.text}>
                       &bull;&nbsp;&nbsp;
                       {item.amount} {item.ingredientName}
                     </RkText>
                   );
                 } else {
                   return (
-                    <RkText style={styles.text1} key={idx}>
+                    <RkText style={styles.text1} >
                       &bull;&nbsp;&nbsp;{item.amount} {item.ingredientName}{" "}
                       (needed)
                     </RkText>
                   );
                 }
               }}
+              keyExtractor={(item) => `${item.ingredientName}`}
             />
             <RkText style={styles.subheading}>Instructions</RkText>
             <FlatList
@@ -96,6 +97,7 @@ const SingleRecipe = props => {
               renderItem={({ item }) => (
                 <RkText style={styles.text}>&bull;&nbsp;&nbsp;{item}</RkText>
               )}
+              keyExtractor={(item, idx) => `${idx}`}
             />
             {bookmarkPage && (
               <View>

@@ -23,9 +23,6 @@ export default class YamiDinnerForm extends React.Component {
       zip: "",
       state: "CA"
     };
-    // this.onCreateYammiDinnerButtonPressed = this.onCreateYammiDinnerButtonPressed.bind(
-    //   this
-    // )
   }
 
   onCreateYammiDinnerButtonPressed = () => {
