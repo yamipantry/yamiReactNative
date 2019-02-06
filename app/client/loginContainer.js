@@ -2,12 +2,19 @@ import React from "react";
 import { Login } from "../screens/login";
 import { connect } from "react-redux";
 import { auth } from "../client/store/user";
-import { Alert } from "react-native";
+import { Alert, View, Text } from "react-native";
 import store from "./store";
+import { webserver } from "../../helperfunction";
+import axios from "axios";
+import { me } from "./store/user";
 
 class LoginContainer extends React.Component {
   constructor() {
     super();
+    this.state = {
+      loggedIn: false,
+      loading: true
+    };
   }
   handleSubmit = async evt => {
     const userName =
@@ -16,11 +23,33 @@ class LoginContainer extends React.Component {
     await store.dispatch(auth(userName, password));
     if (!this.props.user || this.props.user.error) {
       Alert.alert("Wrong");
-    }else{
-    this.props.navigation.navigate('Home');
+    } else {
+      this.props.navigation.navigate("Home");
     }
   };
+
+  async componentDidMount() {
+    const {data} = await axios.get(`${webserver}/api/users/loggedIn`);
+    if (data) {
+      this.setState({
+        loggedIn: true
+      });
+    }
+    if (this.state.loggedIn) {
+      store.dispatch(me());
+      this.props.navigation.navigate("Home");
+    }
+  }
+
   render() {
+    if (!this.state.loggedIn) {
+      return (
+        <View>
+          <Text>LOADING</Text>
+        </View>
+      );
+    }
+
     return (
       <Login
         handleSubmit={this.handleSubmit}
@@ -40,7 +69,4 @@ const mapLogin = state => {
   };
 };
 
-
-export default connect(
-  mapLogin,
-)(LoginContainer);
+export default connect(mapLogin)(LoginContainer);

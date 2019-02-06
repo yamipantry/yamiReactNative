@@ -34,6 +34,23 @@ class DrawerScreen extends Component {
                 <RkText
                   style={styles.textDrawer}
                   onPress={() => {
+                    this.props.navigation.navigate('RecipeAdding', {editMode: false});
+                  }}
+                >
+                  Add Recipe
+                </RkText>
+              </View>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.containerDrawerScreen}
+            activeOpacity={1}
+          >
+            <View style={styles.contentDrawerScreen}>
+              <View style={styles.contentDrawerScreen}>
+                <RkText
+                  style={styles.textDrawer}
+                  onPress={() => {
                     this.props.navigation.navigate('SettingsScreen');
                   }}
                 >

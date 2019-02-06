@@ -40,7 +40,7 @@ export default class Bookmarks extends React.Component {
               data={bookmarks}
               renderItem={this.renderItem}
               style={styles.recipescontainer}
-              keyExtractor={(item, idx) => `${idx}`} // Looking for dif key but idx works for now
+              keyExtractor={(item, idx) => `${idx}`} //looking for different key other than idx
             />
           </ScrollView>
         );
