@@ -1,9 +1,5 @@
 import io from 'socket.io-client';
 
-const socket = io(window.location.origin);
-
-socket.on('chat message', () => {
-  console.log('Connected!');
-});
+const socket = io('10.1.41.32:8080');
 
 export default socket;

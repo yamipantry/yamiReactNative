@@ -5,6 +5,7 @@ import { auth } from '../client/store/user';
 
 class LoginContainer extends React.Component {
   render() {
+    console.log(window.location)
     const { handleSubmit } = this.props;
     return <Login handleSubmit={handleSubmit} navigation={this.props.navigation}/>;
   }
