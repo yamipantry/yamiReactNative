@@ -10,9 +10,7 @@ export const addRecipe = recipe => ({
 
 export const addRecipeAction = (obj) => async dispatch => {
     try {
-        console.log('obj', obj)
         const {data} = await axios.post(`${webserver}/api/recipe`, obj)
-        console.log('data', data)
     } catch (err) {
         console.error 
     }
