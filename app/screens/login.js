@@ -48,6 +48,9 @@ export class Login extends React.Component {
       password: '',
     });
   };
+  onChatTestPressed = () => {
+    this.props.navigation.navigate('messageTest');
+  };
 
   onSignUpButtonPressed = () => {
     this.props.navigation.push('signUpScreen');
@@ -101,13 +104,17 @@ export class Login extends React.Component {
               onPress={this.onLoginButtonPressed}
             >
               <View>
-                <Text style={{
-                marginTop: 8,
-                fontSize: 25,
-                alignSelf: "center",
-                color: "white",
-                fontWeight: "bold"
-              }}>LOGIN</Text>
+                <Text
+                  style={{
+                    marginTop: 8,
+                    fontSize: 25,
+                    alignSelf: 'center',
+                    color: 'white',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  LOGIN
+                </Text>
               </View>
             </TouchableOpacity>
           </LinearGradient>
@@ -121,6 +128,15 @@ export class Login extends React.Component {
                   onPress={this.onSignUpButtonPressed}
                 >
                   Sign up now
+                </RkText>
+              </RkButton>
+              <RkButton rkType="clear">
+                <RkText
+                  rkType="header6"
+                  style={{ fontWeight: 'bold' }}
+                  onPress={this.onChatTestPressed}
+                >
+                  chat test test
                 </RkText>
               </RkButton>
             </View>
