@@ -26,10 +26,10 @@ class FriendsPantry extends React.Component {
     };
   };
 
-  extractItemKey = item => `${item.id}`;
+  extractItemKey = item => `${item.name}`;
 
-  renderItem = ({ item, idx }) => (
-    <View style={{ alignItems: 'center', paddingTop: 10 }} key={idx}>
+  renderItem = ({ item }) => (
+    <View style={{ alignItems: 'center', paddingTop: 10 }}>
       <ImageBackground
         source={{
           uri:

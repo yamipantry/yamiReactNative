@@ -11,7 +11,7 @@ const REMOVE_FRIENDS = 'REMOVE_FRIENDS';
 /**
  * INITIAL STATE
  */
-const initialstate = {};
+const initialstate = [];
 
 /**
  * ACTION CREATORS
@@ -39,7 +39,7 @@ export const friendsList = () => async dispatch => {
 
 export const addFriend = friend => async dispatch => {
   try {
-    const res = await axios.put(`${webserver}/api/friends/`, friend);
+    const res = await axios.post(`${webserver}/api/friends`, { input: friend });
     dispatch(updateFriends(res.data));
   } catch (err) {
     console.error(err);
@@ -64,13 +64,12 @@ export default function(state = initialstate, action) {
     case GET_FRIENDS:
       return action.friends;
     case UPDATE_FRIENDS:
-      return action.friends;
+      return [...state, action.friends];
     case REMOVE_FRIENDS:
-      const newFriendsList = Object.assign([], state.friends);
-      let filtered = newFriendsList.filter(
+      const newFriendsList = state.slice();
+      return newFriendsList.filter(
         friend => friend.id != action.friendIdToDelete
       );
-      return { friends: filtered };
     default:
       return state;
   }

@@ -5,18 +5,8 @@ import { RkText } from 'react-native-ui-kitten';
 import { webserver } from '../../helperfunction';
 
 export class Friends extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     friends: [],
-  //   };
-  // }
-
   async componentDidMount() {
     await this.props.loadFriends();
-    // this.setState({
-    //   friends: this.props.friends,
-    // });
   }
 
   extractItemKey = item => `${item.id}`;
