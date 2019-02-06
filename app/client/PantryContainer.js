@@ -79,15 +79,26 @@ class Pantry extends React.Component {
     }
     return (
       <View style={{ flex: 1 }}>
-        <Text style={{ fontSize: 20, alignSelf: 'center', paddingTop: 5 }}>
+        {/* Maybe turn the follwoing into a modal that appears t login */}
+        {/* <Text style={{ fontSize: 20, alignSelf: 'center', paddingTop: 5 }}>
           Welcome, {userName}.
+          <Image
+            source={{ uri: `${webserver}${profileImage}` }}
+            style={{
+              width: 35,
+              height: 35,
+              borderRadius: 50 / 2,
+              marginLeft: 20,
+            }}
+          />
         </Text>
-
         <Text style={{ fontSize: 20, alignSelf: 'center', paddingBottom: 5 }}>
           {randomString()}
-        </Text>
-
-        <ScrollView keyboardShouldPersistTaps="always">
+        </Text> */}
+        <ScrollView
+          style={{ paddingTop: 10 }}
+          keyboardShouldPersistTaps="always"
+        >
           {editing && (
             <PantryEdit
               editMode={editing}
