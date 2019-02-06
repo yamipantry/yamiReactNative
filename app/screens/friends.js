@@ -5,18 +5,18 @@ import { RkText } from 'react-native-ui-kitten';
 import { webserver } from '../../helperfunction';
 
 export class Friends extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      friends: [],
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     friends: [],
+  //   };
+  // }
 
   async componentDidMount() {
     await this.props.loadFriends();
-    this.setState({
-      friends: this.props.friends,
-    });
+    // this.setState({
+    //   friends: this.props.friends,
+    // });
   }
 
   extractItemKey = item => `${item.id}`;
@@ -47,14 +47,24 @@ export class Friends extends React.Component {
 
   renderSeparator = () => <View style={styles.separator} />;
 
-  render = () => (
-    <FlatList
-      style={styles.root}
-      data={this.state.friends}
-      renderItem={this.renderItem}
-      keyExtractor={this.extractItemKey}
-      ItemSeparatorComponent={this.renderSeparator}
-      enableEmptySections
-    />
-  );
+  render = () => {
+    if (this.props.friends.length === 0) {
+      return (
+        <View>
+          <RkText> Click Edit to Add Some Friends </RkText>
+        </View>
+      );
+    }
+    return (
+      <FlatList
+        style={styles.root}
+        data={this.props.friends}
+        extraData={this.props}
+        renderItem={this.renderItem}
+        keyExtractor={this.extractItemKey}
+        ItemSeparatorComponent={this.renderSeparator}
+        enableEmptySections
+      />
+    );
+  };
 }
