@@ -39,9 +39,11 @@ export class FriendsEdit extends React.Component {
             style={styles.editFriendButtons}
             rkType="outline small"
             onPress={() => {
+
               const send = item.id;
               if (send) {
-                this.props.handleRemove(send);
+                await this.props.handleRemove(send);
+                await this.props.loadFriends();
               }
             }}
           >

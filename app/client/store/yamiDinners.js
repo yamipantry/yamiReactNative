@@ -40,7 +40,8 @@ const defaultDinner = [];
 export default function(state = defaultDinner, action) {
   switch (action.type) {
     case UPDATE_YAMIDINNER:
-      return action.yamiDinner;
+      const newArr = [...state, action.yamiDinner]
+      return newArr
     case GET_YAMIDINNER:
       return action.allDinners;
     default:

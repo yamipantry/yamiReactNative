@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView, Alert } from "react-native";
 import { RkText, RkButton } from "react-native-ui-kitten";
 import { webserver } from "../../helperfunction";
 import styles from "../assets/styles";
@@ -19,8 +19,6 @@ class Pantry extends React.Component {
       input: "",
       loading: true
     };
-    // this.addItem = this.addItem.bind(this);
-    // this.deleting = this.deleting.bind(this);
   }
 
   load = async () => {
@@ -31,9 +29,7 @@ class Pantry extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
       this.load()
-    }, 10)
   }
 
   handleChange = async (evt) => {

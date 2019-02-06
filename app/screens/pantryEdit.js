@@ -45,6 +45,7 @@ const PantryEdit = props => {
             onChangeText={text => handleChange(text)}
             renderItem={item => (
               <TouchableOpacity
+                onResponderRelease={() => Keyboard.dismiss()}
                 onPress={() => {
                   handleChange(item.name);
                 }}
@@ -62,7 +63,7 @@ const PantryEdit = props => {
                 <Text>{item.name}</Text>
               </TouchableOpacity>;
             }}
-            keyExtractor={this.extract} 
+            keyExtractor={(item) => `${item.ingredientName}`} 
           />
 
           <LinearGradient
@@ -146,6 +147,7 @@ const PantryEdit = props => {
             </View>
           );
         }}
+        keyExtractor={(item, idx) => `${idx}`}
       />
     </View>
   );

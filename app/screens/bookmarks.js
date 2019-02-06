@@ -9,9 +9,8 @@ export default class Bookmarks extends React.Component {
         super()
     }
 
-    renderItem = ({ item, idx }) => (
+    renderItem = ({ item }) => (
         <TouchableOpacity
-          key={idx}
           delayPressIn={20}
           activeOpacity={0.8}
           onPress={() => {
@@ -41,6 +40,7 @@ export default class Bookmarks extends React.Component {
               data={bookmarks}
               renderItem={this.renderItem}
               style={styles.recipescontainer}
+              keyExtractor={(item, idx) => `${idx}`} // Looking for dif key but idx works for now
             />
           </ScrollView>
         );
