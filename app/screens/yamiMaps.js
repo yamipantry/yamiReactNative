@@ -33,6 +33,7 @@ class MapComponent extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     const dinners = this.props.dinners || [];
     const lat = this.state.lat;
     const lng = this.state.lng;
@@ -67,7 +68,6 @@ class MapComponent extends React.Component {
                     this.setState({
                       create: '35,-122,1-19-19'
                     })
-                    console.log('this is being pressed', dinner.description);
                   }}
                 />
             );
@@ -75,7 +75,7 @@ class MapComponent extends React.Component {
         </MapView>
         <Button title='press here for dinner messages'
         onPress={() => {
-          this.props.navigation.navigate('messageTest', {name: this.state.create})
+          this.props.navigation.push('messageTest', {name: this.state.create})
         }}
         ></Button>
       </View>

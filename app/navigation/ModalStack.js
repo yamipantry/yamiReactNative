@@ -24,7 +24,7 @@ const ModalStack = createSwitchNavigator(
     Home: { screen: PantryStack },
     NoRecipes: { screen: NoRecipes },
     RecipeAdding: { screen: RecipeAdd },
-    YamiMaps: { screen: YamiMapStack }
+    YamiMap: { screen: YamiMapStack },
   },
   {
     headerMode: 'none',
