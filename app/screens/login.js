@@ -130,15 +130,6 @@ export class Login extends React.Component {
                   Sign up now
                 </RkText>
               </RkButton>
-              <RkButton rkType="clear">
-                <RkText
-                  rkType="header6"
-                  style={{ fontWeight: 'bold' }}
-                  onPress={this.onChatTestPressed}
-                >
-                  chat test test
-                </RkText>
-              </RkButton>
             </View>
           </View>
         </View>

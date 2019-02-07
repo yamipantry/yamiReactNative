@@ -71,7 +71,6 @@ class Chat extends React.Component {
     this.setState({
       messages: oldMessages.data
     })
-    
     socket.on(this.state.room, msg => {
       
       if (msg) {
@@ -144,7 +143,7 @@ class Chat extends React.Component {
     return (
       <RkAvoidKeyboard
         style={styles.container}
-        onResponderRelease={Keyboard.dismiss}
+        onResponderRelease={Keyboard.dismiss()}
       >
         <FlatList
           style={styles.list}

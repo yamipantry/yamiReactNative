@@ -367,7 +367,7 @@ export const YamiMapStack = createStackNavigator({
     screen: Chat,
     navigationOptions: ({ navigation }) => ({
       headerMode: 'screen',
-      headerTitle: 'YAMI Maps',
+      headerTitle: 'Messages',
       headerTitleStyle: {
         alignSelf: 'center',
         textAlign: 'center',
