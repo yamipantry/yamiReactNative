@@ -21,6 +21,8 @@ class LoginContainer extends React.Component {
       evt.userName.charAt(0).toUpperCase() + evt.userName.slice(1);
     const password = evt.password;
     await store.dispatch(auth(userName, password));
+    console.log('hello')
+    console.log(this.props.user)
     if (!this.props.user || this.props.user.error) {
       Alert.alert('Wrong');
     } else {
@@ -42,8 +44,14 @@ class LoginContainer extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
-    return <Login handleSubmit={handleSubmit} navigation={this.props.navigation}/>;
+    if(!this.state.loggedIn){
+      return (
+        <View>
+          <Text>LOADING</Text>
+        </View>
+      )
+    }
+    return <Login handleSubmit={this.handleSubmit} navigation={this.props.navigation} user={this.props.user}/>;
   }
 }
 
