@@ -1,10 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import {
-  createStackNavigator,
-  DrawerActions,
-  createSwitchNavigator,
-} from 'react-navigation';
+import { View } from 'react-native';
+import { createStackNavigator, DrawerActions } from 'react-navigation';
 import { Settings } from '../screens/settings';
 import profileContainer from '../client/profileContainer';
 import BookmarksContainer from '../client/BookmarksContainer';
@@ -18,7 +14,7 @@ import { RkText, RkButton } from 'react-native-ui-kitten';
 import YamiDinnersCont from '../client/yamiDinnerFormContainer';
 import YamiMaps from '../screens/yamiMaps';
 import styles from '../assets/styles';
-import AddRecipeContainer from '../client/AddRecipeContainer'
+import AddRecipeContainer from '../client/AddRecipeContainer';
 
 export const PantryStack = createStackNavigator({
   Home: {
@@ -91,7 +87,7 @@ export const RecipeAdd = createStackNavigator({
     screen: AddRecipeContainer,
     navigationOptions: ({ navigation }) => ({
       headerMode: 'screen',
-      headerTitle: 'Settings',
+      headerTitle: 'Add A Recipe',
       headerTitleStyle: {
         alignSelf: 'center',
         textAlign: 'center',

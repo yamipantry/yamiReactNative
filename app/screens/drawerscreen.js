@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, View, ScrollView } from 'react-native';
 import { RkText } from 'react-native-ui-kitten';
+import { DrawerActions } from 'react-navigation';
 import styles from '../assets/styles';
 
 class DrawerScreen extends Component {
@@ -17,7 +18,10 @@ class DrawerScreen extends Component {
                 <RkText
                   style={styles.textDrawer}
                   onPress={() => {
-                    this.props.navigation.navigate('Home', {editMode: false});
+                    this.props.navigation.navigate('Home', { editMode: false });
+                    this.props.navigation.dispatch(
+                      DrawerActions.toggleDrawer()
+                    );
                   }}
                 >
                   Pantry
@@ -34,7 +38,12 @@ class DrawerScreen extends Component {
                 <RkText
                   style={styles.textDrawer}
                   onPress={() => {
-                    this.props.navigation.navigate('RecipeAdding', {editMode: false});
+                    this.props.navigation.navigate('RecipeAdding', {
+                      editMode: false,
+                    });
+                    this.props.navigation.dispatch(
+                      DrawerActions.toggleDrawer()
+                    );
                   }}
                 >
                   Add Recipe
@@ -52,6 +61,9 @@ class DrawerScreen extends Component {
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('SettingsScreen');
+                    this.props.navigation.dispatch(
+                      DrawerActions.toggleDrawer()
+                    );
                   }}
                 >
                   Settings
@@ -69,6 +81,9 @@ class DrawerScreen extends Component {
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('Friends');
+                    this.props.navigation.dispatch(
+                      DrawerActions.toggleDrawer()
+                    );
                   }}
                 >
                   Friends
@@ -86,6 +101,9 @@ class DrawerScreen extends Component {
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('Bookmarks');
+                    this.props.navigation.dispatch(
+                      DrawerActions.toggleDrawer()
+                    );
                   }}
                 >
                   Bookmarks
@@ -103,6 +121,9 @@ class DrawerScreen extends Component {
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('YamiDinnerFormScreen');
+                    this.props.navigation.dispatch(
+                      DrawerActions.toggleDrawer()
+                    );
                   }}
                 >
                   Host Yami Dinner
@@ -120,6 +141,9 @@ class DrawerScreen extends Component {
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('YamiMaps');
+                    this.props.navigation.dispatch(
+                      DrawerActions.toggleDrawer()
+                    );
                   }}
                 >
                   Yami Maps
