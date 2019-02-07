@@ -70,6 +70,7 @@ class Pantry extends React.Component {
   render() {
     const { pantryItems, profileImage, userName } = this.props.user;
     let editing = this.props.navigation.getParam('editMode', false);
+    console.log(this.props.navigation.state.params);
     if (this.state.loading) {
       return (
         <View>
@@ -79,7 +80,7 @@ class Pantry extends React.Component {
     }
     return (
       <View style={{ flex: 1 }}>
-        {/* Maybe turn the follwoing into a modal that appears t login */}
+        {/* Maybe turn the following into a modal that appears at login */}
         {/* <Text style={{ fontSize: 20, alignSelf: 'center', paddingTop: 5 }}>
           Welcome, {userName}.
           <Image
@@ -95,21 +96,22 @@ class Pantry extends React.Component {
         <Text style={{ fontSize: 20, alignSelf: 'center', paddingBottom: 5 }}>
           {randomString()}
         </Text> */}
+
+        {editing && (
+          <PantryEdit
+            editMode={editing}
+            pantryItems={pantryItems}
+            handleChange={this.handleChange}
+            input={this.state.input}
+            addItem={this.addItem}
+            deleted={this.deleting}
+            suggestions={this.state.suggestions}
+          />
+        )}
         <ScrollView
           style={{ paddingTop: 10 }}
           keyboardShouldPersistTaps="always"
         >
-          {editing && (
-            <PantryEdit
-              editMode={editing}
-              pantryItems={pantryItems}
-              handleChange={this.handleChange}
-              input={this.state.input}
-              addItem={this.addItem}
-              deleted={this.deleting}
-              suggestions={this.state.suggestions}
-            />
-          )}
           {!editing && <PantryEdit pantryItems={pantryItems} />}
         </ScrollView>
         <LinearGradient

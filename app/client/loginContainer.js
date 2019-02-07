@@ -1,19 +1,19 @@
-import React from "react";
-import { Login } from "../screens/login";
-import { connect } from "react-redux";
-import { auth } from "../client/store/user";
-import { Alert, View, Text } from "react-native";
-import store from "./store";
-import { webserver } from "../../helperfunction";
-import axios from "axios";
-import { me } from "./store/user";
+import React from 'react';
+import { Login } from '../screens/login';
+import { connect } from 'react-redux';
+import { auth } from '../client/store/user';
+import { Alert, View, Text } from 'react-native';
+import store from './store';
+import { webserver } from '../../helperfunction';
+import axios from 'axios';
+import { me } from './store/user';
 
 class LoginContainer extends React.Component {
   constructor() {
     super();
     this.state = {
       loggedIn: false,
-      loading: true
+      loading: true,
     };
   }
   handleSubmit = async evt => {
@@ -22,22 +22,22 @@ class LoginContainer extends React.Component {
     const password = evt.password;
     await store.dispatch(auth(userName, password));
     if (!this.props.user || this.props.user.error) {
-      Alert.alert("Wrong");
+      Alert.alert('Wrong');
     } else {
-      this.props.navigation.navigate("Home");
+      this.props.navigation.navigate('Home');
     }
   };
 
   async componentDidMount() {
-    const {data} = await axios.get(`${webserver}/api/users/loggedIn`);
+    const { data } = await axios.get(`${webserver}/api/users/loggedIn`);
     if (data) {
       this.setState({
-        loggedIn: true
+        loggedIn: true,
       });
     }
     if (this.state.loggedIn) {
       store.dispatch(me());
-      this.props.navigation.navigate("Home");
+      this.props.navigation.navigate('Home');
     }
   }
 
@@ -62,10 +62,10 @@ class LoginContainer extends React.Component {
 
 const mapLogin = state => {
   return {
-    name: "login",
-    displayName: "Login",
+    name: 'login',
+    displayName: 'Login',
     error: state.user.error,
-    user: state.user
+    user: state.user,
   };
 };
 

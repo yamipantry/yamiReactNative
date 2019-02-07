@@ -5,12 +5,15 @@ import {
   TouchableOpacity,
   Text,
   ImageBackground,
+  ScrollView,
+  Keyboard,
 } from 'react-native';
-import { RkText, RkTextInput } from 'react-native-ui-kitten';
+import { RkText, RkButton } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 import styles from '../assets/styles';
 import AutoComplete from 'react-native-autocomplete-input';
+// import { ScrollView } from 'react-native-gesture-handler';
 
 const PantryEdit = props => {
   const {
@@ -24,24 +27,25 @@ const PantryEdit = props => {
   return (
     <View>
       {editMode && (
-        <View>
+        <View style={styles.addContainer}>
           <AutoComplete
+            keyboardShouldPersistTaps="always"
             data={suggestions}
             defaultValue={props.input}
             textAlign={'center'}
-            fontSize={20}
+            fontSize={16}
             listContainerStyle={{
-              width: 250,
-              alignSelf: 'center',
+              width: 200,
+              marginLeft: 20,
             }}
             inputContainerStyle={{
-              width: 250,
-              alignSelf: 'center',
-              borderWidth: 3,
-              borderColor: 'black',
-              borderRadius: 10,
+              width: 200,
+              marginLeft: 20,
+              //borderWidth: 3,
+              //borderColor: 'black',
+              //borderRadius: 10,
             }}
-            listStyle={{ alignSelf: 'center', margin: 5 }}
+            listStyle={{ marginLeft: 0, width: 200, height: 'auto' }}
             onChangeText={text => handleChange(text)}
             renderItem={item => (
               <TouchableOpacity
@@ -50,13 +54,13 @@ const PantryEdit = props => {
                   handleChange(item.name);
                 }}
               >
-                <Text style={{ fontSize: 20, textAlign: 'center' }}>
+                <Text style={{ fontSize: 16, textAlign: 'center' }}>
                   {item.name}
                 </Text>
               </TouchableOpacity>
             )}
           />
-          <FlatList
+          {/* <FlatList
             data={suggestions}
             renderItem={({ item, idx }) => {
               return (
@@ -69,92 +73,77 @@ const PantryEdit = props => {
               );
             }}
             keyExtractor={item => `${item.ingredientName}`}
-          />
+          /> */}
 
-          <LinearGradient
-            colors={['#8a2387', '#e94057', '#f27121']}
-            start={{ x: 0.0, y: 0.5 }}
-            end={{ x: 1, y: 0.5 }}
-            style={{
-              alignSelf: 'center',
-              height: scaleVertical(45),
-              marginVertical: 12,
-              borderRadius: 35,
-            }}
+          <RkButton
+            rkType="outline small"
+            style={{ width: 45, marginRight: 5 }}
+            onPress={addItem}
           >
-            <TouchableOpacity onPress={addItem} style={{ width: 200 }}>
-              <Text
-                style={{
-                  marginTop: 8,
-                  fontSize: 25,
-                  alignSelf: 'center',
-                  color: 'white',
-                  fontWeight: 'bold',
-                }}
-              >
-                Add
-              </Text>
-            </TouchableOpacity>
-          </LinearGradient>
+            Add
+          </RkButton>
         </View>
       )}
-      <FlatList
-        numColumns={3}
-        data={pantryItems}
-        style={{ alignSelf: 'center' }}
-        renderItem={({ item }) => {
-          return (
-            <View>
-              <ImageBackground
-                source={{
-                  uri:
-                    'https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg',
-                }}
-                style={{ width: 108, height: 108, margin: 5 }}
-                imageStyle={{ opacity: 0.9, borderRadius: 25 }}
-              >
-                <View
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    justifyContent: 'center',
-                    alignItems: 'center',
+      <ScrollView style={{ paddingTop: 10 }}>
+        <FlatList
+          numColumns={3}
+          data={pantryItems}
+          style={{ alignSelf: 'center', paddingBottom: 70 }}
+          renderItem={({ item }) => {
+            return (
+              <View>
+                <ImageBackground
+                  source={{
+                    uri:
+                      'https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg',
                   }}
+                  style={{ width: 108, height: 108, margin: 5 }}
+                  imageStyle={{ opacity: 0.9, borderRadius: 25 }}
                 >
-                  <Text
+                  <View
                     style={{
-                      fontSize: 25,
-                      alignSelf: 'center',
-                      color: 'white',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      justifyContent: 'center',
+                      alignItems: 'center',
                     }}
                   >
-                    {item}
-                  </Text>
-                </View>
-              </ImageBackground>
-              {editMode && (
-                <TouchableOpacity onPress={() => deleted(item)}>
-                  <RkText
-                    rkType="secondary2 hintColor"
-                    style={{
-                      fontSize: 25,
-                      textAlign: 'center',
-                      color: 'red',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    DELETE
-                  </RkText>
-                </TouchableOpacity>
-              )}
-            </View>
-          );
-        }}
-        keyExtractor={(item, idx) => `${idx}`}
-      />
+                    <Text
+                      style={{
+                        fontSize: 25,
+                        alignSelf: 'center',
+                        color: 'white',
+                      }}
+                    >
+                      {item}
+                    </Text>
+                  </View>
+                  {editMode && (
+                    <RkButton
+                      onPress={() => deleted(item)}
+                      rkType="small danger"
+                      style={{
+                        width: 20,
+                        height: 20,
+                        display: 'flex',
+                        position: 'absolute',
+                        right: 0,
+                        bottom: 0,
+                      }}
+                    >
+                      X
+                    </RkButton>
+                  )}
+                </ImageBackground>
+              </View>
+            );
+          }}
+          keyExtractor={(item, idx) => `${idx}`}
+        />
+      </ScrollView>
     </View>
   );
 };

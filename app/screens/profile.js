@@ -27,7 +27,6 @@ export class Profile extends React.Component {
 
   onEditButtonPressed = () => {
     this.props.handleSubmit(this.state);
-    this.props.navigation.navigate('Recipes');
   };
 
   render() {
