@@ -72,7 +72,7 @@ class Chat extends React.Component {
       messages: oldMessages.data
     })
     socket.on(this.state.room, msg => {
-      console.log('in component did moount', msg);
+      
       if (msg) {
         const newMsg = [...this.state.messages, msg]
         this.setState({ messages: newMsg });
