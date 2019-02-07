@@ -36,7 +36,7 @@ class LoginContainer extends React.Component {
       });
     }
     if (this.state.loggedIn) {
-      console.log(this.state)
+      
       store.dispatch(me());
       this.props.navigation.navigate('Home');
     }
