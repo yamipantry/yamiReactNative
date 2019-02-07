@@ -42,21 +42,8 @@ class LoginContainer extends React.Component {
   }
 
   render() {
-    if (!this.state.loggedIn) {
-      return (
-        <View>
-          <Text>LOADING</Text>
-        </View>
-      );
-    }
-
-    return (
-      <Login
-        handleSubmit={this.handleSubmit}
-        navigation={this.props.navigation}
-        user={this.props.user}
-      />
-    );
+    const { handleSubmit } = this.props;
+    return <Login handleSubmit={handleSubmit} navigation={this.props.navigation}/>;
   }
 }
 
