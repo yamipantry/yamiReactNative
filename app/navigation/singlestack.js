@@ -15,6 +15,7 @@ import YamiDinnersCont from '../client/yamiDinnerFormContainer';
 import YamiMaps from '../screens/yamiMaps';
 import styles from '../assets/styles';
 import AddRecipeContainer from '../client/AddRecipeContainer';
+import Chat from '../client/messageContainer';
 
 export const PantryStack = createStackNavigator({
   Home: {
@@ -338,6 +339,31 @@ export const FriendsStack = createStackNavigator({
 export const YamiMapStack = createStackNavigator({
   YamiMap: {
     screen: YamiMaps,
+    navigationOptions: ({ navigation }) => ({
+      headerMode: 'screen',
+      headerTitle: 'YAMI Maps',
+      headerTitleStyle: {
+        alignSelf: 'center',
+        textAlign: 'center',
+        flexGrow: 1,
+      },
+      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerLeft: (
+        <View>
+          <RkText
+            style={styles.menuText}
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            Menu
+          </RkText>
+        </View>
+      ),
+    }),
+  },
+  messageTest: {
+    screen: Chat,
     navigationOptions: ({ navigation }) => ({
       headerMode: 'screen',
       headerTitle: 'YAMI Maps',

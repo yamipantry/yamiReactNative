@@ -45,12 +45,13 @@ class Chat extends React.Component {
     super(props);
     // const userId = 1; //this.props.navigation.getParam('userId', undefined);
     this.state = {
+      room: this.props.navigation.getParam('name', ''),
       message: '', //getConversation(3),
       messages: ['first', 'second', 'third'],
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // InteractionManager.runAfterInteractions(() => {
     //   this.listRef.scrollToEnd();
     // });
@@ -65,10 +66,17 @@ class Chat extends React.Component {
     //   messages: data.message,
     // });
     //update state per message
-    socket.on('35,-122,1-19-19', msg => {
+    const oldMessages = await axios.get(`${webserver}/api/messages`)
+
+    this.setState({
+      messages: oldMessages.data
+    })
+    console.log(this.props)
+    socket.on(this.state.room, msg => {
       console.log('in component did moount', msg);
       if (msg) {
-        this.setState({ messages: [msg] });
+        const newMsg = [...this.state.messages, msg]
+        this.setState({ messages: newMsg });
       }
     });
   }
@@ -77,7 +85,7 @@ class Chat extends React.Component {
   //   this.listRef = ref;
   // };
 
-  extractItemKey = item => `${item.id}`;
+  // extractItemKey = item => `${item.id}`;
 
   // scrollToEnd = () => {
   //   if (Platform.OS === 'ios') {
@@ -88,21 +96,12 @@ class Chat extends React.Component {
   // };
 
   onSendButtonPressed = () => {
-    // if (!this.state.message) {
-    //   return;
-    // }
-    // this.state.messages.push({
-    //   id: this.state.messages.length,
-    //   time: 0,
-    //   type: 'out',
-    //   text: this.state.message,
-    // });
-
-    // socket.emit(`${this.props.yamiDinners.yamiMessage}`, this.state.message)
-    socket.emit('35,-122,1-19-19', this.state.message);
-
+    socket.emit(this.state.room, {message: this.state.message});
+    axios.post(`${webserver}/api/messages`, {
+      yammiDinnerId: this.state.room,
+      message: this.state.message,
+    });
     this.setState({ message: '' });
-    //this.scrollToEnd(true);
   };
 
   // static onNavigationTitlePressed = (navigation, user) => {
@@ -122,7 +121,7 @@ class Chat extends React.Component {
   // );
 
   renderItem = ({ item }) => {
-    const isIncoming = item.type === 'in';
+    const isIncoming = item.type === 'in' || '';
     const backgroundColor = 'lightblue';
     // const backgroundColor = isIncoming
     //   ? RkTheme.current.colors.chat.messageInBackground
@@ -130,13 +129,13 @@ class Chat extends React.Component {
     const itemStyle = isIncoming ? styles.itemIn : styles.itemOut;
     return (
       <View style={[styles.item, itemStyle]}>
-        {!isIncoming}
+        {/* {!isIncoming} */}
         <View style={[styles.balloon, { backgroundColor }]}>
           <RkText rkType="primary2 mediumLine chat" style={{ paddingTop: 5 }}>
-            {item}
+            {item.message}
           </RkText>
         </View>
-        {isIncoming}
+        {/* {isIncoming} */}
       </View>
     );
   };
@@ -150,7 +149,7 @@ class Chat extends React.Component {
         <FlatList
           style={styles.list}
           data={this.state.messages}
-          keyExtractor={this.extractItemKey}
+          keyExtractor={(item, idx) => `${idx}`}
           renderItem={this.renderItem}
         />
         <View style={styles.footer}>
