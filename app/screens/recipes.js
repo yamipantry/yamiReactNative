@@ -42,6 +42,7 @@ export class RecipePresentational extends React.Component {
           data={recipes}
           renderItem={this.renderItem}
           style={styles.recipescontainer}
+          keyExtractor={(item) => `${item.id}`}
         />
       </ScrollView>
     );

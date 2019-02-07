@@ -17,6 +17,8 @@ export const recipesThunk = () => async dispatch => {
   }
 };
 
+
+
 const recipes = (state = [], action) => {
   switch (action.type) {
     case GET_RECIPES:

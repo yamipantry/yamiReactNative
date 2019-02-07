@@ -10,24 +10,23 @@ import {
 import { RkAvoidKeyboard, RkTextInput } from "react-native-ui-kitten";
 import LinearGradient from "react-native-linear-gradient";
 import { scaleVertical } from "../utils/scale";
-
-export default class YamiDinnerForm extends React.Component {
+import store from "../client/store";
+import { addRecipeAction } from '../client/store/addRecipe'
+export default class RecipeForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.user.id,
-      yamiRecipe: this.props.navigation.getParam("recipeName", ""),
+      name: "",
       description: "",
-      streetName: "",
-      city: "",
-      zip: "",
-      state: "CA"
+      ingredientsIncluded: '',
+      instructions: [],
+      imageUrl: ""
     };
   }
 
-  onCreateYammiDinnerButtonPressed = () => {
-    this.props.handleSubmit(this.state);
-    this.props.navigation.navigate("Home");
+  onCreateRecipe = async () => {
+    console.log(this.state)
+    await store.dispatch(addRecipeAction(this.state))
   }
 
   render() {
@@ -44,12 +43,12 @@ export default class YamiDinnerForm extends React.Component {
                 <RkTextInput
                   onChangeText={text => {
                     this.setState({
-                      yamiRecipe: text
+                      name: text
                     });
                   }}
                   rkType="rounded"
-                  value={this.state.yamiRecipe}
-                  placeholder="Yami Recipe"
+                  value={this.state.name} //change this
+                  placeholder="Recipe" //this too
                 />
                 <RkTextInput
                   onChangeText={text => {
@@ -58,48 +57,48 @@ export default class YamiDinnerForm extends React.Component {
                     });
                   }}
                   rkType="rounded"
-                  value={this.state.description}
-                  placeholder="Description"
+                  value={this.state.description} //fill out
+                  placeholder="Description" //fill out
+                />
+                <RkTextInput
+                  rkType="rounded"
+                  onChangeText={(evt) => {
+                    this.setState({
+                      ingredientsIncluded: evt
+                    });
+                  }}
+                  value={this.state.streetName} //change
+                  placeholder="Ingredients" //change
                 />
                 <RkTextInput
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      streetName: text
+                      city: text //change
                     });
                   }}
-                  value={this.state.streetName}
-                  placeholder="Street Address"
+                  value={this.state.city} //change
+                  placeholder="City" //change
                 />
                 <RkTextInput
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      city: text
+                      state: text //change
                     });
                   }}
-                  value={this.state.city}
-                  placeholder="City"
+                  value={this.state.state} //change
+                  placeholder="State" //change
                 />
                 <RkTextInput
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      state: text
+                      zip: text //change
                     });
                   }}
-                  value={this.state.state}
-                  placeholder="State"
-                />
-                <RkTextInput
-                  rkType="rounded"
-                  onChangeText={text => {
-                    this.setState({
-                      zip: text
-                    });
-                  }}
-                  value={this.state.zip}
-                  placeholder="Zip"
+                  value={this.state.zip} //change
+                  placeholder="Zip" //change
                 />
                 <LinearGradient
                   colors={["#8a2387", "#e94057", "#f27121"]}
@@ -114,7 +113,7 @@ export default class YamiDinnerForm extends React.Component {
                 >
                   <TouchableOpacity
                     style={styles.buttonContainer}
-                    onPress={this.onCreateYammiDinnerButtonPressed}
+                    onPress={this.onCreateRecipe} //change
                   >
                     <Text
                       style={{
@@ -125,7 +124,7 @@ export default class YamiDinnerForm extends React.Component {
                         fontWeight: "bold"
                       }}
                     >
-                      Create Yami Dinner !
+                      Put my Text Here
                     </Text>
                   </TouchableOpacity>
                 </LinearGradient>

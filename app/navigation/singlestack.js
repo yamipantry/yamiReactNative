@@ -18,6 +18,7 @@ import { RkText, RkButton } from 'react-native-ui-kitten';
 import YamiDinnersCont from '../client/yamiDinnerFormContainer';
 import YamiMaps from '../screens/yamiMaps';
 import styles from '../assets/styles';
+import AddRecipeContainer from '../client/AddRecipeContainer'
 
 export const PantryStack = createStackNavigator({
   Home: {
@@ -62,6 +63,32 @@ export const PantryStack = createStackNavigator({
 export const SettingsStack = createStackNavigator({
   SettingsScreen: {
     screen: Settings,
+    navigationOptions: ({ navigation }) => ({
+      headerMode: 'screen',
+      headerTitle: 'Settings',
+      headerTitleStyle: {
+        alignSelf: 'center',
+        textAlign: 'center',
+        flexGrow: 1,
+      },
+      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerLeft: (
+        <RkText
+          style={styles.menuText}
+          onPress={() => {
+            navigation.dispatch(DrawerActions.toggleDrawer());
+          }}
+        >
+          Menu
+        </RkText>
+      ),
+    }),
+  },
+});
+
+export const RecipeAdd = createStackNavigator({
+  RecipeAdd: {
+    screen: AddRecipeContainer,
     navigationOptions: ({ navigation }) => ({
       headerMode: 'screen',
       headerTitle: 'Settings',

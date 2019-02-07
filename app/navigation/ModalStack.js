@@ -6,7 +6,7 @@ import {
   PantryStack,
   ProfileStack,
   SettingsStack,
-  // YamiDinnersStack,
+  RecipeAdd,
   YamiMapStack,
   RecipesStack,
   BookmarkStack
@@ -23,7 +23,7 @@ const ModalStack = createSwitchNavigator(
     Friends: { screen: FriendsStack },
     Home: { screen: PantryStack },
     NoRecipes: { screen: NoRecipes },
-    // YamiDinnerFormScreen: { screen: YamiDinnersStack },
+    RecipeAdding: { screen: RecipeAdd },
     YamiMaps: { screen: YamiMapStack }
   },
   {

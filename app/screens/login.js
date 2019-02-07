@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Text,
   KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
@@ -42,7 +43,7 @@ export class Login extends React.Component {
 
   onLoginButtonPressed = () => {
     this.props.handleSubmit(this.state);
-    this.props.navigation.navigate('Home');
+    // this.props.navigation.navigate('Home');
     this.setState({
       userName: '',
       password: '',

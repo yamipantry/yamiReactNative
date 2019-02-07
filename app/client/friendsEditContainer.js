@@ -58,8 +58,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleSubmit(evt) {
-      const friend = evt.friend;
+    handleSubmit(friend) {
       dispatch(addFriend(friend));
     },
     handleRemove(id) {

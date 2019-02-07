@@ -3,24 +3,26 @@ import { connect } from "react-redux";
 import SingleRecipe from "../screens/singleRecipe";
 import { getRecipe } from "../client/store";
 import { View, Text } from "react-native";
-import { postRanking } from "./store";
+// import { postRanking } from "./store";
 
 class SingleRecipeContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       loading: true,
       rank: 0
     };
+    this.ratingCompleted =this.ratingCompleted.bind(this)
+    this.addToRanking =this.addToRanking.bind(this)
   }
 
-  ratingCompleted = async (rating) => {
-    await this.setState({
+  ratingCompleted(rating) {
+    this.setState({
       rank: rating
     });
   }
 
-  addToRanking = async () => {
+  async addToRanking() {
     const recipeId = this.props.navigation.state.params.id;
     const rank = this.state.rank || 1;
     const obj = {
@@ -31,7 +33,7 @@ class SingleRecipeContainer extends React.Component {
   }
 
   async componentDidMount() {
-    await this.props.getRecipe(this.props.navigation.state.params.id)
+    await this.props.getRecipe(this.props.navigation.getParam('id', null))
     this.setState({loading: false})
   }
   
@@ -39,6 +41,7 @@ class SingleRecipeContainer extends React.Component {
     if (this.state.loading) {
       return (
         <View>
+          <Text>Hello, Jessie is the best boy-man!</Text>
         </View>
       );
     }
@@ -58,7 +61,7 @@ class SingleRecipeContainer extends React.Component {
 
 const mapDispatchToProps = {
   getRecipe: getRecipe,
-  postRanking: postRanking
+  // postRanking: postRanking
 };
 
 const mapStateToProps = state => {

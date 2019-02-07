@@ -27,7 +27,7 @@ export default class BookmarkModal extends Component {
         style={{ marginTop: 22, justifyContent: "center", alignSelf: "center" }}
       >
         <Modal
-          backdropOpacity={0.5}
+          opacity={0.5}
           transparent={true}
           isVisible={this.state.modalVisible}
           

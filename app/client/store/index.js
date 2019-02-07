@@ -7,8 +7,10 @@ import friends from './friends';
 import singleRecipe from './singleRecipe'
 import bookmarks from './bookmarks'
 import yamiDinners from './yamiDinners'
+import addedRecipe from './addRecipe'
 
-const reducer = combineReducers({ user, recipes, singleRecipe, bookmarks, yamiDinners, friends });
+
+const reducer = combineReducers({ user, recipes, singleRecipe, bookmarks, yamiDinners, friends, addedRecipe });
 
 
 const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware));
