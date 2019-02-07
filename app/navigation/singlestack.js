@@ -46,6 +46,7 @@ export const PantryStack = createStackNavigator({
             rkType="outline small"
             style={{ width: 50 }}
             onPress={() => {
+              console.log(navigation)
               navigation.navigate('Home', { editMode: true });
             }}
           >
