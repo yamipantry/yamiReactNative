@@ -70,7 +70,6 @@ class Pantry extends React.Component {
   render() {
     const { pantryItems, profileImage, userName } = this.props.user;
     let editing = this.props.navigation.getParam('editMode', false);
-    console.log(this.props.navigation.state.params);
     if (this.state.loading) {
       return (
         <View>
@@ -80,8 +79,7 @@ class Pantry extends React.Component {
     }
     return (
       <View style={{ flex: 1 }}>
-        {/* Maybe turn the following into a modal that appears at login */}
-        {/* <Text style={{ fontSize: 20, alignSelf: 'center', paddingTop: 5 }}>
+        <Text style={{ fontSize: 20, alignSelf: 'center', paddingTop: 5 }}>
           Welcome, {userName}.
           <Image
             source={{ uri: `${webserver}${profileImage}` }}
@@ -95,7 +93,7 @@ class Pantry extends React.Component {
         </Text>
         <Text style={{ fontSize: 20, alignSelf: 'center', paddingBottom: 5 }}>
           {randomString()}
-        </Text> */}
+        </Text>
 
         {editing && (
           <PantryEdit

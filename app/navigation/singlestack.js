@@ -87,7 +87,7 @@ export const RecipeAdd = createStackNavigator({
     screen: AddRecipeContainer,
     navigationOptions: ({ navigation }) => ({
       headerMode: 'screen',
-      headerTitle: 'Settings',
+      headerTitle: 'Add A Recipe',
       headerTitleStyle: {
         alignSelf: 'center',
         textAlign: 'center',
