@@ -20,17 +20,14 @@ import {
 
 import socket from './socket';
 import axios from 'axios';
-import { connect } from 'react-redux'
-import { webserver } from '../../helperfunction'
-
-
+import { connect } from 'react-redux';
+import { webserver } from '../../helperfunction';
 
 // import getConversation from './store';
 
 // import _ from 'lodash';
 
 // const moment = require('moment');
-
 
 class Chat extends React.Component {
   // static navigationOptions = ({ navigation }) => {
@@ -48,29 +45,33 @@ class Chat extends React.Component {
     super(props);
     // const userId = 1; //this.props.navigation.getParam('userId', undefined);
     this.state = {
-      data: Conversations[0],
       message: '', //getConversation(3),
-      messages: []
+      messages: ['first', 'second', 'third'],
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     // InteractionManager.runAfterInteractions(() => {
     //   this.listRef.scrollToEnd();
     // });
-
     //retrieving all messages for each chat room
-    const {data} = await axios.get(`${webserver}/api/sockets/room?yamiMessage=${this.props.yamiDinners.yamiMessage}`)
-
+    // const { data } = await axios.get(
+    //   `${webserver}/api/sockets/room?yamiMessage=${
+    //     this.props.yamiDinners.yamiMessage
+    //   }`
+    // );
     //set state
-    this.setState({
-      messages: data.message
-    })
-
+    // this.setState({
+    //   messages: data.message,
+    // });
     //update state per message
+    socket.on('35,-122,1-19-19', msg => {
+      console.log('in component did moount', msg);
+      if (msg) {
+        this.setState({ messages: [msg] });
+      }
+    });
   }
-
-
 
   // setListRef = ref => {
   //   this.listRef = ref;
@@ -87,21 +88,19 @@ class Chat extends React.Component {
   // };
 
   onSendButtonPressed = () => {
-    if (!this.state.message) {
-      return;
-    }
-    this.state.data.messages.push({
-      id: this.state.data.messages.length,
-      time: 0,
-      type: 'out',
-      text: this.state.message,
-    });
+    // if (!this.state.message) {
+    //   return;
+    // }
+    // this.state.messages.push({
+    //   id: this.state.messages.length,
+    //   time: 0,
+    //   type: 'out',
+    //   text: this.state.message,
+    // });
 
-      // socket.emit(`${this.props.yamiDinners.yamiMessage}`, this.state.message)
-      socket.emit('35,-122,1-19-19', this.state.message)
-    
+    // socket.emit(`${this.props.yamiDinners.yamiMessage}`, this.state.message)
+    socket.emit('35,-122,1-19-19', this.state.message);
 
-    
     this.setState({ message: '' });
     //this.scrollToEnd(true);
   };
@@ -134,7 +133,7 @@ class Chat extends React.Component {
         {!isIncoming}
         <View style={[styles.balloon, { backgroundColor }]}>
           <RkText rkType="primary2 mediumLine chat" style={{ paddingTop: 5 }}>
-            {item.text}
+            {item}
           </RkText>
         </View>
         {isIncoming}
@@ -143,52 +142,47 @@ class Chat extends React.Component {
   };
 
   render = () => {
-    socket.on('35,-122,1-19-19', (msg) => {
-      const newMessage = [...this.state.messages, msg]
-      this.setState({
-        messages: newMessage
-      })
-    });
     return (
-    <RkAvoidKeyboard
-      style={styles.container}
-      onResponderRelease={Keyboard.dismiss}
-    >
-      <FlatList
-        extraData={this.state}
-        style={styles.list}
-        data={this.state.data.messages}
-        keyExtractor={this.extractItemKey}
-        renderItem={this.renderItem}
-      />
-      <View style={styles.footer}>
-        <RkButton style={styles.plus} rkType="clear">
-          <RkText rkType="awesome secondaryColor">+</RkText>
-        </RkButton>
-        <TextInput
-          onChangeText={text => {
-            this.setState({ message: text });
-          }}
-          value={this.state.message}
-          rkType="row sticker"
-          placeholder="Add a comment..."
+      <RkAvoidKeyboard
+        style={styles.container}
+        onResponderRelease={Keyboard.dismiss}
+      >
+        <FlatList
+          style={styles.list}
+          data={this.state.messages}
+          keyExtractor={this.extractItemKey}
+          renderItem={this.renderItem}
         />
-        <RkButton
-          onPress={() => {this.onSendButtonPressed()}}
-          style={styles.send}
-          rkType="circle highlight"
-        />
-      </View>
-    </RkAvoidKeyboard>
-  );
-}
+        <View style={styles.footer}>
+          <RkButton style={styles.plus} rkType="clear">
+            <RkText rkType="awesome secondaryColor">+</RkText>
+          </RkButton>
+          <TextInput
+            onChangeText={text => {
+              this.setState({ message: text });
+            }}
+            value={this.state.message}
+            rkType="row sticker"
+            placeholder="Add a comment..."
+          />
+          <RkButton
+            onPress={() => {
+              this.onSendButtonPressed();
+            }}
+            style={styles.send}
+            rkType="circle highlight"
+          />
+        </View>
+      </RkAvoidKeyboard>
+    );
+  };
 }
 
 const mapState = state => {
   return {
-    RoomId: state.yamiDinners
-  }
-}
+    RoomId: state.yamiDinners,
+  };
+};
 
 const styles = RkStyleSheet.create(theme => ({
   header: {
@@ -241,5 +235,4 @@ const styles = RkStyleSheet.create(theme => ({
   },
 }));
 
-
-export default connect(mapState)(Chat)
+export default connect(mapState)(Chat);
