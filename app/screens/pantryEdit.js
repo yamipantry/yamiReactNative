@@ -13,6 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { scaleVertical } from '../utils/scale';
 import styles from '../assets/styles';
 import AutoComplete from 'react-native-autocomplete-input';
+import { webserver } from '../../helperfunction';
 // import { ScrollView } from 'react-native-gesture-handler';
 
 const PantryEdit = props => {
@@ -94,10 +95,13 @@ const PantryEdit = props => {
               <View>
                 <ImageBackground
                   source={{
-                    uri:
-                      'https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg',
+                    uri: `${webserver}/Petrol.jpg`,
                   }}
-                  style={{ width: 108, height: 108, margin: 5 }}
+                  style={{
+                    width: 108,
+                    height: 108,
+                    margin: 5,
+                  }}
                   imageStyle={{ opacity: 0.9, borderRadius: 25 }}
                 >
                   <View

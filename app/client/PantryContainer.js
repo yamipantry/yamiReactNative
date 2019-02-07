@@ -81,15 +81,21 @@ class Pantry extends React.Component {
       <View style={{ flex: 1 }}>
         {!editing && (
           <View>
-            <Text style={{ fontSize: 20, alignSelf: 'center', paddingTop: 5 }}>
-              Welcome, {userName}.
+            <Text
+              style={{
+                fontSize: 20,
+                alignSelf: 'center',
+                paddingTop: 5,
+                marginRight: 10,
+              }}
+            >
+              Welcome, {userName}.{'   '}
               <Image
                 source={{ uri: `${webserver}${profileImage}` }}
                 style={{
                   width: 35,
                   height: 35,
-                  borderRadius: 50 / 2,
-                  marginLeft: 20,
+                  borderRadius: 35 / 2,
                 }}
               />
             </Text>

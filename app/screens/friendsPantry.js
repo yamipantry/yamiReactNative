@@ -26,16 +26,19 @@ class FriendsPantry extends React.Component {
     };
   };
 
-  extractItemKey = item => `${item.name}`;
+  extractItemKey = item => `${item.id}`;
 
   renderItem = ({ item }) => (
     <View style={{ alignItems: 'center', paddingTop: 10 }}>
       <ImageBackground
         source={{
-          uri:
-            'https://cdn1.medicalnewstoday.com/content/images/articles/270/270678/celery.jpg',
+          uri: `${webserver}/Petrol.jpg`,
         }}
-        style={{ width: 250, height: 40, margin: 5 }}
+        style={{
+          width: 108,
+          height: 108,
+          margin: 5,
+        }}
         imageStyle={{ opacity: 0.9, borderRadius: 25 }}
       >
         <View
@@ -67,6 +70,7 @@ class FriendsPantry extends React.Component {
     const pantry = this.props.navigation.getParam('pantry', []);
     return (
       <FlatList
+        numColumns={3}
         style={styles.root}
         data={pantry}
         renderItem={this.renderItem}
