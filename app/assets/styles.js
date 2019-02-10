@@ -25,15 +25,7 @@ export default RkStyleSheet.create(theme => ({
     flex: 1,
     paddingVertical: 24,
   },
-  buttonText: {
-    textAlign: 'center',
-    color: theme.colors.screen.base,
-    paddingTop: 18,
-    marginLeft: 1,
-    marginRight: 1,
-    fontWeight: 'bold',
-    fontSize: 19,
-  },
+
   container: {
     paddingHorizontal: 17,
     paddingBottom: scaleVertical(22),
@@ -60,7 +52,7 @@ export default RkStyleSheet.create(theme => ({
     backgroundColor: theme.colors.screen.base,
   },
   screenSignUp: {
-    padding: 16,
+    padding: 2,
     justifyContent: 'space-around',
   },
   image: {
@@ -143,7 +135,7 @@ export default RkStyleSheet.create(theme => ({
     paddingLeft: 15,
     fontWeight: '300',
     width: 300,
-    height: 40
+    height: 40,
   },
   avatar: {
     width: 40,
