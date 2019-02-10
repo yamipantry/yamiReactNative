@@ -107,20 +107,20 @@ export default RkStyleSheet.create(theme => ({
   },
 
   headerSingleRecipe: {
-    fontSize: 35,
+    fontSize: 26,
     color: 'black',
     fontWeight: 'bold',
-    marginLeft: 20,
+    //marginLeft: 10,
   },
   subheading: {
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: 'bold',
   },
   text: {
-    fontSize: 25,
+    fontSize: 17,
   },
   text1: {
-    fontSize: 25,
+    fontSize: 17,
     color: 'red',
   },
   containerDrawerScreen: {
@@ -174,14 +174,11 @@ export default RkStyleSheet.create(theme => ({
     paddingHorizontal: 16,
     paddingVertical: 10,
     height: 60,
-    alignItems: 'center',
     flexDirection: 'row',
+    alignItems: 'center',
   },
   editFriendButtons: {
     width: 20,
     height: 20,
-    position: 'absolute',
-    right: 40,
-    display: 'flex',
   },
 }));

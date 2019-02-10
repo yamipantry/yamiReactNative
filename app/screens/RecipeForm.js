@@ -1,33 +1,32 @@
-import React from "react";
-import styles from "../assets/styles";
+import React from 'react';
+import styles from '../assets/styles';
 import {
   ScrollView,
   View,
   TouchableOpacity,
   Keyboard,
-  Text
-} from "react-native";
-import { RkAvoidKeyboard, RkTextInput } from "react-native-ui-kitten";
-import LinearGradient from "react-native-linear-gradient";
-import { scaleVertical } from "../utils/scale";
-import store from "../client/store";
-import { addRecipeAction } from '../client/store/addRecipe'
+  Text,
+} from 'react-native';
+import { RkAvoidKeyboard, RkTextInput } from 'react-native-ui-kitten';
+import LinearGradient from 'react-native-linear-gradient';
+import { scaleVertical } from '../utils/scale';
+import store from '../client/store';
+import { addRecipeAction } from '../client/store/addRecipe';
 export default class RecipeForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      description: "",
+      name: '',
+      description: '',
       ingredientsIncluded: '',
       instructions: [],
-      imageUrl: ""
+      imageUrl: '',
     };
   }
 
   onCreateRecipe = async () => {
-    await store.dispatch(addRecipeAction(this.state))
-  }
-
+    await store.dispatch(addRecipeAction(this.state));
+  };
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -42,7 +41,7 @@ export default class RecipeForm extends React.Component {
                 <RkTextInput
                   onChangeText={text => {
                     this.setState({
-                      name: text
+                      name: text,
                     });
                   }}
                   rkType="rounded"
@@ -52,7 +51,7 @@ export default class RecipeForm extends React.Component {
                 <RkTextInput
                   onChangeText={text => {
                     this.setState({
-                      description: text
+                      description: text,
                     });
                   }}
                   rkType="rounded"
@@ -61,9 +60,9 @@ export default class RecipeForm extends React.Component {
                 />
                 <RkTextInput
                   rkType="rounded"
-                  onChangeText={(evt) => {
+                  onChangeText={evt => {
                     this.setState({
-                      ingredientsIncluded: evt
+                      ingredientsIncluded: evt,
                     });
                   }}
                   value={this.state.streetName} //change
@@ -73,7 +72,7 @@ export default class RecipeForm extends React.Component {
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      city: text //change
+                      city: text, //change
                     });
                   }}
                   value={this.state.city} //change
@@ -83,7 +82,7 @@ export default class RecipeForm extends React.Component {
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      state: text //change
+                      state: text, //change
                     });
                   }}
                   value={this.state.state} //change
@@ -93,21 +92,21 @@ export default class RecipeForm extends React.Component {
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      zip: text //change
+                      zip: text, //change
                     });
                   }}
                   value={this.state.zip} //change
                   placeholder="Zip" //change
                 />
                 <LinearGradient
-                  colors={["#8a2387", "#e94057", "#f27121"]}
+                  colors={['#8a2387', '#e94057', '#f27121']}
                   start={{ x: 0.0, y: 0.5 }}
                   end={{ x: 1, y: 0.5 }}
                   style={{
-                    alignSelf: "stretch",
+                    alignSelf: 'stretch',
                     height: scaleVertical(45),
                     marginVertical: 20,
-                    borderRadius: 28
+                    borderRadius: 28,
                   }}
                 >
                   <TouchableOpacity
@@ -118,9 +117,9 @@ export default class RecipeForm extends React.Component {
                       style={{
                         marginTop: 8,
                         fontSize: 25,
-                        alignSelf: "center",
-                        color: "white",
-                        fontWeight: "bold"
+                        alignSelf: 'center',
+                        color: 'white',
+                        fontWeight: 'bold',
                       }}
                     >
                       Put my Text Here

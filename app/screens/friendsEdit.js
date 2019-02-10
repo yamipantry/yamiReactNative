@@ -26,29 +26,34 @@ export class FriendsEdit extends React.Component {
 
   renderItem2 = ({ item }) => {
     return (
-      <TouchableOpacity>
-        <View style={styles.containerFriends}>
-          <View style={styles.CircleContainer}>
-            <Image
-              source={{ uri: `${webserver}${item.profileImage}` }}
-              style={styles.avatar}
-            />
-          </View>
-          <RkText>{`${item.firstName} ${item.lastName}`}</RkText>
-          <RkButton
-            style={styles.editFriendButtons}
-            rkType="outline small"
-            onPress={() => {
-              const send = item.id;
-              if (send) {
-                this.props.handleRemove(send);
-              }
-            }}
-          >
-            -
-          </RkButton>
+      <View style={styles.containerFriends}>
+        <View style={styles.CircleContainer}>
+          <Image
+            source={{ uri: `${webserver}${item.profileImage}` }}
+            style={styles.avatar}
+          />
         </View>
-      </TouchableOpacity>
+        <RkText>{`${item.firstName} ${item.lastName}`}</RkText>
+        <TouchableOpacity
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            flex: 1,
+            marginRight: 25,
+          }}
+          onPress={() => {
+            const send = item.id;
+            if (send) {
+              this.props.handleRemove(send);
+            }
+          }}
+        >
+          <Image
+            style={styles.editFriendButtons}
+            source={require('../assets/images/minus.png')}
+          />
+        </TouchableOpacity>
+      </View>
     );
   };
 
@@ -59,7 +64,6 @@ export class FriendsEdit extends React.Component {
       <View style={styles.addContainer}>
         <TextInput
           style={{
-            borderRadius: 3,
             textAlign: 'center',
             color: 'black',
             fontSize: 18,
@@ -74,9 +78,13 @@ export class FriendsEdit extends React.Component {
           }}
           value={this.state.input}
         />
-        <RkButton
-          rkType="outline small"
-          style={styles.editFriendButtons}
+        <TouchableOpacity
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            flex: 1,
+            marginRight: 25,
+          }}
           onPress={() => {
             const send = this.state.input;
             if (send) {
@@ -87,8 +95,11 @@ export class FriendsEdit extends React.Component {
             }
           }}
         >
-          +
-        </RkButton>
+          <Image
+            style={styles.editFriendButtons}
+            source={require('../assets/images/add.png')}
+          />
+        </TouchableOpacity>
       </View>
     );
 
@@ -116,9 +127,13 @@ export class FriendsEdit extends React.Component {
             }}
             value={this.state.input}
           />
-          <RkButton
-            rkType="outline small"
-            style={styles.editFriendButtons}
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              flex: 1,
+              marginRight: 25,
+            }}
             onPress={() => {
               const send = this.state.input;
               if (send) {
@@ -129,8 +144,11 @@ export class FriendsEdit extends React.Component {
               }
             }}
           >
-            +
-          </RkButton>
+            <Image
+              style={styles.editFriendButtons}
+              source={require('../assets/images/add.png')}
+            />
+          </TouchableOpacity>
         </View>
       );
     }

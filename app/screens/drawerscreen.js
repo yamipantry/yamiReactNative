@@ -29,7 +29,7 @@ class DrawerScreen extends Component {
               </View>
             </View>
           </TouchableHighlight>
-          <TouchableHighlight
+          {/* <TouchableHighlight
             style={styles.containerDrawerScreen}
             activeOpacity={1}
           >
@@ -51,7 +51,7 @@ class DrawerScreen extends Component {
                 </TouchableOpacity>
               </View>
             </View>
-          </TouchableHighlight>
+          </TouchableHighlight> */}
           <TouchableHighlight
             style={styles.containerDrawerScreen}
             activeOpacity={0.5}

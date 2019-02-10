@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import { createStackNavigator, DrawerActions } from 'react-navigation';
 import { Settings } from '../screens/settings';
 import profileContainer from '../client/profileContainer';
@@ -29,29 +29,20 @@ export const PantryStack = createStackNavigator({
         alignSelf: 'center',
       },
       headerLeft: (
-        <View style={{ paddingLeft: 25 }}>
-          <RkText
-            style={styles.menuText}
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
             onPress={() => {
               navigation.dispatch(DrawerActions.toggleDrawer());
             }}
           >
-            Menu
-          </RkText>
-        </View>
-      ),
-      headerRight: (
-        <View style={{ paddingRight: 20 }}>
-          <RkButton
-            rkType="outline small"
-            style={{ width: 50 }}
-            onPress={() => {
-              console.log(navigation)
-              navigation.navigate('Home', { editMode: true });
-            }}
-          >
-            Edit Pantry
-          </RkButton>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
     }),
@@ -69,16 +60,23 @@ export const SettingsStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 20 }} />,
       headerLeft: (
-        <RkText
-          style={styles.menuText}
-          onPress={() => {
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          }}
-        >
-          Menu
-        </RkText>
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
+        </View>
       ),
     }),
   },
@@ -95,16 +93,23 @@ export const RecipeAdd = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 20 }} />,
       headerLeft: (
-        <RkText
-          style={styles.menuText}
-          onPress={() => {
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          }}
-        >
-          Menu
-        </RkText>
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
+        </View>
       ),
     }),
   },
@@ -121,16 +126,23 @@ export const ProfileStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 20 }} />,
       headerLeft: (
-        <RkText
-          style={styles.menuText}
-          onPress={() => {
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          }}
-        >
-          Menu
-        </RkText>
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
+        </View>
       ),
     }),
   },
@@ -147,16 +159,23 @@ export const BookmarkStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 20 }} />,
       headerLeft: (
-        <RkText
-          style={styles.menuText}
-          onPress={() => {
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          }}
-        >
-          Menu
-        </RkText>
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
+        </View>
       ),
     }),
   },
@@ -173,16 +192,23 @@ export const RecipesStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 20 }} />,
       headerLeft: (
-        <RkText
-          style={styles.menuText}
-          onPress={() => {
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          }}
-        >
-          Menu
-        </RkText>
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
+        </View>
       ),
     }),
   },
@@ -196,16 +222,23 @@ export const RecipesStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 20 }} />,
       headerLeft: (
-        <RkText
-          style={styles.menuText}
-          onPress={() => {
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          }}
-        >
-          Menu
-        </RkText>
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          >
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
+        </View>
       ),
     }),
   },
@@ -219,17 +252,22 @@ export const RecipesStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 20 }} />,
       headerLeft: (
-        <View>
-          <RkText
-            style={styles.menuText}
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
             onPress={() => {
               navigation.dispatch(DrawerActions.toggleDrawer());
             }}
           >
-            Menu
-          </RkText>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
     }),
@@ -247,28 +285,37 @@ export const FriendsStack = createStackNavigator({
         flexGrow: 1,
       },
       headerRight: (
-        <View style={{ padding: 6 }}>
-          <RkButton
-            rkType="outline small"
-            style={{ width: 45 }}
+        <View style={{ paddingRight: 20 }}>
+          <TouchableOpacity
             onPress={() => {
               navigation.navigate('FriendsEdit');
             }}
           >
-            Edit
-          </RkButton>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/edit.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
       headerLeft: (
-        <View>
-          <RkText
-            style={styles.menuText}
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
             onPress={() => {
               navigation.dispatch(DrawerActions.toggleDrawer());
             }}
           >
-            Menu
-          </RkText>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
     }),
@@ -277,15 +324,20 @@ export const FriendsStack = createStackNavigator({
     screen: friendsPantrySc,
     navigationOptions: ({ navigation }) => ({
       headerLeft: (
-        <View>
-          <RkText
-            style={styles.menuText}
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
             onPress={() => {
               navigation.dispatch(DrawerActions.toggleDrawer());
             }}
           >
-            Menu
-          </RkText>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
     }),
@@ -294,15 +346,20 @@ export const FriendsStack = createStackNavigator({
     screen: friendsEditSc,
     navigationOptions: ({ navigation }) => ({
       headerLeft: (
-        <View>
-          <RkText
-            style={styles.menuText}
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
             onPress={() => {
               navigation.dispatch(DrawerActions.toggleDrawer());
             }}
           >
-            Menu
-          </RkText>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
     }),
@@ -320,17 +377,22 @@ export const YamiMapStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 25 }} />,
       headerLeft: (
-        <View>
-          <RkText
-            style={styles.menuText}
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
             onPress={() => {
               navigation.dispatch(DrawerActions.toggleDrawer());
             }}
           >
-            Menu
-          </RkText>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
     }),
@@ -345,17 +407,22 @@ export const YamiMapStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      headerRight: <View style={{ paddingLeft: 25 }} />,
+      headerRight: <View style={{ paddingRight: 20 }} />,
       headerLeft: (
-        <View>
-          <RkText
-            style={styles.menuText}
+        <View style={{ paddingLeft: 20 }}>
+          <TouchableOpacity
             onPress={() => {
               navigation.dispatch(DrawerActions.toggleDrawer());
             }}
           >
-            Menu
-          </RkText>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/burger_menu.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
     }),
