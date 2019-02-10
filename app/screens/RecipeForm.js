@@ -27,7 +27,6 @@ export default class RecipeForm extends React.Component {
   onCreateRecipe = async () => {
     await store.dispatch(addRecipeAction(this.state));
   };
-
   render() {
     return (
       <ScrollView style={styles.container}>

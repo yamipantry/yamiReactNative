@@ -366,34 +366,6 @@ export const FriendsStack = createStackNavigator({
   },
 });
 
-// export const YamiDinnersStack = createStackNavigator({
-//   YamiDinners: {
-//     screen: YamiDinnersCont,
-//     navigationOptions: ({ navigation }) => ({
-//       headerMode: "screen",
-//       headerTitle: "YAMI Dinners",
-//       headerTitleStyle: {
-//         alignSelf: "center",
-//         textAlign: "center",
-//         flexGrow: 1
-//       },
-//       headerRight: <View style={{paddingLeft: 25}} />,
-//       headerLeft: (
-//         <View>
-//           <RkText
-//             style={styles.menuText}
-//             onPress={() => {
-//               navigation.dispatch(DrawerActions.toggleDrawer());
-//             }}
-//           >
-//             Menu
-//           </RkText>
-//         </View>
-//       )
-//     })
-//   }
-// });
-
 export const YamiMapStack = createStackNavigator({
   YamiMap: {
     screen: YamiMaps,

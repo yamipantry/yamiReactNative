@@ -142,6 +142,8 @@ export default RkStyleSheet.create(theme => ({
     fontSize: 15,
     paddingLeft: 15,
     fontWeight: '300',
+    width: 300,
+    height: 40
   },
   avatar: {
     width: 40,
