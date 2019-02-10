@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import SingleRecipe from "../screens/singleRecipe";
-import { getRecipe } from "../client/store";
-import { View, Text } from "react-native";
+import React from 'react';
+import { connect } from 'react-redux';
+import SingleRecipe from '../screens/singleRecipe';
+import { getRecipe } from '../client/store';
+import { View, Text } from 'react-native';
 // import { postRanking } from "./store";
 
 class SingleRecipeContainer extends React.Component {
@@ -10,15 +10,15 @@ class SingleRecipeContainer extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      rank: 0
+      rank: 0,
     };
-    this.ratingCompleted =this.ratingCompleted.bind(this)
-    this.addToRanking =this.addToRanking.bind(this)
+    this.ratingCompleted = this.ratingCompleted.bind(this);
+    this.addToRanking = this.addToRanking.bind(this);
   }
 
   ratingCompleted(rating) {
     this.setState({
-      rank: rating
+      rank: rating,
     });
   }
 
@@ -33,15 +33,15 @@ class SingleRecipeContainer extends React.Component {
   }
 
   async componentDidMount() {
-    await this.props.getRecipe(this.props.navigation.getParam('id', null))
-    this.setState({loading: false})
+    await this.props.getRecipe(this.props.navigation.getParam('id', null));
+    this.setState({ loading: false });
   }
-  
+
   render() {
     if (this.state.loading) {
       return (
         <View>
-          <Text>Hello, Jessie is the best boy-man!</Text>
+          <Text>Loading</Text>
         </View>
       );
     }
@@ -67,7 +67,7 @@ const mapDispatchToProps = {
 const mapStateToProps = state => {
   return {
     singleRecipe: state.singleRecipe,
-    user: state.user
+    user: state.user,
   };
 };
 

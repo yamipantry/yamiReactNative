@@ -1,6 +1,6 @@
 import React from 'react';
 import { FriendsEdit } from '../screens/friendsEdit';
-import { View } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import { RkButton } from 'react-native-ui-kitten';
 import { connect } from 'react-redux';
 import { addFriend, removeFriend, friendsList } from '../client/store/friends';
@@ -15,14 +15,16 @@ class FriendsEditContainer extends React.Component {
         flexGrow: 1,
       },
       headerRight: (
-        <View style={{ padding: 6 }}>
-          <RkButton
-            rkType="outline small"
-            style={{ width: 45 }}
-            onPress={() => navigation.navigate('Friends')}
-          >
-            Done
-          </RkButton>
+        <View style={{ paddingRight: 20 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Friends')}>
+            <Image
+              style={{
+                height: 25,
+                width: 25,
+              }}
+              source={require('../assets/images/done.png')}
+            />
+          </TouchableOpacity>
         </View>
       ),
     };

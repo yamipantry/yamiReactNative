@@ -7,6 +7,7 @@ import {
   ImageBackground,
   ScrollView,
   Keyboard,
+  Image,
 } from 'react-native';
 import { RkText, RkButton } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
@@ -36,17 +37,18 @@ const PantryEdit = props => {
             textAlign={'center'}
             fontSize={16}
             listContainerStyle={{
-              width: 200,
+              width: 250,
               marginLeft: 20,
             }}
             inputContainerStyle={{
-              width: 200,
+              width: 250,
               marginLeft: 20,
-              //borderWidth: 3,
-              //borderColor: 'black',
-              //borderRadius: 10,
             }}
-            listStyle={{ marginLeft: 0, width: 200, height: 'auto' }}
+            listStyle={{
+              marginLeft: 0,
+              width: 250,
+              height: 33,
+            }}
             onChangeText={text => handleChange(text)}
             renderItem={item => (
               <TouchableOpacity
@@ -76,13 +78,25 @@ const PantryEdit = props => {
             keyExtractor={item => `${item.ingredientName}`}
           /> */}
 
-          <RkButton
+          <TouchableOpacity
+            style={{
+              marginRight: 20,
+            }}
+            onPress={addItem}
+          >
+            <Image
+              style={styles.editFriendButtons}
+              source={require('../assets/images/add.png')}
+            />
+          </TouchableOpacity>
+
+          {/* <RkButton
             rkType="outline small"
             style={{ width: 45, marginRight: 5 }}
             onPress={addItem}
           >
             Add
-          </RkButton>
+          </RkButton> */}
         </View>
       )}
       <ScrollView style={{ paddingTop: 10 }}>

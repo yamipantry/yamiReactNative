@@ -25,6 +25,7 @@ class Pantry extends React.Component {
       suggestions: [],
       input: '',
       loading: true,
+      toggle: true,
     };
   }
 
@@ -65,6 +66,73 @@ class Pantry extends React.Component {
   deleting = async name => {
     const obj = { item: name, method: 'deleted' };
     await store.dispatch(pantryUpdate(obj));
+  };
+
+  //toggles the edit/done buttons in the header
+
+  static navigationOptions = ({ navigation }) => {
+    if (!navigation.state.params) {
+      return {
+        headerRight: (
+          <View style={{ paddingRight: 20 }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Home', { editMode: true });
+              }}
+            >
+              <Image
+                style={{
+                  height: 25,
+                  width: 25,
+                }}
+                source={require('../assets/images/edit.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        ),
+      };
+    }
+    if (navigation.state.params.editMode === true) {
+      return {
+        headerRight: (
+          <View style={{ paddingRight: 20 }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Home', { editMode: false });
+              }}
+            >
+              <Image
+                style={{
+                  height: 25,
+                  width: 25,
+                }}
+                source={require('../assets/images/done.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        ),
+      };
+    } else if (navigation.state.params.editMode === false) {
+      return {
+        headerRight: (
+          <View style={{ paddingRight: 20 }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Home', { editMode: true });
+              }}
+            >
+              <Image
+                style={{
+                  height: 25,
+                  width: 25,
+                }}
+                source={require('../assets/images/edit.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        ),
+      };
+    }
   };
 
   render() {
