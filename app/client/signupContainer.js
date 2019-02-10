@@ -1,7 +1,7 @@
 import React from 'react';
 import { SignUp } from '../screens/signUp';
 import { connect } from 'react-redux';
-import { authSignUp } from '../client/store/user';
+import { authSignUp, auth } from '../client/store/user';
 
 class SignUpContainer extends React.Component {
   render() {
@@ -28,6 +28,7 @@ const mapDispatch = dispatch => {
       const password = evt.password;
       const password2 = evt.password2;
       dispatch(authSignUp(userName, email, password, password2));
+      dispatch(auth(userName, password))
     },
   };
 };
