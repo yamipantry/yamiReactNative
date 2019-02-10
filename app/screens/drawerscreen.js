@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, View, ScrollView } from 'react-native';
+import { TouchableHighlight, View, ScrollView, TouchableOpacity } from 'react-native';
 import { RkText } from 'react-native-ui-kitten';
 import { DrawerActions } from 'react-navigation';
 import styles from '../assets/styles';
@@ -15,7 +15,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.contentDrawerScreen}>
               <View style={styles.contentDrawerScreen}>
-                <RkText
+                <TouchableOpacity
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('Home', { editMode: false });
@@ -24,8 +24,8 @@ class DrawerScreen extends Component {
                     );
                   }}
                 >
-                  Pantry
-                </RkText>
+                  <RkText>Pantry</RkText>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableHighlight>
@@ -35,7 +35,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.contentDrawerScreen}>
               <View style={styles.contentDrawerScreen}>
-                <RkText
+                <TouchableOpacity
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('RecipeAdding', {
@@ -44,30 +44,31 @@ class DrawerScreen extends Component {
                     this.props.navigation.dispatch(
                       DrawerActions.toggleDrawer()
                     );
-                  }}
-                >
+                  }}>
+                <RkText>
                   Add Recipe
                 </RkText>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.containerDrawerScreen}
-            activeOpacity={1}
+            activeOpacity={0.5}
           >
             <View style={styles.contentDrawerScreen}>
               <View style={styles.contentDrawerScreen}>
-                <RkText
+                <TouchableOpacity
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('SettingsScreen');
                     this.props.navigation.dispatch(
                       DrawerActions.toggleDrawer()
                     );
-                  }}
-                >
+                  }}>
+                <RkText>
                   Settings
-                </RkText>
+                </RkText></TouchableOpacity>
               </View>
             </View>
           </TouchableHighlight>
@@ -77,7 +78,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.contentDrawerScreen}>
               <View style={styles.contentDrawerScreen}>
-                <RkText
+                <TouchableOpacity
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('Friends');
@@ -86,8 +87,9 @@ class DrawerScreen extends Component {
                     );
                   }}
                 >
-                  Friends
+                <RkText> Friends
                 </RkText>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableHighlight>
@@ -97,7 +99,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.contentDrawerScreen}>
               <View style={styles.contentDrawerScreen}>
-                <RkText
+                <TouchableOpacity
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('Bookmarks');
@@ -106,8 +108,10 @@ class DrawerScreen extends Component {
                     );
                   }}
                 >
+              <RkText>
                   Bookmarks
                 </RkText>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableHighlight>
@@ -117,7 +121,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.contentDrawerScreen}>
               <View style={styles.contentDrawerScreen}>
-                <RkText
+                  <TouchableOpacity
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('YamiMap');
@@ -126,8 +130,9 @@ class DrawerScreen extends Component {
                     );
                   }}
                 >
-                  Yami Maps
+                <RkText>  Yami Maps
                 </RkText>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableHighlight>

@@ -25,7 +25,6 @@ export default class RecipeForm extends React.Component {
   }
 
   onCreateRecipe = async () => {
-    console.log(this.state)
     await store.dispatch(addRecipeAction(this.state))
   }
 
