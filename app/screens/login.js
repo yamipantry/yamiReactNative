@@ -8,11 +8,12 @@ import {
   TouchableOpacity,
   Text,
   KeyboardAvoidingView,
-  Alert
+  Alert,
 } from 'react-native';
 import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
 import { scaleModerate, scaleVertical } from '../utils/scale';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -63,76 +64,78 @@ export class Login extends React.Component {
         onResponderRelease={() => Keyboard.dismiss()}
         style={styles.screen}
       >
-        {this.renderImage()}
-        <View style={[styles.container, styles.contcenter]}>
-          <RkTextInput
-            rkType="rounded"
-            placeholder="Username"
-            name="userName"
-            onChangeText={text => {
-              this.setState({
-                userName: text,
-              });
-            }}
-            value={this.state.userName}
-          />
-          <RkTextInput
-            rkType="rounded"
-            placeholder="Password"
-            secureTextEntry
-            name="password"
-            onChangeText={text => {
-              this.setState({
-                password: text,
-              });
-            }}
-            value={this.state.password}
-          />
-          <LinearGradient
-            colors={['#8a2387', '#e94057', '#f27121']}
-            start={{ x: 0.0, y: 0.5 }}
-            end={{ x: 1, y: 0.5 }}
-            style={{
-              alignSelf: 'stretch',
-              height: scaleVertical(45),
-              marginVertical: 20,
-              borderRadius: 28,
-            }}
-          >
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={this.onLoginButtonPressed}
+        <ScrollView scrollEnabled={false} showsVerticalScrollIndicator={false}>
+          {this.renderImage()}
+          <View style={[styles.container, styles.contcenter]}>
+            <RkTextInput
+              rkType="rounded"
+              placeholder="Username"
+              name="userName"
+              onChangeText={text => {
+                this.setState({
+                  userName: text,
+                });
+              }}
+              value={this.state.userName}
+            />
+            <RkTextInput
+              rkType="rounded"
+              placeholder="Password"
+              secureTextEntry
+              name="password"
+              onChangeText={text => {
+                this.setState({
+                  password: text,
+                });
+              }}
+              value={this.state.password}
+            />
+            <LinearGradient
+              colors={['#8a2387', '#e94057', '#f27121']}
+              start={{ x: 0.0, y: 0.5 }}
+              end={{ x: 1, y: 0.5 }}
+              style={{
+                alignSelf: 'stretch',
+                height: scaleVertical(45),
+                marginVertical: 20,
+                borderRadius: 28,
+              }}
             >
-              <View>
-                <Text
-                  style={{
-                    marginTop: 8,
-                    fontSize: 25,
-                    alignSelf: 'center',
-                    color: 'white',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  LOGIN
-                </Text>
+              <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={this.onLoginButtonPressed}
+              >
+                <View>
+                  <Text
+                    style={{
+                      marginTop: 8,
+                      fontSize: 20,
+                      alignSelf: 'center',
+                      color: 'white',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    LOGIN
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </LinearGradient>
+            <View style={styles.footer}>
+              <View style={styles.textRow}>
+                <RkText rkType="primary3">Don’t have an account? </RkText>
+                <RkButton rkType="clear">
+                  <RkText
+                    rkType="header6"
+                    style={{ fontWeight: 'bold' }}
+                    onPress={this.onSignUpButtonPressed}
+                  >
+                    Sign up now
+                  </RkText>
+                </RkButton>
               </View>
-            </TouchableOpacity>
-          </LinearGradient>
-          <View style={styles.footer}>
-            <View style={styles.textRow}>
-              <RkText rkType="primary3">Don’t have an account? </RkText>
-              <RkButton rkType="clear">
-                <RkText
-                  rkType="header6"
-                  style={{ fontWeight: 'bold' }}
-                  onPress={this.onSignUpButtonPressed}
-                >
-                  Sign up now
-                </RkText>
-              </RkButton>
             </View>
           </View>
-        </View>
+        </ScrollView>
       </KeyboardAvoidingView>
     );
   };
