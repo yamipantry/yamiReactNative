@@ -377,7 +377,7 @@ export const YamiMapStack = createStackNavigator({
         textAlign: 'center',
         flexGrow: 1,
       },
-      //headerRight: <View style={{ paddingRight: 25 }} />,
+      headerRight: <View style={{ paddingRight: 25 }} />,
       headerLeft: (
         <View style={{ paddingLeft: 20 }}>
           <TouchableOpacity
