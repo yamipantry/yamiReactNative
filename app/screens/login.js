@@ -108,7 +108,7 @@ export class Login extends React.Component {
                 <View>
                   <Text
                     style={{
-                      marginTop: 8,
+                      marginTop: 10,
                       fontSize: 20,
                       alignSelf: 'center',
                       color: 'white',
