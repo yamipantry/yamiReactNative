@@ -98,7 +98,7 @@ class MapComponent extends React.Component {
 const style = StyleSheet.create({
   mapContainer: {
     width: '100%',
-    height: '90%',
+    height: '94%',
   },
   map: {
     width: '100%',
