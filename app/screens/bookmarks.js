@@ -21,7 +21,6 @@ export default class Bookmarks extends React.Component {
       delayPressIn={20}
       activeOpacity={0.8}
       onPress={() => {
-        console.log(this.props);
         this.props.ranking();
         this.props.navigation.navigate('SingleRecipe', {
           id: item.recipe.id,
@@ -29,7 +28,14 @@ export default class Bookmarks extends React.Component {
         });
       }}
     >
-      <RkCard style={{ marginVertical: 8, flexDirection: 'row' }}>
+      <RkCard
+        style={{
+          marginVertical: 8,
+          flexDirection: 'row',
+          borderWidth: 1,
+          borderColor: 'lightgrey',
+        }}
+      >
         <Image
           rkCardImg
           style={{ width: 120, height: 120 }}
