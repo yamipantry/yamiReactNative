@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, View, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  TouchableHighlight,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+import { scaleVertical } from '../utils/scale';
 import { RkText } from 'react-native-ui-kitten';
 import { DrawerActions } from 'react-navigation';
 import styles from '../assets/styles';
@@ -9,24 +16,29 @@ class DrawerScreen extends Component {
     return (
       <View style={styles.root}>
         <ScrollView showsVerticalScrollIndicator={false}>
+          <Image
+            source={require('../assets/images/logo2.jpeg')}
+            style={{
+              height: scaleVertical(130),
+              resizeMode: 'contain',
+              alignSelf: 'flex-start',
+              marginLeft: -69,
+            }}
+          />
           <TouchableHighlight
             style={styles.containerDrawerScreen}
             activeOpacity={1}
           >
             <View style={styles.contentDrawerScreen}>
-              <View style={styles.contentDrawerScreen}>
-                <TouchableOpacity
-                  style={styles.textDrawer}
-                  onPress={() => {
-                    this.props.navigation.navigate('Home', { editMode: false });
-                    this.props.navigation.dispatch(
-                      DrawerActions.toggleDrawer()
-                    );
-                  }}
-                >
-                  <RkText>Pantry</RkText>
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                style={styles.textDrawer}
+                onPress={() => {
+                  this.props.navigation.navigate('Home', { editMode: false });
+                  this.props.navigation.dispatch(DrawerActions.toggleDrawer());
+                }}
+              >
+                <RkText style={{ marginTop: 10 }}>Pantry</RkText>
+              </TouchableOpacity>
             </View>
           </TouchableHighlight>
           {/* <TouchableHighlight
@@ -65,10 +77,10 @@ class DrawerScreen extends Component {
                     this.props.navigation.dispatch(
                       DrawerActions.toggleDrawer()
                     );
-                  }}>
-                <RkText>
-                  Settings
-                </RkText></TouchableOpacity>
+                  }}
+                >
+                  <RkText style={{ marginTop: 10 }}>Settings</RkText>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableHighlight>
@@ -87,8 +99,7 @@ class DrawerScreen extends Component {
                     );
                   }}
                 >
-                <RkText> Friends
-                </RkText>
+                  <RkText style={{ marginTop: 10 }}>Friends</RkText>
                 </TouchableOpacity>
               </View>
             </View>
@@ -108,9 +119,7 @@ class DrawerScreen extends Component {
                     );
                   }}
                 >
-              <RkText>
-                  Bookmarks
-                </RkText>
+                  <RkText style={{ marginTop: 10 }}>Bookmarks</RkText>
                 </TouchableOpacity>
               </View>
             </View>
@@ -121,7 +130,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.contentDrawerScreen}>
               <View style={styles.contentDrawerScreen}>
-                  <TouchableOpacity
+                <TouchableOpacity
                   style={styles.textDrawer}
                   onPress={() => {
                     this.props.navigation.navigate('YamiMap');
@@ -130,8 +139,7 @@ class DrawerScreen extends Component {
                     );
                   }}
                 >
-                <RkText>  Yami Maps
-                </RkText>
+                  <RkText style={{ marginTop: 10 }}> Yami Maps</RkText>
                 </TouchableOpacity>
               </View>
             </View>

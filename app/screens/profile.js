@@ -137,7 +137,17 @@ export class Profile extends React.Component {
                     onPress={this.onEditButtonPressed}
                   >
                     <View style={styles.textRow}>
-                      <Text style={styles.buttonText}>EDIT</Text>
+                      <Text
+                        style={{
+                          marginTop: 8,
+                          fontSize: 20,
+                          alignSelf: 'center',
+                          color: 'white',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        EDIT
+                      </Text>
                     </View>
                   </TouchableOpacity>
                 </LinearGradient>

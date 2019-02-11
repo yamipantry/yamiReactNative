@@ -116,7 +116,7 @@ export default RkStyleSheet.create(theme => ({
     color: 'red',
   },
   containerDrawerScreen: {
-    height: 80,
+    height: 70,
     paddingHorizontal: 16,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.border.base,

@@ -1,34 +1,34 @@
-import React from "react";
-import styles from "../assets/styles";
+import React from 'react';
+import styles from '../assets/styles';
 import {
   ScrollView,
   View,
   TouchableOpacity,
   Keyboard,
-  Text
-} from "react-native";
-import { RkAvoidKeyboard, RkTextInput } from "react-native-ui-kitten";
-import LinearGradient from "react-native-linear-gradient";
-import { scaleVertical } from "../utils/scale";
+  Text,
+} from 'react-native';
+import { RkAvoidKeyboard, RkTextInput } from 'react-native-ui-kitten';
+import LinearGradient from 'react-native-linear-gradient';
+import { scaleVertical } from '../utils/scale';
 
 export default class YamiDinnerForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       id: this.props.user.id,
-      yamiRecipe: this.props.navigation.getParam("recipeName", ""),
-      description: "",
-      streetName: "",
-      city: "",
-      zip: "",
-      state: "CA"
+      yamiRecipe: this.props.navigation.getParam('recipeName', ''),
+      description: '',
+      streetName: '',
+      city: '',
+      zip: '',
+      state: 'CA',
     };
   }
 
   onCreateYammiDinnerButtonPressed = () => {
     this.props.handleSubmit(this.state);
-    this.props.navigation.navigate("Home");
-  }
+    this.props.navigation.navigate('Home');
+  };
 
   render() {
     return (
@@ -44,7 +44,7 @@ export default class YamiDinnerForm extends React.Component {
                 <RkTextInput
                   onChangeText={text => {
                     this.setState({
-                      yamiRecipe: text
+                      yamiRecipe: text,
                     });
                   }}
                   rkType="rounded"
@@ -54,7 +54,7 @@ export default class YamiDinnerForm extends React.Component {
                 <RkTextInput
                   onChangeText={text => {
                     this.setState({
-                      description: text
+                      description: text,
                     });
                   }}
                   rkType="rounded"
@@ -65,7 +65,7 @@ export default class YamiDinnerForm extends React.Component {
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      streetName: text
+                      streetName: text,
                     });
                   }}
                   value={this.state.streetName}
@@ -75,7 +75,7 @@ export default class YamiDinnerForm extends React.Component {
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      city: text
+                      city: text,
                     });
                   }}
                   value={this.state.city}
@@ -85,7 +85,7 @@ export default class YamiDinnerForm extends React.Component {
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      state: text
+                      state: text,
                     });
                   }}
                   value={this.state.state}
@@ -95,21 +95,21 @@ export default class YamiDinnerForm extends React.Component {
                   rkType="rounded"
                   onChangeText={text => {
                     this.setState({
-                      zip: text
+                      zip: text,
                     });
                   }}
                   value={this.state.zip}
                   placeholder="Zip"
                 />
                 <LinearGradient
-                  colors={["#8a2387", "#e94057", "#f27121"]}
+                  colors={['#8a2387', '#e94057', '#f27121']}
                   start={{ x: 0.0, y: 0.5 }}
                   end={{ x: 1, y: 0.5 }}
                   style={{
-                    alignSelf: "stretch",
+                    alignSelf: 'stretch',
                     height: scaleVertical(45),
                     marginVertical: 20,
-                    borderRadius: 28
+                    borderRadius: 28,
                   }}
                 >
                   <TouchableOpacity
@@ -119,13 +119,13 @@ export default class YamiDinnerForm extends React.Component {
                     <Text
                       style={{
                         marginTop: 8,
-                        fontSize: 25,
-                        alignSelf: "center",
-                        color: "white",
-                        fontWeight: "bold"
+                        fontSize: 20,
+                        alignSelf: 'center',
+                        color: 'white',
+                        fontWeight: 'bold',
                       }}
                     >
-                      Create Yami Dinner !
+                      Host A YAMI Dinner !
                     </Text>
                   </TouchableOpacity>
                 </LinearGradient>

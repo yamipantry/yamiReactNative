@@ -212,7 +212,7 @@ class Pantry extends React.Component {
             <Text
               style={{
                 marginTop: 8,
-                fontSize: 25,
+                fontSize: 20,
                 alignSelf: 'center',
                 color: 'white',
                 fontWeight: 'bold',
