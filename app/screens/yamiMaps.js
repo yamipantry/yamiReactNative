@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   TouchableHighlight,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { yamiDinners as yamiDinnerThunk } from '../client/store';
@@ -54,43 +55,45 @@ class MapComponent extends React.Component {
     }
 
     return (
-      <View style={style.mapContainer}>
-        <MapView
-          style={style.map}
-          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-          region={{
-            latitude: lat,
-            longitude: lng,
-            latitudeDelta: 0.065,
-            longitudeDelta: 0.06,
-          }}
-        >
-          {dinners.map(dinner => {
-            return (
-              <Marker
-                key={dinner.id}
-                title={dinner.name}
-                coordinate={{ latitude: dinner.lat, longitude: dinner.lng }}
-                description={dinner.description}
-                onPress={() => {
-                  this.setState({
-                    create: '35,-122,1-19-19',
-                  });
-                }}
-              />
-            );
-          })}
-        </MapView>
+      <KeyboardAvoidingView>
+        <View style={style.mapContainer}>
+          <MapView
+            style={style.map}
+            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+            region={{
+              latitude: lat,
+              longitude: lng,
+              latitudeDelta: 0.065,
+              longitudeDelta: 0.06,
+            }}
+          >
+            {dinners.map(dinner => {
+              return (
+                <Marker
+                  key={dinner.id}
+                  title={dinner.name}
+                  coordinate={{ latitude: dinner.lat, longitude: dinner.lng }}
+                  description={dinner.description}
+                  onPress={() => {
+                    this.setState({
+                      create: '35,-122,1-19-19',
+                    });
+                  }}
+                />
+              );
+            })}
+          </MapView>
 
-        <Button
-          title="Chat with a Host"
-          onPress={() => {
-            this.props.navigation.push('messageTest', {
-              name: this.state.create,
-            });
-          }}
-        />
-      </View>
+          <Button
+            title="Chat with a Host"
+            onPress={() => {
+              this.props.navigation.push('messageTest', {
+                name: this.state.create,
+              });
+            }}
+          />
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 }

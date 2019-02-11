@@ -5,6 +5,7 @@ import {
   // Platform,
   // Image,
   // TouchableOpacity,
+  KeyboardAvoidingView,
   Keyboard,
   TextInput,
   // InteractionManager,
@@ -66,15 +67,14 @@ class Chat extends React.Component {
     //   messages: data.message,
     // });
     //update state per message
-    const oldMessages = await axios.get(`${webserver}/api/messages`)
+    const oldMessages = await axios.get(`${webserver}/api/messages`);
 
     this.setState({
-      messages: oldMessages.data
-    })
+      messages: oldMessages.data,
+    });
     socket.on(this.state.room, msg => {
-      
       if (msg) {
-        const newMsg = [...this.state.messages, msg]
+        const newMsg = [...this.state.messages, msg];
         this.setState({ messages: newMsg });
       }
     });
@@ -95,7 +95,7 @@ class Chat extends React.Component {
   // };
 
   onSendButtonPressed = () => {
-    socket.emit(this.state.room, {message: this.state.message});
+    socket.emit(this.state.room, { message: this.state.message });
     axios.post(`${webserver}/api/messages`, {
       yammiDinnerId: this.state.room,
       message: this.state.message,
@@ -141,9 +141,9 @@ class Chat extends React.Component {
 
   render = () => {
     return (
-      <RkAvoidKeyboard
+      <KeyboardAvoidingView
         style={styles.container}
-        onResponderRelease={Keyboard.dismiss()}
+        // onResponderRelease={Keyboard.dismiss()}
       >
         <FlatList
           style={styles.list}
@@ -171,7 +171,7 @@ class Chat extends React.Component {
             rkType="circle highlight"
           />
         </View>
-      </RkAvoidKeyboard>
+      </KeyboardAvoidingView>
     );
   };
 }
