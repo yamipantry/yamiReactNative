@@ -9,11 +9,11 @@ import {
   Text,
   KeyboardAvoidingView,
   Alert,
+  ScrollView,
 } from 'react-native';
 import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten';
 import LinearGradient from 'react-native-linear-gradient';
 import { scaleModerate, scaleVertical } from '../utils/scale';
-import { ScrollView } from 'react-native-gesture-handler';
 
 export class Login extends React.Component {
   constructor(props) {
