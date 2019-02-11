@@ -1,8 +1,16 @@
-import React from "react";
-import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
-import { View, StyleSheet, Text, Button } from "react-native";
-import { connect } from "react-redux";
-import { yamiDinners as yamiDinnerThunk } from "../client/store";
+import React from 'react';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Button,
+  TouchableOpacity,
+  Image,
+  TouchableHighlight,
+} from 'react-native';
+import { connect } from 'react-redux';
+import { yamiDinners as yamiDinnerThunk } from '../client/store';
 
 class MapComponent extends React.Component {
   constructor() {
@@ -10,7 +18,7 @@ class MapComponent extends React.Component {
     this.state = {
       lat: null,
       lng: null,
-      create: ''
+      create: '',
     };
   }
 
@@ -19,7 +27,7 @@ class MapComponent extends React.Component {
       pos => {
         this.setState({
           lat: pos.coords.latitude,
-          lng: pos.coords.longitude
+          lng: pos.coords.longitude,
         });
       },
       err => {
@@ -33,7 +41,7 @@ class MapComponent extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     const dinners = this.props.dinners || [];
     const lat = this.state.lat;
     const lng = this.state.lng;
@@ -54,30 +62,34 @@ class MapComponent extends React.Component {
             latitude: lat,
             longitude: lng,
             latitudeDelta: 0.065,
-            longitudeDelta: 0.06
+            longitudeDelta: 0.06,
           }}
         >
           {dinners.map(dinner => {
             return (
-                <Marker
-                  key={dinner.id}
-                  title={dinner.name}
-                  coordinate={{ latitude: dinner.lat, longitude: dinner.lng }}
-                  description={dinner.description}
-                  onPress={() => {
-                    this.setState({
-                      create: '35,-122,1-19-19'
-                    })
-                  }}
-                />
+              <Marker
+                key={dinner.id}
+                title={dinner.name}
+                coordinate={{ latitude: dinner.lat, longitude: dinner.lng }}
+                description={dinner.description}
+                onPress={() => {
+                  this.setState({
+                    create: '35,-122,1-19-19',
+                  });
+                }}
+              />
             );
           })}
         </MapView>
-        <Button title='press here for dinner messages'
-        onPress={() => {
-          this.props.navigation.push('messageTest', {name: this.state.create})
-        }}
-        ></Button>
+
+        <Button
+          title="Chat with a Host"
+          onPress={() => {
+            this.props.navigation.push('messageTest', {
+              name: this.state.create,
+            });
+          }}
+        />
       </View>
     );
   }
@@ -85,26 +97,26 @@ class MapComponent extends React.Component {
 
 const style = StyleSheet.create({
   mapContainer: {
-    width: "100%",
-    height: "90%"
+    width: '100%',
+    height: '90%',
   },
   map: {
-    width: "100%",
-    height: "100%"
-  }
+    width: '100%',
+    height: '100%',
+  },
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     getDinners: () => {
       dispatch(yamiDinnerThunk());
-    }
+    },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    dinners: state.yamiDinners
+    dinners: state.yamiDinners,
   };
 };
 

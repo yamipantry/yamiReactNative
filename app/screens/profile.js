@@ -139,7 +139,7 @@ export class Profile extends React.Component {
                     <View style={styles.textRow}>
                       <Text
                         style={{
-                          marginTop: 8,
+                          marginTop: 10,
                           fontSize: 20,
                           alignSelf: 'center',
                           color: 'white',

@@ -118,7 +118,7 @@ export default class YamiDinnerForm extends React.Component {
                   >
                     <Text
                       style={{
-                        marginTop: 8,
+                        marginTop: 10,
                         fontSize: 20,
                         alignSelf: 'center',
                         color: 'white',
